@@ -1,16 +1,18 @@
-# React + Vite
+# Personal Site
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+My portfolio site. Built it to have something to point people to that isn't just a LinkedIn page from 2019.
 
-Currently, two official plugins are available:
+**Stack:** React + Vite, some fun animations from [React Bits](https://reactbits.dev/), and way too many CSS variables.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Run it locally
 
-## React Compiler
+```bash
+npm install
+npm run dev
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+That's it. It's a personal site, not a distributed system.
 
-## Expanding the ESLint configuration
+## Why
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Because every time someone asks "do you have a website?" and I say "no" it feels worse than it should.
