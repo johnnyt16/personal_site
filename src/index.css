@@ -227,6 +227,38 @@ a {
   gap: 12px;
 }
 
+.project-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.project-visit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--text-dim);
+  padding: 3px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: transparent;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.project-visit-btn:hover {
+  color: var(--text);
+  border-color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.project-visit-btn svg {
+  flex-shrink: 0;
+}
+
 .project-logo {
   height: 24px;
   width: auto;
@@ -259,6 +291,11 @@ a {
 .tag-attendease {
   color: #F5921B;
   background: rgba(245, 146, 27, 0.12);
+}
+
+.tag-junzi {
+  color: #e4e4e7;
+  background: rgba(255, 255, 255, 0.10);
 }
 
 .tag-infra {
@@ -307,6 +344,18 @@ a {
   height: 5px;
   border-radius: 50%;
   background: #F5921B;
+  opacity: 0.6;
+}
+
+.card-junzi .project-details li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #e4e4e7;
   opacity: 0.6;
 }
 
@@ -493,7 +542,14 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
+  gap: 24px;
+}
+
+.footer-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-top: -8px;
+  margin-bottom: 12px;
 }
 
 .footer-cta {

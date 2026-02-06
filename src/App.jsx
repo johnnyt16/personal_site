@@ -19,6 +19,13 @@ const LinkedInIcon = () => (
   </svg>
 );
 
+const ArrowUpRightIcon = () => (
+  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="7" y1="17" x2="17" y2="7" />
+    <polyline points="7 7 17 7 17 17" />
+  </svg>
+);
+
 const EmailIcon = () => (
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
     <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
@@ -82,10 +89,8 @@ function App() {
               transition={{ duration: 0.8, delay: 1.0, ease: [0.33, 1, 0.68, 1] }}
             >
               <p>
-                I'm a co-founder of Voley. I build production software, work directly with
-                customers, and focus on finding problems where software can create durable
-                advantages. I'm especially interested in replacing legacy systems in places
-                most people ignore.
+                Cofounder at Voley. I build and ship production software, work directly with
+                customers, and spend most of my time turning messy problems into working systems.
               </p>
             </motion.div>
 
@@ -120,7 +125,7 @@ function App() {
         <section className="content-section">
           <AnimatedContent distance={60} duration={0.7}>
             <div className="section-label">
-              <span>What I've Built</span>
+              <span>What I've Built Recently</span>
             </div>
           </AnimatedContent>
 
@@ -130,7 +135,12 @@ function App() {
                 <div className="project-content">
                   <div className="project-header">
                     <img src="/voley-logo.png" alt="Voley" className="project-logo" />
-                    <span className="project-tag tag-voley">Active</span>
+                    <div className="project-header-right">
+                      <span className="project-tag tag-voley">Active</span>
+                      <a href="https://letsvoley.com" target="_blank" rel="noopener noreferrer" className="project-visit-btn">
+                        Visit <ArrowUpRightIcon />
+                      </a>
+                    </div>
                   </div>
                   <p className="project-desc">
                     Enterprise VOIP, SMS, and team messaging platform for insurance agencies.
@@ -150,7 +160,12 @@ function App() {
                 <div className="project-content">
                   <div className="project-header">
                     <img src="/attendease-logo.png" alt="AttendEase" className="project-logo" />
-                    <span className="project-tag tag-attendease">Deployed</span>
+                    <div className="project-header-right">
+                      <span className="project-tag tag-attendease">Deployed</span>
+                      <a href="https://attend-ease.com" target="_blank" rel="noopener noreferrer" className="project-visit-btn">
+                        Visit <ArrowUpRightIcon />
+                      </a>
+                    </div>
                   </div>
                   <p className="project-desc">
                     Automated attendance and security software for private K-12 schools.
@@ -165,6 +180,31 @@ function App() {
             </AnimatedContent>
 
             <AnimatedContent distance={60} duration={0.7} delay={0.3}>
+              <SpotlightCard className="project-card card-junzi" spotlightColor="rgba(255, 255, 255, 0.06)">
+                <div className="project-content">
+                  <div className="project-header">
+                    <img src="/Bold Italic Multipurpse Typography Logo Design Brand Identity Clean Comic Style for Design Company (2000 x 1000 px).png" alt="Junzi" className="project-logo" />
+                    <div className="project-header-right">
+                      <span className="project-tag tag-junzi">Live</span>
+                      <a href="https://www.bejunzi.com" target="_blank" rel="noopener noreferrer" className="project-visit-btn">
+                        Visit <ArrowUpRightIcon />
+                      </a>
+                    </div>
+                  </div>
+                  <p className="project-desc">
+                    A public discourse platform built to surface truth through structured debate, not popularity.
+                  </p>
+                  <ul className="project-details">
+                    <li>Inspired by Greek philosophy and the lack of foundational reasoning in modern discourse</li>
+                    <li>Structured around dialectic and finding truth, not surfacing popular opinion</li>
+                    <li>Full-stack Next.js app with authentication, drafts, and threaded discussion architecture</li>
+                    <li>Designed for substantive, long-form debate over reactive hot takes</li>
+                  </ul>
+                </div>
+              </SpotlightCard>
+            </AnimatedContent>
+
+            <AnimatedContent distance={60} duration={0.7} delay={0.4}>
               <SpotlightCard className="project-card card-infra" spotlightColor="rgba(168, 85, 247, 0.10)">
                 <div className="project-content">
                   <div className="project-header">
@@ -277,10 +317,11 @@ function App() {
                   Washington, DC
                 </p>
                 <p className="profile-bio">
-                  Serial entrepreneur and self-taught engineer. I've been starting companies
-                  and shipping software since before I could legally sign contracts. I care about
-                  building real products in industries where most people don't want to look —
-                  insurance, education, compliance — and I do it end-to-end.
+                  I'm a builder and self-taught engineer who is passionate about taking products
+                  from idea and architecture to code, launch, and iteration. I've been shipping
+                  real software for years, learning quickly as I go and solving problems as
+                  they show up in production. I care less about polish and hype and more about
+                  building things that actually work, scale, and get used.
                 </p>
                 <div className="profile-tags">
                   <span className="profile-tag">Founder</span>
@@ -301,7 +342,7 @@ function App() {
             <div className="footer-inner">
               <p className="footer-cta">
                 <DecryptedText
-                  text="Let's build something that lasts."
+                  text="Let's build something together."
                   animateOn="view"
                   speed={40}
                   sequential={true}
@@ -310,6 +351,7 @@ function App() {
                   encryptedClassName="footer-encrypted"
                 />
               </p>
+              <p className="footer-subtitle">Got an idea, a problem, or just want to talk shop? Reach out.</p>
               <div className="footer-links">
                 <a href="https://github.com/johnnyt16" target="_blank" rel="noopener noreferrer" className="footer-link">
                   <GitHubIcon />
