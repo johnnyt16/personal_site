@@ -29,10 +29,10 @@ export default function Hero() {
         >
           <TextType
             text={[
-              "I build websites and systems for businesses that need to work.",
+              "I build custom websites and systems for businesses.",
               "I ship production software, not prototypes.",
               "I replace the tech nobody wants to touch.",
-              "I architect enterprise infrastructure from scratch."
+              "I turn messy problems into working products."
             ]}
             className="hero-tagline"
             typingSpeed={40}
@@ -52,16 +52,15 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 1.0, ease: [0.33, 1, 0.68, 1] }}
         >
           <p>
-            Builder and engineer behind{' '}
+            Full-stack engineer and founder of{' '}
             <ShinyText
               text="Forge Development"
               speed={3}
               color="#8b8b9e"
               shineColor="#e4e4e7"
             />
-            . I build and ship production software — from business websites to
-            full-stack platforms — working directly with clients to turn messy
-            problems into working systems.
+            . I design, build, and ship websites, web apps, and production
+            systems for businesses — from first conversation to launch.
           </p>
         </motion.div>
 

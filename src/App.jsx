@@ -2,10 +2,10 @@ import Aurora from './components/Aurora';
 import NavBar from './components/NavBar';
 import ScrollVelocity from './components/ScrollVelocity';
 import Hero from './sections/Hero';
-import Services from './sections/Services';
 import Portfolio from './sections/Portfolio';
-import Process from './sections/Process';
 import About from './sections/About';
+import Services from './sections/Services';
+import Process from './sections/Process';
 import Contact from './sections/Contact';
 import './components/NavBar.css';
 
@@ -26,10 +26,10 @@ function App() {
           />
         </div>
 
-        <Services />
         <Portfolio />
-        <Process />
         <About />
+        <Services />
+        <Process />
         <Contact />
       </main>
     </>

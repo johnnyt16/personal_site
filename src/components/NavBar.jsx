@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 
 const links = [
-  { label: 'Work', href: '#portfolio' },
+  { label: 'Portfolio', href: '#portfolio' },
+  { label: 'About', href: '#about' },
   { label: 'Services', href: '#services' },
   { label: 'Process', href: '#process' },
-  { label: 'About', href: '#about' },
   { label: 'Contact', href: '#contact' },
 ];
 

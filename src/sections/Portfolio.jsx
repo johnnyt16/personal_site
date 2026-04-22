@@ -26,13 +26,14 @@ const projects = [
   {
     id: 'forge',
     title: 'Forge Development',
-    name: 'Forge Development — Client Pipeline',
+    name: 'Forge Development',
     tag: 'Active',
     tagClass: 'tag-forge',
     cardClass: 'card-forge',
     spotlightColor: 'rgba(34, 197, 94, 0.12)',
+    link: 'https://theforgedev.com',
     category: 'client',
-    desc: 'Full-service web development studio delivering production sites and apps for businesses.',
+    desc: 'My web development studio — I build production sites and apps for businesses end-to-end.',
     details: [
       'Business websites, web applications, and legacy system replacements',
       'End-to-end delivery from discovery through launch and iteration',
@@ -110,7 +111,7 @@ export default function Portfolio() {
     <section className="content-section" id="portfolio">
       <AnimatedContent distance={60} duration={0.7}>
         <div className="section-label">
-          <span>What I've Built</span>
+          <span>Portfolio</span>
         </div>
       </AnimatedContent>
 

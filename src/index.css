@@ -718,6 +718,33 @@ a {
   color: var(--text);
 }
 
+/* ─── Tech Stack ─── */
+.tech-stack-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.tech-stack-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tech-tag {
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--accent);
+  background: var(--accent-muted);
+  padding: 4px 10px;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+}
+
 /* ─── Footer ─── */
 .footer-section {
   padding: 80px 24px 60px;
@@ -841,8 +868,13 @@ a {
     justify-content: center;
   }
 
-  .profile-tags {
+  .profile-tags,
+  .tech-stack-tags {
     justify-content: center;
+  }
+
+  .tech-stack-label {
+    text-align: center;
   }
 
   .process-step {

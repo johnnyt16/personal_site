@@ -48,9 +48,9 @@ const services = [
     title: 'AI Integration',
     desc: 'Add AI-powered features to your existing products or build new AI-first workflows.',
     details: [
-      'AI-powered content generation and automation',
-      'Workflow automation with LLM integration',
-      'Custom tooling built on top of modern AI APIs',
+      'AI agents, LLM integration, and intelligent automation',
+      'Custom tooling built on Claude, GPT, and open-source models',
+      'Workflow automation that saves hours, not minutes',
     ],
     tag: 'AI',
     tagClass: 'tag-ai',
@@ -65,7 +65,7 @@ export default function Services() {
     <section className="content-section" id="services">
       <AnimatedContent distance={60} duration={0.7}>
         <div className="section-label">
-          <span>What I Build</span>
+          <span>Services</span>
         </div>
       </AnimatedContent>
 
