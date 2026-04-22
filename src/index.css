@@ -18,6 +18,12 @@
   --accent-muted: rgba(99, 102, 241, 0.15);
 }
 
+@property --glow-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -69,7 +75,6 @@ a {
 
 .cta-primary:hover {
   background: #818cf8;
-  transform: translateY(-2px);
   box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
 }
 
@@ -83,7 +88,6 @@ a {
   color: var(--text);
   border-color: var(--accent);
   background: var(--accent-muted);
-  transform: translateY(-2px);
 }
 
 .cta-lg {
@@ -183,11 +187,15 @@ a {
   width: 100%;
 }
 
-.hero-bio p {
+.hero-bio-stagger {
   font-size: 1.05rem;
   color: var(--text-muted);
   line-height: 1.85;
   text-align: center;
+}
+
+.hero-word {
+  display: inline-block;
 }
 
 .hero-ctas {
@@ -225,6 +233,46 @@ a {
   -webkit-text-fill-color: transparent;
 }
 
+/* ─── Stats ─── */
+.stats-section {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 60px 24px;
+}
+
+.stats-grid {
+  display: flex;
+  justify-content: center;
+  gap: 56px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.stat-value {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, var(--text) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
 /* ─── Content Sections ─── */
 .content-section {
   width: 100%;
@@ -258,15 +306,16 @@ a {
   opacity: 0.5;
 }
 
-/* ─── Services ─── */
+/* ─── Services (Bento Grid) ─── */
 .services-grid {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 14px;
 }
 
 .service-card {
   cursor: default;
+  height: 100%;
 }
 
 .service-content {
@@ -282,13 +331,13 @@ a {
 }
 
 .service-title {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: var(--text);
 }
 
 .service-desc {
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   color: var(--text-muted);
   margin-bottom: 16px;
   line-height: 1.6;
@@ -300,7 +349,7 @@ a {
 }
 
 .service-details li {
-  font-size: 0.88rem;
+  font-size: 0.84rem;
   color: var(--text-muted);
   padding: 4px 0 4px 18px;
   position: relative;
@@ -317,6 +366,30 @@ a {
   border-radius: 50%;
   background: var(--bullet-color, var(--accent));
   opacity: 0.6;
+}
+
+/* Glow border wrapper for service cards */
+.glow-border {
+  border-radius: 13px;
+  padding: 1px;
+  background: var(--border);
+  transition: box-shadow 0.4s ease;
+  height: 100%;
+}
+
+.glow-border:hover {
+  background: conic-gradient(from var(--glow-angle), var(--bg), var(--accent), rgba(168, 85, 247, 0.6), var(--accent), var(--bg));
+  animation: glow-spin 3s linear infinite;
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.08), 0 0 40px rgba(99, 102, 241, 0.04);
+}
+
+.glow-border > .card-spotlight {
+  border: none;
+  height: 100%;
+}
+
+@keyframes glow-spin {
+  to { --glow-angle: 360deg; }
 }
 
 /* Service tags */
@@ -618,7 +691,6 @@ a {
   line-height: 1.75;
 }
 
-
 /* ─── Profile ─── */
 .profile-section {
   padding-bottom: 40px;
@@ -823,6 +895,12 @@ a {
 }
 
 /* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 640px) {
   .hero {
     padding: 40px 20px;
@@ -835,6 +913,14 @@ a {
   .hero-ctas {
     flex-direction: column;
     align-items: center;
+  }
+
+  .stats-grid {
+    gap: 32px;
+  }
+
+  .stat-value {
+    font-size: 1.8rem;
   }
 
   .service-content,

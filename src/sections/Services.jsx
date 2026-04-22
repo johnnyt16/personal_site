@@ -1,5 +1,6 @@
 import AnimatedContent from '../components/AnimatedContent';
 import SpotlightCard from '../components/SpotlightCard';
+import TiltCard from '../components/TiltCard';
 
 const services = [
   {
@@ -72,20 +73,24 @@ export default function Services() {
       <div className="services-grid">
         {services.map((s, i) => (
           <AnimatedContent key={s.title} distance={60} duration={0.7} delay={0.1 + i * 0.1}>
-            <SpotlightCard className={`service-card ${s.cardClass}`} spotlightColor={s.spotlightColor}>
-              <div className="service-content">
-                <div className="service-header">
-                  <h3 className="service-title">{s.title}</h3>
-                  <span className={`project-tag ${s.tagClass}`}>{s.tag}</span>
-                </div>
-                <p className="service-desc">{s.desc}</p>
-                <ul className="service-details">
-                  {s.details.map((d) => (
-                    <li key={d} style={{ '--bullet-color': s.accentColor }}>{d}</li>
-                  ))}
-                </ul>
+            <TiltCard>
+              <div className="glow-border">
+                <SpotlightCard className={`service-card ${s.cardClass}`} spotlightColor={s.spotlightColor}>
+                  <div className="service-content">
+                    <div className="service-header">
+                      <h3 className="service-title">{s.title}</h3>
+                      <span className={`project-tag ${s.tagClass}`}>{s.tag}</span>
+                    </div>
+                    <p className="service-desc">{s.desc}</p>
+                    <ul className="service-details">
+                      {s.details.map((d) => (
+                        <li key={d} style={{ '--bullet-color': s.accentColor }}>{d}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </SpotlightCard>
               </div>
-            </SpotlightCard>
+            </TiltCard>
           </AnimatedContent>
         ))}
       </div>

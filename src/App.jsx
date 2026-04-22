@@ -2,6 +2,7 @@ import Aurora from './components/Aurora';
 import NavBar from './components/NavBar';
 import ScrollVelocity from './components/ScrollVelocity';
 import Hero from './sections/Hero';
+import Stats from './sections/Stats';
 import Portfolio from './sections/Portfolio';
 import About from './sections/About';
 import Services from './sections/Services';
@@ -26,6 +27,7 @@ function App() {
           />
         </div>
 
+        <Stats />
         <Portfolio />
         <About />
         <Services />

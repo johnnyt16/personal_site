@@ -1,7 +1,11 @@
 import { motion } from 'motion/react';
 import TextType from '../components/TextType';
 import ShinyText from '../components/ShinyText';
+import MagneticButton from '../components/MagneticButton';
 import { LocationIcon } from '../components/Icons';
+
+const bioWords = 'Full-stack engineer and founder of'.split(' ');
+const bioTail = '. I design, build, and ship websites, web apps, and production systems for businesses — from first conversation to launch.'.split(' ');
 
 export default function Hero() {
   return (
@@ -47,20 +51,52 @@ export default function Hero() {
 
         <motion.div
           className="hero-bio"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.0, ease: [0.33, 1, 0.68, 1] }}
+          initial="hidden"
+          animate="visible"
+          variants={{ visible: { transition: { staggerChildren: 0.025, delayChildren: 1.0 } } }}
         >
-          <p>
-            Full-stack engineer and founder of{' '}
-            <ShinyText
-              text="Forge Development"
-              speed={3}
-              color="#8b8b9e"
-              shineColor="#e4e4e7"
-            />
-            . I design, build, and ship websites, web apps, and production
-            systems for businesses — from first conversation to launch.
+          <p className="hero-bio-stagger">
+            {bioWords.map((word, i) => (
+              <motion.span
+                key={i}
+                className="hero-word"
+                variants={{
+                  hidden: { opacity: 0, y: 16, filter: 'blur(6px)' },
+                  visible: { opacity: 1, y: 0, filter: 'blur(0px)' },
+                }}
+                transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
+              >
+                {word}{' '}
+              </motion.span>
+            ))}
+            <motion.span
+              className="hero-word"
+              variants={{
+                hidden: { opacity: 0, y: 16, filter: 'blur(6px)' },
+                visible: { opacity: 1, y: 0, filter: 'blur(0px)' },
+              }}
+              transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
+            >
+              <ShinyText
+                text="Forge Development"
+                speed={3}
+                color="#8b8b9e"
+                shineColor="#e4e4e7"
+              />
+            </motion.span>
+            {bioTail.map((word, i) => (
+              <motion.span
+                key={`t${i}`}
+                className="hero-word"
+                variants={{
+                  hidden: { opacity: 0, y: 16, filter: 'blur(6px)' },
+                  visible: { opacity: 1, y: 0, filter: 'blur(0px)' },
+                }}
+                transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
+              >
+                {word}{' '}
+              </motion.span>
+            ))}
           </p>
         </motion.div>
 
@@ -68,17 +104,21 @@ export default function Hero() {
           className="hero-ctas"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.4, ease: [0.33, 1, 0.68, 1] }}
+          transition={{ duration: 0.8, delay: 1.8, ease: [0.33, 1, 0.68, 1] }}
         >
-          <a href="#portfolio" className="cta-btn cta-primary">See My Work</a>
-          <a href="#contact" className="cta-btn cta-secondary">Work With Me</a>
+          <MagneticButton>
+            <a href="#portfolio" className="cta-btn cta-primary">See My Work</a>
+          </MagneticButton>
+          <MagneticButton>
+            <a href="#contact" className="cta-btn cta-secondary">Work With Me</a>
+          </MagneticButton>
         </motion.div>
 
         <motion.div
           className="hero-scroll-hint"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 2.2, duration: 1 }}
+          transition={{ delay: 2.6, duration: 1 }}
         >
           <motion.div
             animate={{ y: [0, 8, 0] }}

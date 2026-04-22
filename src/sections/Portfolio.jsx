@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import AnimatedContent from '../components/AnimatedContent';
 import SpotlightCard from '../components/SpotlightCard';
+import TiltCard from '../components/TiltCard';
 import { ArrowUpRightIcon } from '../components/Icons';
 
 const projects = [
@@ -138,31 +139,33 @@ export default function Portfolio() {
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.3 }}
             >
-              <SpotlightCard className={`project-card ${p.cardClass}`} spotlightColor={p.spotlightColor}>
-                <div className="project-content">
-                  <div className="project-header">
-                    {p.logo ? (
-                      <img src={p.logo} alt={p.title} className="project-logo" />
-                    ) : (
-                      <h3 className="project-name">{p.name || p.title}</h3>
-                    )}
-                    <div className="project-header-right">
-                      <span className={`project-tag ${p.tagClass}`}>{p.tag}</span>
-                      {p.link && (
-                        <a href={p.link} target="_blank" rel="noopener noreferrer" className="project-visit-btn">
-                          Visit <ArrowUpRightIcon />
-                        </a>
+              <TiltCard>
+                <SpotlightCard className={`project-card ${p.cardClass}`} spotlightColor={p.spotlightColor}>
+                  <div className="project-content">
+                    <div className="project-header">
+                      {p.logo ? (
+                        <img src={p.logo} alt={p.title} className="project-logo" />
+                      ) : (
+                        <h3 className="project-name">{p.name || p.title}</h3>
                       )}
+                      <div className="project-header-right">
+                        <span className={`project-tag ${p.tagClass}`}>{p.tag}</span>
+                        {p.link && (
+                          <a href={p.link} target="_blank" rel="noopener noreferrer" className="project-visit-btn">
+                            Visit <ArrowUpRightIcon />
+                          </a>
+                        )}
+                      </div>
                     </div>
+                    {p.desc && <p className="project-desc">{p.desc}</p>}
+                    <ul className="project-details">
+                      {p.details.map((d) => (
+                        <li key={d}>{d}</li>
+                      ))}
+                    </ul>
                   </div>
-                  {p.desc && <p className="project-desc">{p.desc}</p>}
-                  <ul className="project-details">
-                    {p.details.map((d) => (
-                      <li key={d}>{d}</li>
-                    ))}
-                  </ul>
-                </div>
-              </SpotlightCard>
+                </SpotlightCard>
+              </TiltCard>
             </motion.div>
           ))}
         </AnimatePresence>
