@@ -525,6 +525,12 @@ a {
   flex-shrink: 0;
 }
 
+.project-logo-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .project-logo {
   height: 24px;
   width: auto;

@@ -213,7 +213,10 @@ export default function Portfolio() {
                   <div className="project-content">
                     <div className="project-header">
                       {p.logo ? (
-                        <img src={p.logo} alt={p.title} className="project-logo" />
+                        <div className="project-logo-group">
+                          <img src={p.logo} alt={p.title} className="project-logo" />
+                          <h3 className="project-name">{p.title}</h3>
+                        </div>
                       ) : (
                         <h3 className="project-name">{p.name || p.title}</h3>
                       )}
