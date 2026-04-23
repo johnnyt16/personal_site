@@ -5,7 +5,14 @@ import SpotlightCard from '../components/SpotlightCard';
 import TiltCard from '../components/TiltCard';
 import { ArrowUpRightIcon } from '../components/Icons';
 
-const projects = [
+const LockIcon = () => (
+  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+  </svg>
+);
+
+const featured = [
   {
     id: 'voley',
     title: 'Voley',
@@ -15,7 +22,6 @@ const projects = [
     cardClass: 'card-voley',
     spotlightColor: 'rgba(74, 144, 226, 0.12)',
     link: 'https://letsvoley.com',
-    category: 'client',
     desc: 'Enterprise VOIP, SMS, and team messaging platform for insurance agencies.',
     details: [
       'Designed and implemented the core real-time messaging architecture',
@@ -25,21 +31,20 @@ const projects = [
     ],
   },
   {
-    id: 'forge',
-    title: 'Forge Development',
-    name: 'Forge Development',
-    tag: 'Active',
-    tagClass: 'tag-forge',
-    cardClass: 'card-forge',
+    id: 'accounting',
+    title: 'Accounting Automation Platform',
+    name: 'Accounting Automation Platform',
+    tag: 'Private',
+    tagClass: 'tag-private',
+    cardClass: 'card-accounting',
     spotlightColor: 'rgba(34, 197, 94, 0.12)',
-    link: 'https://theforgedev.com',
-    category: 'client',
-    desc: 'My web development studio — I build production sites and apps for businesses end-to-end.',
+    private: true,
+    desc: 'Custom internal automation system for an accounting firm — imports, categorizes, and reconciles transactions across multiple client businesses.',
     details: [
-      'Business websites, web applications, and legacy system replacements',
-      'End-to-end delivery from discovery through launch and iteration',
-      'Serving insurance agencies, professional services, and local businesses',
-      'Every project shipped on time with direct client communication',
+      'Automated import and categorization of transactions using ML-trained classification models',
+      'Multi-business support with isolated ledgers, custom chart of accounts, and role-based access',
+      'Generates client-ready reports, financial summaries, and reconciliation documents',
+      'Replaced hours of manual bookkeeping per client with near-instant processing',
     ],
   },
   {
@@ -51,12 +56,28 @@ const projects = [
     cardClass: 'card-attendease',
     spotlightColor: 'rgba(245, 146, 27, 0.10)',
     link: 'https://attend-ease.com',
-    category: 'client',
     desc: 'Automated attendance and security software for private K-12 schools.',
     details: [
       'Led system architecture and full-stack development from concept to production',
       'Deployed in live school environments processing hundreds of check-ins daily',
       'Designed with FERPA and real-world operational constraints from day one',
+    ],
+  },
+  {
+    id: 'forge',
+    title: 'Forge Development',
+    name: 'Forge Development',
+    tag: 'Active',
+    tagClass: 'tag-forge',
+    cardClass: 'card-forge',
+    spotlightColor: 'rgba(34, 197, 94, 0.12)',
+    link: 'https://theforgedev.com',
+    desc: 'My web development studio — I build production sites and apps for businesses end-to-end.',
+    details: [
+      'Business websites, web applications, and legacy system replacements',
+      'End-to-end delivery from discovery through launch and iteration',
+      'Serving insurance agencies, professional services, and local businesses',
+      'Every project shipped on time with direct client communication',
     ],
   },
   {
@@ -68,7 +89,6 @@ const projects = [
     cardClass: 'card-junzi',
     spotlightColor: 'rgba(255, 255, 255, 0.06)',
     link: 'https://www.bejunzi.com',
-    category: 'personal',
     desc: 'A public discourse platform built to surface truth through structured debate, not popularity.',
     details: [
       'Inspired by Greek philosophy and the lack of foundational reasoning in modern discourse',
@@ -85,7 +105,6 @@ const projects = [
     tagClass: 'tag-infra',
     cardClass: 'card-infra',
     spotlightColor: 'rgba(168, 85, 247, 0.10)',
-    category: 'personal',
     details: [
       'Multi-tenant SaaS architectures with isolated customer environments',
       'Custom rate limiting, webhook ingestion, and authentication services',
@@ -95,18 +114,68 @@ const projects = [
   },
 ];
 
-const filters = [
+const clientSites = [
+  {
+    id: 'tidal',
+    name: 'Tidal Construction Group',
+    type: 'General Contractor',
+    desc: 'Lead generation site with project gallery, quote requests, and service area pages.',
+    gradient: 'linear-gradient(135deg, #1a3a2a, #0d1f17)',
+    ref: 'https://tidalconstructiongroup.com',
+  },
+  {
+    id: 'levon',
+    name: 'Levon Biss Photography',
+    type: 'Photographer',
+    desc: 'Portfolio site with full-bleed galleries, session booking, and client proofing.',
+    gradient: 'linear-gradient(135deg, #2a1a2e, #1a0f1e)',
+    ref: 'https://www.levonbiss.com',
+  },
+  {
+    id: 'isleblue',
+    name: 'Isle Blue Rentals',
+    type: 'Direct Booking · Vacation Rental',
+    desc: 'Direct booking platform replacing Airbnb fees with calendar sync, payments, and guest messaging.',
+    gradient: 'linear-gradient(135deg, #1a2a3a, #0f1a24)',
+    ref: 'https://isleblue.co',
+  },
+  {
+    id: 'warren',
+    name: 'Warren Insurance Group',
+    type: 'Insurance Agency',
+    desc: 'Multi-line agency site with quote funnels, carrier info, and agent bios.',
+    gradient: 'linear-gradient(135deg, #2a2a1a, #1a1a0f)',
+    ref: 'https://warreninsurancegroup.com',
+  },
+  {
+    id: 'oliver',
+    name: 'Oliver Burns Studio',
+    type: 'Interior Design',
+    desc: 'Portfolio and inquiry site with project case studies, mood boards, and consultation booking.',
+    gradient: 'linear-gradient(135deg, #2e1a2a, #1e0f1a)',
+    ref: 'https://www.oliverburns.com',
+  },
+  {
+    id: 'everybody',
+    name: 'Everybody Fights',
+    type: 'Gym & Fitness',
+    desc: 'Membership site with class schedules, trainer profiles, and online sign-up.',
+    gradient: 'linear-gradient(135deg, #1a2a2a, #0f1a1a)',
+    ref: 'https://www.everybodyfights.com',
+  },
+];
+
+const tabs = [
+  { label: 'Featured', value: 'featured' },
+  { label: 'Client Sites', value: 'sites' },
   { label: 'All', value: 'all' },
-  { label: 'Client Work', value: 'client' },
-  { label: 'Personal Projects', value: 'personal' },
 ];
 
 export default function Portfolio() {
-  const [filter, setFilter] = useState('all');
+  const [tab, setTab] = useState('featured');
 
-  const filtered = filter === 'all'
-    ? projects
-    : projects.filter((p) => p.category === filter);
+  const showFeatured = tab === 'featured' || tab === 'all';
+  const showSites = tab === 'sites' || tab === 'all';
 
   return (
     <section className="content-section" id="portfolio">
@@ -117,29 +186,29 @@ export default function Portfolio() {
       </AnimatedContent>
 
       <div className="portfolio-filters">
-        {filters.map((f) => (
+        {tabs.map((t) => (
           <button
-            key={f.value}
-            className={`filter-btn${filter === f.value ? ' filter-active' : ''}`}
-            onClick={() => setFilter(f.value)}
+            key={t.value}
+            className={`filter-btn${tab === t.value ? ' filter-active' : ''}`}
+            onClick={() => setTab(t.value)}
           >
-            {f.label}
+            {t.label}
           </button>
         ))}
       </div>
 
-      <motion.div className="projects-grid" layout>
-        <AnimatePresence mode="popLayout">
-          {filtered.map((p) => (
-            <motion.div
-              key={p.id}
-              layout
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.3 }}
-            >
-              <TiltCard>
+      <AnimatePresence mode="wait">
+        {showFeatured && (
+          <motion.div
+            key="featured"
+            className="projects-grid"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.3 }}
+          >
+            {featured.map((p) => (
+              <TiltCard key={p.id}>
                 <SpotlightCard className={`project-card ${p.cardClass}`} spotlightColor={p.spotlightColor}>
                   <div className="project-content">
                     <div className="project-header">
@@ -150,11 +219,15 @@ export default function Portfolio() {
                       )}
                       <div className="project-header-right">
                         <span className={`project-tag ${p.tagClass}`}>{p.tag}</span>
-                        {p.link && (
+                        {p.private ? (
+                          <span className="project-private-badge">
+                            <LockIcon /> Private
+                          </span>
+                        ) : p.link ? (
                           <a href={p.link} target="_blank" rel="noopener noreferrer" className="project-visit-btn">
                             Visit <ArrowUpRightIcon />
                           </a>
-                        )}
+                        ) : null}
                       </div>
                     </div>
                     {p.desc && <p className="project-desc">{p.desc}</p>}
@@ -166,10 +239,60 @@ export default function Portfolio() {
                   </div>
                 </SpotlightCard>
               </TiltCard>
-            </motion.div>
-          ))}
-        </AnimatePresence>
-      </motion.div>
+            ))}
+          </motion.div>
+        )}
+
+        {showFeatured && showSites && (
+          <div className="portfolio-divider" />
+        )}
+
+        {showSites && (
+          <motion.div
+            key="sites"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.3, delay: showFeatured ? 0.1 : 0 }}
+          >
+            {tab === 'all' && (
+              <div className="sites-subheader">
+                <span>Client Websites</span>
+              </div>
+            )}
+            <div className="sites-grid">
+              {clientSites.map((site, i) => (
+                <motion.div
+                  key={site.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.35, delay: i * 0.06 }}
+                >
+                  <TiltCard tiltAmount={8}>
+                    <div className="site-card">
+                      <div className="site-preview" style={{ background: site.gradient }}>
+                        <span className="site-preview-label">{site.name.split(' ')[0]}</span>
+                      </div>
+                      <div className="site-info">
+                        <div className="site-info-header">
+                          <h4 className="site-name">{site.name}</h4>
+                          {site.ref && (
+                            <a href={site.ref} target="_blank" rel="noopener noreferrer" className="site-ref-link">
+                              View <ArrowUpRightIcon />
+                            </a>
+                          )}
+                        </div>
+                        <span className="site-type">{site.type}</span>
+                        <p className="site-desc">{site.desc}</p>
+                      </div>
+                    </div>
+                  </TiltCard>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

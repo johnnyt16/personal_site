@@ -418,6 +418,15 @@ a {
   background: rgba(34, 197, 94, 0.12);
 }
 
+.tag-private {
+  color: #8b8b9e;
+  background: rgba(139, 139, 158, 0.12);
+}
+
+.tag-accounting {
+  color: #22c55e;
+}
+
 /* ─── Portfolio Filters ─── */
 .portfolio-filters {
   display: flex;
@@ -628,6 +637,145 @@ a {
   border-radius: 50%;
   background: #A855F7;
   opacity: 0.6;
+}
+
+.card-accounting .project-details li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #22c55e;
+  opacity: 0.6;
+}
+
+/* Private badge */
+.project-private-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--text-dim);
+  padding: 3px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  letter-spacing: 0.03em;
+}
+
+/* Portfolio divider */
+.portfolio-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  margin: 40px 0;
+}
+
+/* Sites subheader (shown in "All" tab) */
+.sites-subheader {
+  margin-bottom: 20px;
+}
+
+.sites-subheader span {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ─── Client Sites Grid ─── */
+.sites-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.site-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+  height: 100%;
+}
+
+.site-card:hover {
+  border-color: rgba(99, 102, 241, 0.2);
+}
+
+.site-preview {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.site-preview-label {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.08);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.site-info {
+  padding: 16px 18px 18px;
+}
+
+.site-info-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.site-ref-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--text-dim);
+  padding: 2px 8px;
+  border-radius: 5px;
+  border: 1px solid var(--border);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.site-ref-link:hover {
+  color: var(--text);
+  border-color: var(--text-muted);
+}
+
+.site-name {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.site-type {
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.site-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.55;
 }
 
 /* ─── Process Timeline ─── */
@@ -896,7 +1044,8 @@ a {
 
 /* ─── Responsive ─── */
 @media (max-width: 768px) {
-  .services-grid {
+  .services-grid,
+  .sites-grid {
     grid-template-columns: 1fr;
   }
 }
