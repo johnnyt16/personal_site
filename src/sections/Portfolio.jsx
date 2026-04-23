@@ -116,52 +116,52 @@ const featured = [
 
 const clientSites = [
   {
-    id: 'tidal',
-    name: 'Tidal Construction Group',
-    type: 'General Contractor',
-    desc: 'Lead generation site with project gallery, quote requests, and service area pages.',
+    id: 'yuras',
+    name: "Yura's Roofing",
+    type: 'Roofing Contractor',
+    desc: 'Service pages, project gallery, and quote request funnel for a residential roofing company.',
     gradient: 'linear-gradient(135deg, #1a3a2a, #0d1f17)',
-    ref: 'https://tidalconstructiongroup.com',
+    ref: 'https://www.yurasroofing.com',
   },
   {
-    id: 'levon',
-    name: 'Levon Biss Photography',
-    type: 'Photographer',
-    desc: 'Portfolio site with full-bleed galleries, session booking, and client proofing.',
-    gradient: 'linear-gradient(135deg, #2a1a2e, #1a0f1e)',
-    ref: 'https://www.levonbiss.com',
+    id: 'bigstar',
+    name: 'Big Star Built',
+    type: 'General Contractor',
+    desc: 'Lead generation site with service breakdowns, project showcases, and contact forms.',
+    gradient: 'linear-gradient(135deg, #2a2a1a, #1a1a0f)',
+    ref: 'https://www.bigstarbuilt.com',
   },
   {
-    id: 'isleblue',
-    name: 'Isle Blue Rentals',
-    type: 'Direct Booking · Vacation Rental',
-    desc: 'Direct booking platform replacing Airbnb fees with calendar sync, payments, and guest messaging.',
+    id: 'aldanas',
+    name: "Aldana's Construction",
+    type: 'Construction',
+    desc: 'Clean contractor site with service area pages, past work galleries, and mobile-first design.',
     gradient: 'linear-gradient(135deg, #1a2a3a, #0f1a24)',
-    ref: 'https://isleblue.co',
+    ref: 'https://www.aldanasconstruction.com',
   },
   {
-    id: 'warren',
-    name: 'Warren Insurance Group',
+    id: 'kiley',
+    name: 'Kiley Harrison Insurance',
     type: 'Insurance Agency',
     desc: 'Multi-line agency site with quote funnels, carrier info, and agent bios.',
-    gradient: 'linear-gradient(135deg, #2a2a1a, #1a1a0f)',
-    ref: 'https://warreninsurancegroup.com',
-  },
-  {
-    id: 'oliver',
-    name: 'Oliver Burns Studio',
-    type: 'Interior Design',
-    desc: 'Portfolio and inquiry site with project case studies, mood boards, and consultation booking.',
     gradient: 'linear-gradient(135deg, #2e1a2a, #1e0f1a)',
-    ref: 'https://www.oliverburns.com',
+    ref: 'https://www.kileyharrisoninsurance.com',
   },
   {
-    id: 'everybody',
-    name: 'Everybody Fights',
-    type: 'Gym & Fitness',
-    desc: 'Membership site with class schedules, trainer profiles, and online sign-up.',
+    id: 'keystone',
+    name: 'Keystone Insurance',
+    type: 'Insurance Agency',
+    desc: 'Professional agency site with policy breakdowns, online quoting, and client resources.',
     gradient: 'linear-gradient(135deg, #1a2a2a, #0f1a1a)',
-    ref: 'https://www.everybodyfights.com',
+    ref: 'https://keystoneinsurance.com',
+  },
+  {
+    id: 'urbanforest',
+    name: 'Urban Forest Landscape',
+    type: 'Landscaping',
+    desc: 'Portfolio-driven site with service pages, project galleries, and seasonal booking.',
+    gradient: 'linear-gradient(135deg, #1a3a2a, #0d1f17)',
+    ref: 'https://www.urbanforestlandscape.com',
   },
 ];
 
@@ -290,6 +290,9 @@ export default function Portfolio() {
                 </motion.div>
               ))}
             </div>
+            <p className="sites-more">
+              I've built many more across different industries — <a href="#contact">reach out</a> for examples in yours.
+            </p>
           </motion.div>
         )}
       </AnimatePresence>

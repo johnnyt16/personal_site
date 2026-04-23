@@ -778,6 +778,23 @@ a {
   line-height: 1.55;
 }
 
+.sites-more {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-top: 24px;
+}
+
+.sites-more a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.sites-more a:hover {
+  color: #818cf8;
+}
+
 /* ─── Process Timeline ─── */
 .process-timeline {
   display: flex;
