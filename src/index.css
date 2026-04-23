@@ -472,8 +472,8 @@ a {
 
 /* ─── Projects ─── */
 .projects-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 14px;
 }
 
@@ -1068,8 +1068,7 @@ a {
 /* ─── Responsive ─── */
 @media (max-width: 768px) {
   .services-grid,
-  .sites-grid,
-  .projects-grid {
+  .sites-grid {
     grid-template-columns: 1fr;
   }
 
