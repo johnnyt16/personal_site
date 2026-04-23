@@ -66,7 +66,7 @@ const featured = [
   {
     id: 'forge',
     title: 'Forge Development',
-    name: 'Forge Development',
+    logo: '/forge-logo.png',
     tag: 'Active',
     tagClass: 'tag-forge',
     cardClass: 'card-forge',

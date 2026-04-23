@@ -196,6 +196,7 @@ a {
 
 .hero-word {
   display: inline-block;
+  margin-right: 0.25em;
 }
 
 .hero-ctas {
@@ -474,11 +475,6 @@ a {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
-}
-
-.projects-grid > :first-child,
-.projects-grid > :last-child {
-  grid-column: 1 / -1;
 }
 
 .project-card {
@@ -1078,9 +1074,7 @@ a {
   }
 
   .services-grid > :first-child,
-  .services-grid > :last-child,
-  .projects-grid > :first-child,
-  .projects-grid > :last-child {
+  .services-grid > :last-child {
     grid-column: auto;
   }
 }
