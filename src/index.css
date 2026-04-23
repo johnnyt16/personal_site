@@ -236,7 +236,7 @@ a {
 /* ─── Stats ─── */
 .stats-section {
   width: 100%;
-  max-width: 800px;
+  max-width: 920px;
   margin: 0 auto;
   padding: 60px 24px;
 }
@@ -276,7 +276,7 @@ a {
 /* ─── Content Sections ─── */
 .content-section {
   width: 100%;
-  max-width: 800px;
+  max-width: 920px;
   margin: 0 auto;
   padding: 80px 24px;
 }
@@ -311,6 +311,11 @@ a {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
+}
+
+.services-grid > :first-child,
+.services-grid > :last-child {
+  grid-column: 1 / -1;
 }
 
 .service-card {
@@ -466,9 +471,14 @@ a {
 
 /* ─── Projects ─── */
 .projects-grid {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 14px;
+}
+
+.projects-grid > :first-child,
+.projects-grid > :last-child {
+  grid-column: 1 / -1;
 }
 
 .project-card {
@@ -1062,8 +1072,16 @@ a {
 /* ─── Responsive ─── */
 @media (max-width: 768px) {
   .services-grid,
-  .sites-grid {
+  .sites-grid,
+  .projects-grid {
     grid-template-columns: 1fr;
+  }
+
+  .services-grid > :first-child,
+  .services-grid > :last-child,
+  .projects-grid > :first-child,
+  .projects-grid > :last-child {
+    grid-column: auto;
   }
 }
 

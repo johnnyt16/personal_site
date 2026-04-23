@@ -32,10 +32,12 @@ export default function About() {
               Salt Lake City, UT
             </p>
             <p className="profile-bio">
-              I'm a self-taught full-stack engineer and the founder of Forge
-              Development. I build websites, web apps, and production systems
-              for businesses — end-to-end, from architecture to launch. I care
-              about shipping things that actually work, scale, and get used.
+              I studied Computer Science, Information Systems, and Statistics at
+              BYU, then taught myself the rest — enterprise SaaS architecture,
+              creative design, and real-world product delivery — through years of
+              building software startups. I run Forge Development, where I build
+              websites, web apps, and production systems for businesses end-to-end.
+              I care about shipping things that actually work, scale, and get used.
             </p>
             <div className="profile-tags">
               <span className="profile-tag">Forge Development</span>

@@ -2,9 +2,9 @@ import { useRef, useEffect, useState } from 'react';
 import { motion, useInView } from 'motion/react';
 
 const stats = [
-  { value: 5, suffix: '+', label: 'Projects Shipped' },
+  { value: 15, suffix: '+', label: 'Projects Shipped' },
   { value: 3, suffix: '+', label: 'Years Building' },
-  { value: 12, suffix: '+', label: 'Technologies' },
+  { value: 12, suffix: '+', label: 'Technology Stacks' },
 ];
 
 function Counter({ value, suffix = '' }) {
