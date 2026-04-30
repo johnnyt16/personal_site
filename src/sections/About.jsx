@@ -2,9 +2,9 @@ import AnimatedContent from '../components/AnimatedContent';
 import { LocationIcon } from '../components/Icons';
 
 const techStack = [
-  'React', 'Next.js', 'Node.js', 'TypeScript', 'Python',
-  'PostgreSQL', 'AWS', 'Docker', 'WebSockets', 'REST APIs',
-  'Claude / LLMs', 'Git & CI/CD',
+  'Next.js', 'Node.js', 'TypeScript', 'Express', 'PostgreSQL',
+  'MongoDB', 'Redis', 'AWS', 'Python', 'Socket.IO',
+  'REST APIs', 'Git & CI/CD',
 ];
 
 export default function About() {
@@ -20,31 +20,45 @@ export default function About() {
         <div className="profile-card">
           <div className="profile-photo-wrapper">
             <img
-              src="/IMG_1794.jpeg"
-              alt="Johnny McConkie"
+              src="/headshot.jpg"
+              alt="John McConkie"
               className="profile-photo"
             />
           </div>
           <div className="profile-info">
-            <h3 className="profile-name">Johnny McConkie</h3>
+            <h3 className="profile-name">John McConkie</h3>
             <p className="profile-location">
               <LocationIcon size={14} />
-              Salt Lake City, UT
+              Utah
             </p>
             <p className="profile-bio">
-              I studied Computer Science, Information Systems, and Statistics at
-              BYU, then taught myself the rest — enterprise SaaS architecture,
-              creative design, and real-world product delivery — through years of
-              building software startups. I run Forge Development, where I build
-              websites, web apps, and production systems for businesses end-to-end.
-              I care about shipping things that actually work, scale, and get used.
+              Information Systems student at BYU's Marriott School of Business and
+              co-founder of Voley, a SaaS platform for the insurance industry.
+              I've built and shipped production software across the full stack, led
+              consultative sales teams, and closed real customers. Bilingual in
+              English and Portuguese. I care about shipping things that actually
+              work, scale, and get used.
             </p>
+
+            <div className="profile-education">
+              <h4 className="tech-stack-label">Education</h4>
+              <p className="profile-bio" style={{ marginBottom: 4 }}>
+                <strong style={{ color: 'var(--text)' }}>Brigham Young University</strong> — Marriott School of Business
+              </p>
+              <p className="profile-bio" style={{ marginBottom: 4 }}>
+                BS Information Systems · Minor in Entrepreneurship
+              </p>
+              <p className="profile-bio">
+                3.9 Major GPA · Crocker Innovation Fellowship
+              </p>
+            </div>
+
             <div className="profile-tags">
-              <span className="profile-tag">Forge Development</span>
               <span className="profile-tag">Full-Stack Engineering</span>
+              <span className="profile-tag">SaaS Founder</span>
+              <span className="profile-tag">Sales & GTM</span>
               <span className="profile-tag">Systems Architecture</span>
-              <span className="profile-tag">AI Agents & LLMs</span>
-              <span className="profile-tag">Product & Sales</span>
+              <span className="profile-tag">AI & LLMs</span>
             </div>
 
             <h4 className="tech-stack-label">Tech Stack</h4>

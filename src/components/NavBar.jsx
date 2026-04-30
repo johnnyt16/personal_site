@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'motion/react';
 const links = [
   { label: 'Portfolio', href: '#portfolio' },
   { label: 'About', href: '#about' },
+  { label: 'Experience', href: '#experience' },
   { label: 'Services', href: '#services' },
   { label: 'Process', href: '#process' },
   { label: 'Contact', href: '#contact' },

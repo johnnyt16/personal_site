@@ -2,15 +2,16 @@ import { useRef, useEffect, useState } from 'react';
 import { motion, useInView } from 'motion/react';
 
 const stats = [
+  { value: 1.2, suffix: 'M+', label: 'Revenue Generated', prefix: '$' },
   { value: 15, suffix: '+', label: 'Projects Shipped' },
-  { value: 3, suffix: '+', label: 'Years Building' },
-  { value: 12, suffix: '+', label: 'Technology Stacks' },
+  { value: 3.9, suffix: '', label: 'Major GPA' },
 ];
 
-function Counter({ value, suffix = '' }) {
+function Counter({ value, suffix = '', prefix = '' }) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const [display, setDisplay] = useState(0);
+  const decimals = (String(value).split('.')[1] || '').length;
 
   useEffect(() => {
     if (!isInView) return;
@@ -21,14 +22,15 @@ function Counter({ value, suffix = '' }) {
       const elapsed = now - start;
       const progress = Math.min(elapsed / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
-      setDisplay(Math.round(eased * value));
+      const current = eased * value;
+      setDisplay(decimals > 0 ? parseFloat(current.toFixed(decimals)) : Math.round(current));
       if (progress < 1) requestAnimationFrame(tick);
     };
 
     requestAnimationFrame(tick);
-  }, [isInView, value]);
+  }, [isInView, value, decimals]);
 
-  return <span ref={ref}>{display}{suffix}</span>;
+  return <span ref={ref}>{prefix}{display}{suffix}</span>;
 }
 
 export default function Stats() {
@@ -45,7 +47,7 @@ export default function Stats() {
             transition={{ duration: 0.6, delay: i * 0.15, ease: [0.33, 1, 0.68, 1] }}
           >
             <span className="stat-value">
-              <Counter value={s.value} suffix={s.suffix} />
+              <Counter value={s.value} suffix={s.suffix} prefix={s.prefix || ''} />
             </span>
             <span className="stat-label">{s.label}</span>
           </motion.div>

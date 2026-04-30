@@ -6,6 +6,7 @@ import Stats from './sections/Stats';
 import Portfolio from './sections/Portfolio';
 import About from './sections/About';
 import Services from './sections/Services';
+import Experience from './sections/Experience';
 import Process from './sections/Process';
 import Contact from './sections/Contact';
 import './components/NavBar.css';
@@ -21,15 +22,16 @@ function App() {
 
         <div className="marquee-section">
           <ScrollVelocity
-            texts={['WEB DEVELOPMENT · SYSTEMS ARCHITECTURE · AI-POWERED BUILDS · FORGE DEVELOPMENT · SHIP FAST · OWN OUTCOMES ·']}
+            texts={['FULL-STACK DEVELOPMENT · SAAS · SYSTEMS ARCHITECTURE · AI & AUTOMATION · PRODUCT · SALES ·']}
             velocity={40}
             className="marquee-text"
           />
         </div>
 
         <Stats />
-        <Portfolio />
         <About />
+        <Experience />
+        <Portfolio />
         <Services />
         <Process />
         <Contact />

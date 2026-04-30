@@ -1,6 +1,6 @@
 import AnimatedContent from '../components/AnimatedContent';
 import DecryptedText from '../components/DecryptedText';
-import { GitHubIcon, LinkedInIcon, EmailIcon } from '../components/Icons';
+import { GitHubIcon, LinkedInIcon, EmailIcon, PhoneIcon } from '../components/Icons';
 
 export default function Contact() {
   return (
@@ -18,10 +18,10 @@ export default function Contact() {
               encryptedClassName="footer-encrypted"
             />
           </p>
-          <p className="footer-subtitle">Have a project in mind? I typically respond within 24 hours.</p>
+          <p className="footer-subtitle">Whether it's a project, an opportunity, or just a conversation — I'd love to hear from you.</p>
 
           <a href="mailto:johntaylormcc@gmail.com" className="cta-btn cta-primary cta-lg">
-            Start a Project
+            Get in Touch
           </a>
 
           <div className="footer-links">
@@ -37,9 +37,13 @@ export default function Contact() {
               <EmailIcon />
               <span>Email</span>
             </a>
+            <a href="tel:+18018548750" className="footer-link">
+              <PhoneIcon />
+              <span>(801) 854-8750</span>
+            </a>
           </div>
 
-          <p className="footer-forge">Forge Development · Salt Lake City, UT</p>
+          <p className="footer-forge">John McConkie · Utah</p>
         </div>
       </AnimatedContent>
     </footer>

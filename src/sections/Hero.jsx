@@ -1,11 +1,9 @@
 import { motion } from 'motion/react';
 import TextType from '../components/TextType';
-import ShinyText from '../components/ShinyText';
 import MagneticButton from '../components/MagneticButton';
 import { LocationIcon } from '../components/Icons';
 
-const bioWords = 'Full-stack engineer and founder of'.split(' ');
-const bioTail = '. I design, build, and ship websites, web apps, and production systems for businesses — from first conversation to launch.'.split(' ');
+const bioWords = 'Full-stack engineer, SaaS co-founder, and builder. I design, build, and ship production software — from zero to one.'.split(' ');
 
 export default function Hero() {
   return (
@@ -17,11 +15,11 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <span className="hero-name-text">Johnny McConkie</span>
+          <span className="hero-name-text">John McConkie</span>
           <span className="hero-name-dot">&middot;</span>
           <span className="hero-name-location">
             <LocationIcon />
-            Salt Lake City
+            Utah
           </span>
         </motion.p>
 
@@ -33,10 +31,10 @@ export default function Hero() {
         >
           <TextType
             text={[
-              "I build custom websites and systems for businesses.",
+              "I build products from zero to one.",
               "I ship production software, not prototypes.",
-              "I replace the tech nobody wants to touch.",
-              "I turn messy problems into working products."
+              "Full-stack engineer and SaaS co-founder.",
+              "I turn ideas into working products."
             ]}
             className="hero-tagline"
             typingSpeed={40}
@@ -69,34 +67,6 @@ export default function Hero() {
                 {word}{' '}
               </motion.span>
             ))}
-            <motion.span
-              className="hero-word"
-              variants={{
-                hidden: { opacity: 0, y: 16, filter: 'blur(6px)' },
-                visible: { opacity: 1, y: 0, filter: 'blur(0px)' },
-              }}
-              transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
-            >
-              <ShinyText
-                text="Forge Development"
-                speed={3}
-                color="#8b8b9e"
-                shineColor="#e4e4e7"
-              />
-            </motion.span>
-            {bioTail.map((word, i) => (
-              <motion.span
-                key={`t${i}`}
-                className="hero-word"
-                variants={{
-                  hidden: { opacity: 0, y: 16, filter: 'blur(6px)' },
-                  visible: { opacity: 1, y: 0, filter: 'blur(0px)' },
-                }}
-                transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
-              >
-                {word}{' '}
-              </motion.span>
-            ))}
           </p>
         </motion.div>
 
@@ -110,7 +80,7 @@ export default function Hero() {
             <a href="#portfolio" className="cta-btn cta-primary">See My Work</a>
           </MagneticButton>
           <MagneticButton>
-            <a href="#contact" className="cta-btn cta-secondary">Work With Me</a>
+            <a href="#experience" className="cta-btn cta-secondary">View Resume</a>
           </MagneticButton>
         </motion.div>
 
