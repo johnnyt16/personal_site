@@ -46,7 +46,7 @@ export default function About() {
                 <strong style={{ color: 'var(--text)' }}>Brigham Young University</strong> — Marriott School of Business
               </p>
               <p className="profile-bio" style={{ marginBottom: 4 }}>
-                BS Information Systems · Minor in Entrepreneurship
+                BS Information Systems, Computer Science · Minor in Entrepreneurship
               </p>
               <p className="profile-bio">
                 Crocker Innovation Fellowship

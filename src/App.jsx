@@ -29,11 +29,11 @@ function App() {
         </div>
 
         <Stats />
-        <About />
-        <Experience />
         <Portfolio />
         <Services />
         <Process />
+        <About />
+        <Experience />
         <Contact />
       </main>
     </>
