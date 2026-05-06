@@ -4,7 +4,6 @@ import { motion, useInView } from 'motion/react';
 const stats = [
   { value: 1.2, suffix: 'M+', label: 'Revenue Generated', prefix: '$' },
   { value: 15, suffix: '+', label: 'Projects Shipped' },
-  { value: 3.9, suffix: '', label: 'Major GPA' },
 ];
 
 function Counter({ value, suffix = '', prefix = '' }) {

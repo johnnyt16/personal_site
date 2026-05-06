@@ -49,7 +49,7 @@ export default function About() {
                 BS Information Systems · Minor in Entrepreneurship
               </p>
               <p className="profile-bio">
-                3.9 Major GPA · Crocker Innovation Fellowship
+                Crocker Innovation Fellowship
               </p>
             </div>
 

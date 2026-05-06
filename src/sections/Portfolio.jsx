@@ -163,6 +163,14 @@ const clientSites = [
     gradient: 'linear-gradient(135deg, #1a3a2a, #0d1f17)',
     ref: 'https://www.urbanforestlandscape.com',
   },
+  {
+    id: 'blackout',
+    name: 'Blackout Med Kits',
+    type: 'E-Commerce',
+    desc: 'E-commerce site for tactical and emergency medical kits with product pages and checkout.',
+    gradient: 'linear-gradient(135deg, #1a1a1a, #0d0d0d)',
+    ref: 'https://blackoutmedkits.com/',
+  },
 ];
 
 const tabs = [
