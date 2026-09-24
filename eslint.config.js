@@ -5,8 +5,18 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
-  globalIgnores(['dist']),
+  globalIgnores(['dist', '.ssr']),
   {
+    // Build scripts run in Node, not the browser.
+    files: ['scripts/**/*.js'],
+    extends: [js.configs.recommended],
+    languageOptions: {
+      globals: globals.node,
+      parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+    },
+  },
+  {
+    ignores: ['scripts/**'],
     files: ['**/*.{js,jsx}'],
     extends: [
       js.configs.recommended,

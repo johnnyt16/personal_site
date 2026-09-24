@@ -1,43 +1,41 @@
-import Aurora from './components/Aurora';
-import NavBar from './components/NavBar';
-import ScrollVelocity from './components/ScrollVelocity';
+import Header from './components/Header';
 import Hero from './sections/Hero';
-import Stats from './sections/Stats';
-import Portfolio from './sections/Portfolio';
-import About from './sections/About';
-import Services from './sections/Services';
+import Work from './sections/Work';
 import Experience from './sections/Experience';
-import Process from './sections/Process';
+import Skills from './sections/Skills';
+import Education from './sections/Education';
 import Contact from './sections/Contact';
-import './components/NavBar.css';
+import PlainResume from './sections/PlainResume';
 
-function App() {
+export default function App() {
   return (
     <>
-      <Aurora />
-      <NavBar />
+      <a className="skip" href="#plain-resume">
+        Skip to plain resume
+      </a>
+      <a className="skip" href="#work">
+        Skip to work
+      </a>
 
-      <main style={{ position: 'relative', zIndex: 1 }}>
+      <div className="backdrop" aria-hidden="true" />
+      <Header />
+
+      <main>
         <Hero />
-
-        <div className="marquee-section">
-          <ScrollVelocity
-            texts={['FULL-STACK DEVELOPMENT · SAAS · SYSTEMS ARCHITECTURE · AI & AUTOMATION · PRODUCT · SALES ·']}
-            velocity={40}
-            className="marquee-text"
-          />
-        </div>
-
-        <Stats />
-        <Portfolio />
-        <Services />
-        <Process />
-        <About />
+        <Work />
         <Experience />
+        <Skills />
+        <Education />
         <Contact />
+        <PlainResume />
+
+        <footer className="footer">
+          <div className="wrap" style={{ display: 'flex', flexWrap: 'wrap', gap: '10px 18px', justifyContent: 'space-between', width: '100%' }}>
+            <span>Johnny McConkie &middot; Provo, Utah</span>
+            <a href="#top">Back to top</a>
+          </div>
+        </footer>
       </main>
     </>
   );
 }
-
-export default App;

@@ -1,18 +1,35 @@
-# Personal Site
+# johnnymcconkie.com
 
-My portfolio site. Built it to have something to point people to that isn't just a LinkedIn page.
+Interactive resume. React + Vite, GSAP ScrollTrigger for the scroll-driven
+"schematic to shipped" reveals, and a lazy Three.js wireframe accent on the hero.
 
-**Stack:** React + Vite, some fun animations from [React Bits](https://reactbits.dev/), and way too many CSS variables.
+## Editing content
 
-## Run it locally
+**All copy lives in `src/data/resume.js`.** The animated page and the plain
+resume at `#plain-resume` both read from it, so they can't drift apart.
+
+Anything still unwritten is wrapped in `TODO('...')` and renders as a visible
+amber marker on the page. Replace the `TODO(...)` call with a plain string to
+clear it.
+
+## Commands
 
 ```bash
-npm install
-npm run dev
+npm run dev      # dev server
+npm run build    # production build + prerender into dist/index.html
+npm run preview  # serve dist/
+npm run lint
 ```
 
-That's it. It's jus a personal site, not a distributed system. 
+`npm run build` runs a second SSR pass and bakes the rendered markup into
+`dist/index.html`, so the resume text is in the HTML for crawlers and for
+visitors with JavaScript off. React hydrates that markup.
 
-## Why
+## Behaviour notes
 
-For the people
+- The finished state is the CSS default. GSAP only hides things when motion is
+  allowed, so `prefers-reduced-motion`, no-JS, and crawlers all get the full page.
+- The Three.js hero accent is skipped entirely on reduced motion, viewports under
+  768px, devices reporting <4 cores or <4GB, and anything without WebGL. It loads
+  on `requestIdleCallback`, never on the critical path.
+- Drop the resume PDF at `public/Johnny-McConkie-Resume.pdf`.
