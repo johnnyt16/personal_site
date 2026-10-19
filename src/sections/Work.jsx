@@ -1,82 +1,51 @@
-import { projects } from '../data/resume';
-import RenderCard from '../components/RenderCard';
-import Todo, { Value } from '../components/Todo';
-import { ArrowIcon } from '../components/Icons';
+import { ventures } from '../data/resume';
+import Reveal from '../components/Reveal';
+import { trackSpotlight } from '../lib/motion';
 
-function Project({ p }) {
+function Venture({ v }) {
   return (
-    <RenderCard>
-      <div className="rc-head" data-render>
-        <span className="rc-index">{p.index}</span>
-        <span className="rc-kind">{p.kind}</span>
-        <span className="rc-status">{p.status}</span>
+    <article
+      className={`card spot venture v-${v.id}${v.featured ? ' is-featured' : ''}`}
+      onPointerMove={trackSpotlight}
+      data-reveal
+    >
+      <div className="venture-top">
+        {v.logo ? (
+          <img className="venture-logo" src={v.logo} alt={v.title} loading="lazy" />
+        ) : (
+          <h3 className="venture-name">{v.title}</h3>
+        )}
+        <span className={`badge${v.live ? ' badge-live' : ''}`}>
+          {v.live && <span className="dot-live" aria-hidden="true" />}
+          {v.status}
+        </span>
       </div>
 
-      <h3 className="rc-title" data-render>
-        {p.title}
-      </h3>
-      <p className="rc-subtitle" data-render>
-        {p.subtitle}
-      </p>
-      <p className="rc-meta" data-render>
-        <Value of={p.meta} />
+      {v.logo && <h3 className="sr-only">{v.title}</h3>}
+
+      <p className="venture-role">
+        {v.role} <span>·</span> {v.period}
       </p>
 
-      <p className="rc-summary" data-render>
-        {p.summary}
-      </p>
+      <p className="venture-tagline">{v.tagline}</p>
+      <p className="venture-summary">{v.summary}</p>
 
-      {p.bullets?.length > 0 && (
-        <ul className="rc-list" data-render>
-          {p.bullets.map((b) => (
-            <li key={b}>{b}</li>
+      {v.highlights && (
+        <ul className="venture-highlights">
+          {v.highlights.map((h) => (
+            <li key={h}>{h}</li>
           ))}
         </ul>
       )}
 
-      {p.research && (
-        <div className="rc-panel" data-render>
-          <span className="anno rc-panel-label">{p.research.label}</span>
-          <p>{p.research.body}</p>
-          <p style={{ marginTop: 8 }}>
-            <Value of={p.research.status} />
-          </p>
-        </div>
-      )}
-
-      {p.lesson && (
-        <div className="rc-panel" data-render>
-          <span className="anno rc-panel-label">Lesson</span>
-          <p>
-            <Value of={p.lesson} />
-          </p>
-        </div>
-      )}
-
-      {p.stack?.length > 0 && (
-        <div className="rc-stack" data-render>
-          {p.stack.map((s) => (
-            <span className="chip" key={s}>
-              {s}
-            </span>
-          ))}
-        </div>
-      )}
-
-      {p.link && (
-        <p data-render>
-          {p.link.href ? (
-            <a className="rc-link" href={p.link.href} target="_blank" rel="noreferrer">
-              {p.link.label} <ArrowIcon />
-            </a>
-          ) : (
-            <span className="anno">
-              {p.link.label} <Todo note={p.link.todo.__todo} />
-            </span>
-          )}
-        </p>
-      )}
-    </RenderCard>
+      <div className="tags">
+        {v.stack.map((s) => (
+          <span className="tag" key={s}>
+            {s}
+          </span>
+        ))}
+      </div>
+    </article>
   );
 }
 
@@ -84,15 +53,22 @@ export default function Work() {
   return (
     <section className="section" id="work">
       <div className="wrap">
-        <div className="section-head">
-          <span className="section-num">01</span>
-          <h2 className="section-title">Selected work</h2>
-          <span className="section-note">{projects.length} projects</span>
-        </div>
+        <Reveal className="section-head">
+          <p className="kicker" data-reveal>Selected work</p>
+          <h2 className="section-title" data-reveal>
+            Things I&rsquo;ve <span className="grad">built and shipped.</span>
+          </h2>
+          <p className="section-sub" data-reveal>
+            Two startups, a live AI product, and research on how language models handle
+            real business data. I wrote the code and I sat in the sales meetings.
+          </p>
+        </Reveal>
 
-        {projects.map((p) => (
-          <Project key={p.id} p={p} />
-        ))}
+        <Reveal className="bento">
+          {ventures.map((v) => (
+            <Venture key={v.id} v={v} />
+          ))}
+        </Reveal>
       </div>
     </section>
   );

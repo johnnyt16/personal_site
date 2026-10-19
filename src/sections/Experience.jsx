@@ -1,27 +1,36 @@
-import { earlier } from '../data/resume';
-import { RenderGroup } from '../components/RenderCard';
+import { experience } from '../data/resume';
+import Reveal from '../components/Reveal';
 
 export default function Experience() {
   return (
     <section className="section" id="experience">
-      <div className="wrap">
-        <div className="section-head">
-          <span className="section-num">02</span>
-          <h2 className="section-title">Earlier experience</h2>
-          <span className="section-note">2023 &ndash; 2025</span>
-        </div>
+      <div className="wrap split">
+        <Reveal className="section-head sticky-head">
+          <p className="kicker" data-reveal>Experience</p>
+          <h2 className="section-title" data-reveal>
+            Sales floors, job sites, <span className="grad">and SQL.</span>
+          </h2>
+          <p className="section-sub" data-reveal>
+            Before and alongside the startups: closing deals, running projects, and
+            automating the boring parts.
+          </p>
+        </Reveal>
 
-        <RenderGroup className="timeline">
-          {earlier.map((e) => (
-            <div className="tl-item" key={e.org} data-render>
-              <p className="tl-role">
-                {e.role} &middot; <span className="tl-org">{e.org}</span>
-              </p>
+        <Reveal as="ol" className="timeline">
+          {experience.map((e) => (
+            <li className="tl-item" key={e.org} data-reveal>
+              <span className="tl-dot" aria-hidden="true" />
               <p className="tl-period">{e.period}</p>
-              <p className="tl-detail">{e.detail}</p>
-            </div>
+              <h3 className="tl-role">{e.role}</h3>
+              <p className="tl-org">{e.org}</p>
+              <ul className="tl-points">
+                {e.points.map((p) => (
+                  <li key={p}>{p}</li>
+                ))}
+              </ul>
+            </li>
           ))}
-        </RenderGroup>
+        </Reveal>
       </div>
     </section>
   );

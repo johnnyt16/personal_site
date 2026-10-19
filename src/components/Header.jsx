@@ -1,16 +1,23 @@
+import { useEffect, useState } from 'react';
 import { profile, nav } from '../data/resume';
-import { DownloadIcon, MailIcon } from './Icons';
+import { DownloadIcon } from './Icons';
 
-/**
- * Always-visible header. The Resume and Contact actions live here so they are
- * on screen without scrolling at every viewport, phones included.
- */
+/** Floating pill nav. Tightens up once the page scrolls. */
 export default function Header() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   return (
-    <header className="header">
-      <div className="header-inner">
-        <a href="#top" className="header-mark">
-          JM<span>.</span>
+    <header className={`header${scrolled ? ' is-scrolled' : ''}`}>
+      <div className="header-pill">
+        <a href="#top" className="header-mark" aria-label="Back to top">
+          <span className="header-mono">JM</span>
         </a>
 
         <nav className="header-nav" aria-label="Sections">
@@ -21,16 +28,10 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="header-actions">
-          <a className="btn btn-primary" href={profile.resumeUrl} download>
-            <DownloadIcon />
-            Resume
-          </a>
-          <a className="btn" href="#contact">
-            <MailIcon />
-            Contact
-          </a>
-        </div>
+        <a className="btn btn-sm btn-light" href={profile.resumeUrl} download>
+          <DownloadIcon />
+          Resume
+        </a>
       </div>
     </header>
   );

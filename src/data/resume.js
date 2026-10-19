@@ -1,181 +1,165 @@
 /**
  * Single source of truth for every piece of content on the site.
- * The interactive page and the plain-text resume both read from here,
- * so the two versions can never drift apart.
- *
- * Anything wrapped in TODO() renders as a visible amber marker on the page.
+ * Mirrors public/Johnny-McConkie-Resume.pdf. Update both together.
  */
-
-export const TODO = (note) => ({ __todo: note });
-export const isTodo = (v) => !!v && typeof v === 'object' && '__todo' in v;
 
 export const profile = {
   name: 'Johnny McConkie',
-  headline: TODO('paste your new LinkedIn headline'),
-  oneLiner:
-    'I build software end to end and handle the business side around it: customers, sales, and operations.',
+  fullName: 'John Taylor McConkie',
+  role: 'Founder & Engineer',
+  headline: ['I build software', 'and the businesses around it.'],
+  intro:
+    'Founder and engineer in Provo, Utah. I ship production software end to end, then go sell it, run it, and support the customers using it. Studying Information Systems at BYU, graduating December 2026.',
   location: 'Provo, Utah',
-  email: TODO('email address'),
-  linkedin: TODO('LinkedIn URL'),
-  // Drop the file at public/Johnny-McConkie-Resume.pdf and this link goes live.
+  email: 'johntaylormcc@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/mcconkiejohn',
   resumeUrl: '/Johnny-McConkie-Resume.pdf',
-  resumeTodo: TODO('add your PDF at public/Johnny-McConkie-Resume.pdf'),
+  status: 'Open to roles starting 2027',
 };
 
-export const projects = [
+export const stats = [
+  { value: 30, label: 'Insurance agencies sold on Voley' },
+  { value: 42, prefix: '$', suffix: 'K', label: 'Raised from investors and grants' },
+  { value: 1.2, prefix: '$', suffix: 'M', decimals: 1, label: 'Solar revenue closed in 10 months' },
+  { value: 150, suffix: '+', label: 'Missionaries led and trained in Ecuador' },
+];
+
+export const ventures = [
   {
     id: 'bookkeeper',
-    index: '01',
-    kind: 'FEATURED',
     title: 'BookKeeper AI',
-    subtitle: 'AI-assisted bookkeeping platform + LLM research',
-    status: 'Live, in production',
-    meta: 'Built and operated',
+    role: 'Founder & Engineer',
+    period: 'Oct 2025 – Present',
+    status: 'Live',
+    live: true,
+    tagline: 'AI bookkeeping platform, live with paying clients.',
     summary:
-      'An AI-assisted bookkeeping platform I built and run. It is live and used by an accounting client.',
-    stack: ['Next.js', 'PostgreSQL', 'Railway'],
-    bullets: [
-      'CSV bank-transaction import.',
-      'LLM transaction categorization with fallback logic.',
-      'Excel export.',
+      'A bookkeeping platform I built and run myself. An LLM-backed engine classifies incoming business transactions automatically, and I handle client bookkeeping and payroll end to end on top of it.',
+    highlights: [
+      'Serving 3 clients in production',
+      'LLM categorization engine for business transactions',
+      'Bookkeeping and payroll run entirely on the platform',
     ],
-    research: {
-      label: 'RESEARCH',
-      body:
-        'Directed research study with BYU Prof. Mark Keith testing which input dimensions an LLM needs to accurately categorize business transactions, evaluated against the IRS Schedule C taxonomy.',
-      status: TODO('add status or findings when available'),
-    },
+    stack: ['Next.js', 'PostgreSQL', 'LLMs', 'Railway'],
+    featured: true,
   },
   {
     id: 'voley',
-    index: '02',
-    kind: 'FOUNDER',
     title: 'Voley',
-    subtitle: 'Communications platform for insurance agencies',
-    status: 'Wound down',
-    meta: ['Founder', ' · ', 'Feb 2025 – ', TODO('end date')],
+    logo: '/voley-logo.png',
+    role: 'Co-founder & Technical Lead',
+    period: 'Feb 2025 – Apr 2026',
+    status: 'B2B SaaS · Insurtech',
+    tagline: 'Two-way texting for independent insurance agencies.',
     summary:
-      'Client SMS/MMS/VoIP, internal team messaging, and compliance for insurance agencies, integrated directly with HawkSoft’s agency management system.',
-    stack: ['HawkSoft API', 'SMS/MMS', 'VoIP', 'Compliance'],
-    bullets: [
-      'Led product and engineering end to end; ran in production with agency teams.',
-      'Secured 17 LOIs and converted 2 to paying customers.',
-      'Wound down after carrier A2P 10DLC registration blocked the ability to scale SMS.',
+      'Architected and shipped a two-way SMS platform for independent agencies, with an official two-way API integration into HawkSoft, the leading agency management system. Owned the roadmap, managed 5 contract developers, and handled carrier A2P 10DLC registration and compliance.',
+    highlights: [
+      '30 agencies sold through cold outreach and demos; 12 began migrating',
+      '$25K from insurance-industry investors + $17K in three BYU Miller Grants',
+      'Keynote speaker, Insurtech Utah 2025',
     ],
-    link: { label: 'HawkSoft API partnership — PR Newswire', href: null, todo: TODO('PR Newswire link') },
-    lesson: TODO('one sentence in my words'),
+    stack: ['Next.js', 'Node.js', 'PostgreSQL', 'Twilio', 'HawkSoft API'],
   },
   {
     id: 'attendease',
-    index: '03',
-    kind: 'CO-FOUNDER',
     title: 'AttendEase',
-    subtitle: 'Intelligent camera system for schools',
-    status: 'Founded via Crocker Innovation Fellowship',
-    meta: ['Technical Co-Founder', ' · ', 'Jan 2025 – ', TODO('end date')],
+    logo: '/attendease-logo.png',
+    role: 'Technical Co-founder',
+    period: 'Jan 2025 – Mar 2026',
+    status: 'Crocker Innovation Fellowship',
+    tagline: 'Facial-recognition attendance for schools.',
     summary:
-      'Facial recognition that automates school attendance and security tracking. Founded through BYU’s Crocker Innovation Fellowship.',
-    stack: ['Web app', 'Mobile app', 'Database architecture'],
-    bullets: [
-      'Led the web app, mobile app, and database architecture.',
-      'Supported sales and outreach with educators and administrators.',
+      'Built the mobile app, web frontend, and school admin architecture for a camera system that takes attendance automatically, and contributed to the database design.',
+    stack: ['Vite', 'Node.js', 'PostgreSQL', 'AWS'],
+  },
+  {
+    id: 'research',
+    title: 'LLM Evaluation Research',
+    role: 'Directed Study · BYU',
+    period: 'In progress',
+    status: 'Advised by Prof. Mark Keith',
+    tagline: 'How much data does an LLM actually need?',
+    summary:
+      'Building an evaluation framework that measures how the type and volume of input data affect LLM classification accuracy, benchmarked on business transaction categorization against the IRS Schedule C taxonomy.',
+    stack: ['Python', 'LLM evaluation', 'Statistics'],
+  },
+];
+
+export const experience = [
+  {
+    role: 'Sales & Project Manager',
+    org: 'Big Star Concrete & Premium Surface Solutions',
+    period: 'Apr 2024 – Present',
+    points: [
+      'Designed a real-time, on-site estimating process that raised sales efficiency 25% and shortened the quote-to-close cycle.',
+      'Built a CRM-based lead tracker and follow-up cadence to systematize the pipeline.',
     ],
   },
   {
-    id: 'contractor-crm',
-    index: '04',
-    kind: 'BUILT, NOT LAUNCHED',
-    title: 'Contractor CRM',
-    subtitle: 'Lead-to-review pipeline for concrete contractors',
-    status: 'Built, not launched',
-    meta: 'Solo build',
-    summary:
-      'Meta webhook lead intake, pipeline board, AI-drafted follow-up messages delivered in a daily digest, and a post-job review flow.',
-    stack: ['Next.js', 'TypeScript', 'PostgreSQL', 'Railway'],
-    bullets: [
-      'Designed around a hard constraint: no programmatic SMS, to avoid the A2P 10DLC issues that ended Voley.',
-      'Built largely with autonomous overnight Claude Code runs.',
+    role: 'Residential Sales Representative',
+    org: 'Sunrun',
+    period: 'Apr 2023 – Feb 2024',
+    points: [
+      'Generated $1.2M in revenue from 36 accounts in 10 months.',
+      'Ranked top 5 of 197 reps for 8 consecutive weeks.',
     ],
   },
   {
-    id: 'big-star',
-    index: '05',
-    kind: 'OPERATIONS',
-    title: 'Big Star Concrete & Design',
-    subtitle: 'Sales, estimating, marketing, and client communication',
-    status: 'Utah contractor',
-    meta: [TODO('my title'), ' · ', TODO('dates')],
-    summary:
-      'I run sales, estimating, marketing, and client communication for a Utah contractor.',
-    stack: ['Meta Ads', 'Zapier', 'Lead automation'],
-    bullets: [
-      'Built the Meta lead-ad funnel and lead-intake automation (Zapier SMS + email alerts).',
+    role: 'Database Operations',
+    org: 'BYU Continuing Education',
+    period: 'Oct 2022 – Apr 2023',
+    points: [
+      'Built a SQL automation pipeline that cut a recurring two-week team process to two days; adopted as standard practice.',
     ],
   },
 ];
 
-export const earlier = [
+export const sideBuilds = [
   {
-    role: 'Automation Engineer',
-    org: 'EXO. Solutions',
-    period: 'Dec 2024 – Sep 2025',
-    detail: 'AI automation for service businesses across lead gen, engagement, and retention.',
+    title: 'Contractor CRM',
+    body: 'Lead-to-review pipeline for concrete contractors: Meta webhook lead intake, pipeline board, AI-drafted follow-ups in a daily digest, and a post-job review flow. Built largely with autonomous Claude Code runs.',
+    stack: ['Next.js', 'TypeScript', 'PostgreSQL'],
   },
   {
-    role: 'Project Manager',
-    org: 'Premium Surface Solutions',
-    period: 'Apr – Sep 2024',
-    detail:
-      'Ran sales and projects end to end; improved the on-site sales process, raising close efficiency ~40%.',
-  },
-  {
-    role: 'Sales Representative',
-    org: 'Sunrun',
-    period: 'Apr – Sep 2023',
-    detail:
-      'Closed $1.2M in residential solar contracts (36 systems); consistently top 5 in the office.',
+    title: 'Forge Development',
+    logo: '/forge-logo.png',
+    body: 'I build, host, and maintain websites for local businesses.',
+    stack: ['Web design', 'Hosting'],
   },
 ];
 
 export const skills = [
+  { label: 'Languages & Data', items: ['TypeScript', 'JavaScript', 'Python', 'SQL', 'Excel / VBA'] },
   {
-    label: 'ENGINEERING',
-    items: ['Next.js', 'React', 'TypeScript', 'PostgreSQL', 'Railway', 'API integrations'],
+    label: 'Frameworks & Infra',
+    items: ['Next.js', 'Node.js', 'React', 'Vite', 'PostgreSQL', 'REST APIs', 'Webhooks', 'Twilio', 'AWS', 'Railway'],
   },
-  {
-    label: 'AI',
-    items: ['LLM application development', 'LLM evaluation', 'AI automation'],
-  },
-  {
-    label: 'BUSINESS',
-    items: ['Sales', 'Customer discovery', 'Project management', 'Meta ads'],
-  },
+  { label: 'AI', items: ['LLM integration', 'LLM evaluation', 'Prompt design', 'Claude Code'] },
+  { label: 'Business', items: ['B2B sales', 'Fundraising', 'Product roadmap', 'Managing developers', 'Compliance'] },
 ];
 
 export const education = {
-  degree: 'B.S. Information Systems',
   school: 'Brigham Young University',
-  detail: 'Graduating December 2026',
-  honors: [
-    'BYU Crocker Innovation Fellow',
-    'BYU Sloan Speech Showcase finalist (2022)',
-    'Eagle Scout',
-  ],
-  languages: [
-    { name: 'English', level: null },
-    { name: 'Spanish', level: TODO('proficiency') },
-  ],
+  college: 'Marriott School of Business',
+  degree: 'B.S. Information Systems',
+  minors: 'Minors in Entrepreneurship & Statistics',
+  period: 'Expected Dec 2026',
+  gpa: '3.7 major GPA',
+  coursework: ['Advanced Database', 'Database Modeling', 'Statistics', 'Programming', 'Information Security'],
 };
 
-export const freelance = {
-  name: 'Forge Development',
-  body: 'I build, host, and maintain websites for local businesses.',
-  clients: TODO('client links if desired'),
-};
+export const beyond = [
+  { title: 'Service mission, Quito, Ecuador', body: 'Two years. Led and trained 150+ missionaries.' },
+  { title: 'Crocker Innovation Fellow', body: 'BYU’s fellowship for student founders.' },
+  { title: 'Keynote, Insurtech Utah 2025', body: 'Invited keynote speaker, representing Voley.' },
+  { title: 'Sloan Speech Showcase finalist', body: 'BYU Marriott School.' },
+  { title: 'Eagle Scout', body: 'Boy Scouts of America.' },
+  { title: 'Spanish, conversational', body: 'Plus BYU A.I. Association member.' },
+];
 
 export const nav = [
   { label: 'Work', href: '#work' },
   { label: 'Experience', href: '#experience' },
   { label: 'Skills', href: '#skills' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'About', href: '#about' },
 ];

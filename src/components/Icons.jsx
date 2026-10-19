@@ -42,3 +42,24 @@ export const PinIcon = () => (
     <circle cx="12" cy="10" r="3" />
   </svg>
 );
+
+export const ArrowRightIcon = () => (
+  <svg {...base}>
+    <line x1="5" y1="12" x2="19" y2="12" />
+    <polyline points="12 5 19 12 12 19" />
+  </svg>
+);
+
+export const SparkIcon = () => (
+  <svg {...base}>
+    <path d="M12 3l1.9 5.6L19.5 10l-5.6 1.9L12 17.5l-1.9-5.6L4.5 10l5.6-1.4z" />
+  </svg>
+);
+
+export const MicIcon = () => (
+  <svg {...base}>
+    <rect x="9" y="2" width="6" height="12" rx="3" />
+    <path d="M5 10a7 7 0 0 0 14 0" />
+    <line x1="12" y1="17" x2="12" y2="22" />
+  </svg>
+);

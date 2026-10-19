@@ -3,21 +3,18 @@ import Hero from './sections/Hero';
 import Work from './sections/Work';
 import Experience from './sections/Experience';
 import Skills from './sections/Skills';
-import Education from './sections/Education';
+import About from './sections/About';
 import Contact from './sections/Contact';
-import PlainResume from './sections/PlainResume';
+import { profile } from './data/resume';
 
 export default function App() {
   return (
     <>
-      <a className="skip" href="#plain-resume">
-        Skip to plain resume
-      </a>
       <a className="skip" href="#work">
         Skip to work
       </a>
 
-      <div className="backdrop" aria-hidden="true" />
+      <div className="grain" aria-hidden="true" />
       <Header />
 
       <main>
@@ -25,17 +22,18 @@ export default function App() {
         <Work />
         <Experience />
         <Skills />
-        <Education />
+        <About />
         <Contact />
-        <PlainResume />
-
-        <footer className="footer">
-          <div className="wrap" style={{ display: 'flex', flexWrap: 'wrap', gap: '10px 18px', justifyContent: 'space-between', width: '100%' }}>
-            <span>Johnny McConkie &middot; Provo, Utah</span>
-            <a href="#top">Back to top</a>
-          </div>
-        </footer>
       </main>
+
+      <footer className="footer">
+        <div className="wrap footer-inner">
+          <span>
+            &copy; {new Date().getFullYear()} {profile.fullName} &middot; {profile.location}
+          </span>
+          <a href="#top">Back to top &uarr;</a>
+        </div>
+      </footer>
     </>
   );
 }
