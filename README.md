@@ -1,7 +1,6 @@
 # johnnymcconkie.com
 
-Personal site / interactive resume. React + Vite, GSAP ScrollTrigger for the
-scroll reveals and stat counters, Geist for type.
+Personal site. React + Vite, prerendered to static HTML at build time.
 
 ## Editing content
 
@@ -18,11 +17,5 @@ npm run lint
 ```
 
 `npm run build` runs a second SSR pass and bakes the rendered markup into
-`dist/index.html`, so the resume text is in the HTML for crawlers and for
-visitors with JavaScript off. React hydrates that markup.
-
-## Behaviour notes
-
-- The finished state is the CSS default. GSAP only hides things when motion is
-  allowed, so `prefers-reduced-motion`, no-JS, and crawlers all get the full page.
-- The hero load-in is pure CSS, so it plays before hydration.
+`dist/index.html`, so the text is in the HTML for crawlers and for visitors
+with JavaScript off. React hydrates that markup.
