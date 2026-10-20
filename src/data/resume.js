@@ -7,7 +7,7 @@ export const profile = {
   name: 'Johnny McConkie',
   intro: [
     'I’m a founder and software engineer in Provo, Utah, finishing a B.S. in Information Systems at BYU in December 2026.',
-    'I build products end to end and handle the business around them: selling to customers, raising money, and running operations. Right now I run BookKeeper AI and study how input data affects LLM classification accuracy.',
+    'I build products end to end and handle the business around them: selling to customers, raising money, and running operations. Right now I build and operate BookKeeper AI and study how input data affects LLM classification accuracy.',
   ],
   email: 'johntaylormcc@gmail.com',
   linkedin: 'https://www.linkedin.com/in/mcconkiejohn',
@@ -17,7 +17,8 @@ export const profile = {
 export const work = [
   {
     title: 'BookKeeper AI',
-    role: 'Founder & Engineer',
+    // TODO(johnny): confirm the role wording for BookKeeper AI.
+    role: 'Builder & Operator',
     period: '2025 – now',
     body: 'A bookkeeping platform serving three clients. An LLM-backed engine categorizes incoming business transactions, and I run the clients’ bookkeeping and payroll on top of it.',
     stack: 'Next.js, PostgreSQL, Railway',
@@ -26,14 +27,14 @@ export const work = [
     title: 'Voley',
     role: 'Co-founder & Technical Lead',
     period: '2025 – 2026',
-    body: 'Two-way SMS for independent insurance agencies, with an official API integration into HawkSoft. I owned the architecture, roadmap, A2P 10DLC compliance, and a team of five contract developers. Sold 30 agencies through cold outreach and demos, raised $42K from industry investors and BYU Miller Grants, and gave the keynote at Insurtech Utah 2025.',
+    body: 'Built a two-way SMS platform for independent insurance agencies, with an official API integration into HawkSoft. I owned the architecture, roadmap, A2P 10DLC compliance, and a team of five contract developers. Sold 30 agencies through cold outreach and demos, raised $42K from industry investors and BYU Miller Grants, and gave the keynote at Insurtech Utah 2025.',
     stack: 'Next.js, Node.js, PostgreSQL, Twilio',
   },
   {
     title: 'AttendEase',
     role: 'Technical Co-founder',
     period: '2025 – 2026',
-    body: 'Facial-recognition attendance for schools. I built the mobile app, web frontend, and school admin architecture, and contributed to the database design.',
+    body: 'A facial-recognition attendance system for schools. I built the mobile app, web frontend, and school admin architecture, and contributed to the database design.',
     stack: 'Vite, Node.js, PostgreSQL, AWS',
   },
   {
@@ -69,7 +70,7 @@ export const education = {
   title: 'Brigham Young University',
   role: 'B.S. Information Systems, Marriott School of Business',
   period: '2026',
-  body: 'Minors in Entrepreneurship and Statistics. 3.7 major GPA. Crocker Innovation Fellow.',
+  body: 'Minor in Entrepreneurship. 3.7 major GPA. Crocker Innovation Fellow.',
 };
 
 export const other = [
