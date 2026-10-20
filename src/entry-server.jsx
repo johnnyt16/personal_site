@@ -1,7 +1,7 @@
 import { renderToString } from 'react-dom/server';
 import App from './App.jsx';
 
-export { routes, SITE_URL } from './routes';
+export { routes, SITE_URL, urlFor } from './routes';
 export { renderHead } from './head';
 
 /** Used by scripts/prerender.js to bake each page into its own HTML file. */

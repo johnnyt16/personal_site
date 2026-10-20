@@ -18,6 +18,6 @@ export const accuracy = {
 export const research = {
   summary:
     'A directed study with Prof. Mark Keith at BYU. I’m measuring how the type and volume of input data change LLM accuracy when categorizing business transactions into IRS Schedule C categories.',
-  href: '/research/llm-classification',
+  href: '/research/llm-classification/',
   paperUrl: null, // set when the write-up is published
 };

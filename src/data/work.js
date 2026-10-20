@@ -9,7 +9,7 @@
 export const projects = [
   {
     slug: 'voley',
-    href: '/work/voley',
+    href: '/work/voley/',
     title: 'Voley',
     role: 'Co-founder & Technical Lead',
     period: '2025 – 2026',
@@ -19,7 +19,7 @@ export const projects = [
   },
   {
     slug: 'bookkeeper-ai',
-    href: '/work/bookkeeper-ai',
+    href: '/work/bookkeeper-ai/',
     title: 'BookKeeper AI',
     role: 'Builder & Operator [[TODO: confirm role wording]]',
     period: '2025 – now',
@@ -29,7 +29,7 @@ export const projects = [
   },
   {
     slug: 'attendease',
-    href: '/work/attendease',
+    href: '/work/attendease/',
     title: 'AttendEase',
     role: 'Technical Co-founder',
     period: '2025 – 2026',

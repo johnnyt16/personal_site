@@ -32,6 +32,12 @@ export function normalizePath(path) {
   return clean === '' ? '/' : clean;
 }
 
+/**
+ * Public URL for a route. Trailing slash so static hosts serve
+ * /work/voley/index.html directly instead of falling back to the homepage.
+ */
+export const urlFor = (path) => (path === '/' ? '/' : `${path}/`);
+
 export function findRoute(path) {
   return routes.find((r) => r.path === normalizePath(path)) ?? null;
 }

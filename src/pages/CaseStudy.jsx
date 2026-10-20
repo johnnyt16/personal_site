@@ -1,4 +1,5 @@
 import { caseStudies } from '../data/case-studies';
+import { urlFor } from '../routes';
 import { projects } from '../data/work';
 import { profile } from '../data/resume';
 import ThemeToggle from '../components/ThemeToggle';
@@ -84,7 +85,7 @@ export default function CaseStudy({ slug }) {
         ))}
 
         <nav className="cs-next" aria-label="More work">
-          <a href={next.path}>
+          <a href={urlFor(next.path)}>
             <span className="eyebrow">Next</span>
             <span className="cs-next-title">{next.title} →</span>
           </a>

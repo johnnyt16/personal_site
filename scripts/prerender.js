@@ -9,7 +9,7 @@ import { resolve, dirname } from 'node:path';
 const root = process.cwd();
 const dist = resolve(root, 'dist');
 
-const { render, renderHead, routes } = await import(resolve(root, '.ssr/entry-server.js'));
+const { render, renderHead, routes, SITE_URL, urlFor } = await import(resolve(root, '.ssr/entry-server.js'));
 const template = readFileSync(resolve(dist, 'index.html'), 'utf8');
 
 const ROOT_MARKER = '<div id="root"></div>';
@@ -22,7 +22,7 @@ if (!template.includes(ROOT_MARKER) || !HEAD_BLOCK.test(template)) {
 function page(path, head) {
   return template
     .replace(HEAD_BLOCK, head)
-    .replace(ROOT_MARKER, `<div id="root">${render(path)}</div>`);
+    .replace(ROOT_MARKER, `<div id="root" data-route="${path}">${render(path)}</div>`);
 }
 
 for (const route of routes) {
@@ -37,5 +37,14 @@ writeFileSync(
   page('/404', renderHead({ path: '/404', title: 'Not found · Johnny McConkie', description: 'Page not found.' }))
 );
 
+const today = new Date().toISOString().slice(0, 10);
+const urls = routes
+  .map((r) => `  <url><loc>${SITE_URL}${urlFor(r.path)}</loc><lastmod>${today}</lastmod></url>`)
+  .join('\n');
+writeFileSync(
+  resolve(dist, 'sitemap.xml'),
+  `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`
+);
+
 rmSync(resolve(root, '.ssr'), { recursive: true, force: true });
-console.log(`prerendered ${routes.length} routes + 404`);
+console.log(`prerendered ${routes.length} routes + 404, wrote sitemap.xml`);
