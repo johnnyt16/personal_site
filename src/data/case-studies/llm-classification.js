@@ -11,7 +11,6 @@ export default {
     { label: 'Benchmark', value: 'Business transactions → Schedule C categories' },
     { label: 'Write-up', value: 'Coming soon [[TODO: link when ready]]' },
   ],
-  chart: true,
   sections: [
     {
       heading: 'Question',
@@ -27,7 +26,7 @@ export default {
       bullets: [
         'Dataset: [[TODO: source and number of transactions]]',
         'Input types: [[TODO: the actual conditions, e.g. description only, + amount, + merchant, + history]]',
-        'Models: [[TODO]]',
+        'Models: [[TODO: which models]]',
         'Metrics: accuracy [[TODO: plus macro F1 or others?]]',
       ],
     },
@@ -51,7 +50,8 @@ export default {
     },
     {
       heading: 'Early results',
-      body: ['[[TODO: replace the placeholder chart data and summarize what you found]]'],
+      body: ['[[TODO: replace the placeholder chart data in src/data/research.js and summarize what you found]]'],
+      embed: 'accuracy-chart',
     },
   ],
 };

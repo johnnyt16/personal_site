@@ -2,7 +2,7 @@
  * Renders text that may contain [[TODO: note]] markers. Each marker shows
  * as a visible highlighted tag so unverified claims can't slip by.
  */
-const MARKER = /\[\[TODO:\s*([^\]]+)\]\]/g;
+const MARKER = /\[\[TODO:?\s*([^\]]*)\]\]/g;
 
 export default function Rich({ text }) {
   if (!text.includes('[[TODO')) return text;
@@ -13,7 +13,7 @@ export default function Rich({ text }) {
     if (m.index > last) parts.push(text.slice(last, m.index));
     parts.push(
       <mark className="todo" key={m.index}>
-        TODO: {m[1].trim()}
+        {m[1].trim() ? `TODO: ${m[1].trim()}` : 'TODO'}
       </mark>
     );
     last = m.index + m[0].length;

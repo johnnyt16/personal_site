@@ -2,6 +2,8 @@ import { profile, experience, experienceIntro, education, other, tools, sections
 import { projects } from '../data/work';
 import Sidebar from '../components/Sidebar';
 import WorkCard from '../components/WorkCard';
+import AccuracyChart from '../components/AccuracyChart';
+import { research } from '../data/research';
 import { useActiveSection } from '../lib/useActiveSection';
 
 function Section({ id, title, children }) {
@@ -38,6 +40,19 @@ export default function Home() {
               <WorkCard key={p.slug} p={p} />
             ))}
           </ul>
+        </Section>
+
+        <Section id="research" title="Research">
+          <p className="section-lede">{research.summary}</p>
+          <AccuracyChart compact />
+          <p className="research-links">
+            <a className="button" href={research.href}>Read about the study →</a>
+            {research.paperUrl ? (
+              <a className="button" href={research.paperUrl}>Paper</a>
+            ) : (
+              <span className="research-soon">Write-up coming soon</span>
+            )}
+          </p>
         </Section>
 
         <Section id="experience" title="Experience">

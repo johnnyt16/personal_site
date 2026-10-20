@@ -11,7 +11,6 @@ export default {
     { label: 'Stack', value: 'Next.js, PostgreSQL, LLMs, Railway' },
     { label: 'Results', value: 'Live in production for 3 clients' },
   ],
-  demo: true,
   sections: [
     {
       heading: 'Problem',
@@ -52,6 +51,13 @@ export default {
         ],
         caption: 'Imported transactions are normalized, categorized, stored, and reviewed before export. [[TODO: confirm components and flow]]',
       },
+    },
+    {
+      heading: 'Try it',
+      body: [
+        'Type a bank transaction description and get back a Schedule C category. This version runs on simple rules in your browser; the production engine uses an LLM with fallback logic.',
+      ],
+      embed: 'classify-demo',
     },
     {
       heading: 'Hard parts and decisions',

@@ -37,14 +37,4 @@ export const projects = [
     stack: ['Vite', 'Node.js', 'PostgreSQL', 'AWS'],
     media: { type: 'image', src: '/work/attendease.webp', alt: 'AttendEase admin dashboard showing a class attendance roster', ready: false },
   },
-  {
-    slug: 'llm-classification',
-    href: '/research/llm-classification',
-    title: 'LLM classification research',
-    role: 'Directed study, BYU',
-    period: 'Ongoing',
-    outcome: 'Measuring how the type and volume of input data change LLM accuracy on Schedule C categorization.',
-    stack: ['Python', 'LLM evaluation', 'Statistics'],
-    media: { type: 'image', src: '/work/llm-classification.webp', alt: 'Chart of classification accuracy by input type', ready: false },
-  },
 ];

@@ -5,6 +5,10 @@ import ThemeToggle from '../components/ThemeToggle';
 import Media from '../components/Media';
 import Diagram from '../components/Diagram';
 import Rich from '../components/Rich';
+import ClassifyDemo from '../components/ClassifyDemo';
+import AccuracyChart from '../components/AccuracyChart';
+
+const EMBEDS = { 'classify-demo': ClassifyDemo, 'accuracy-chart': AccuracyChart };
 
 function Paragraphs({ body }) {
   return (Array.isArray(body) ? body : [body]).map((p) => (
@@ -15,6 +19,7 @@ function Paragraphs({ body }) {
 }
 
 function Block({ s }) {
+  const Embed = s.embed && EMBEDS[s.embed];
   return (
     <section className="cs-section">
       <h2>{s.heading}</h2>
@@ -35,6 +40,7 @@ function Block({ s }) {
         </div>
       ))}
       {s.diagram && <Diagram {...s.diagram} />}
+      {Embed && <Embed />}
     </section>
   );
 }
