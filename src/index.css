@@ -372,6 +372,85 @@ img, video, svg { display: block; max-width: 100%; }
 .eyebrow { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
 .page-title { font-size: clamp(2rem, 5vw, 2.8rem); letter-spacing: -0.015em; margin: 8px 0 20px; }
 
+/* ─── Case studies ───────────────────────────────────────────── */
+.topbar {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 24px 24px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.back { font-size: 0.92rem; font-weight: 500; color: var(--muted); text-decoration: none; }
+.back:hover { color: var(--text); }
+.back span { display: inline-block; transition: transform 0.2s var(--ease); }
+.back:hover span { transform: translateX(-3px); }
+
+.case-study { padding-top: 40px; }
+.cs-summary { font-family: var(--serif); font-size: 1.25rem; line-height: 1.5; color: var(--text); }
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 18px 24px;
+  margin: 32px 0;
+  padding: 20px 0;
+  border-block: 1px solid var(--rule);
+}
+.facts dt { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.facts dd { font-size: 0.95rem; margin-top: 2px; }
+
+.cs-media { border-radius: 10px; border: 1px solid var(--rule); margin-bottom: 8px; }
+.cs-media.media-placeholder { font-size: 0.85rem; }
+
+.cs-section { margin-top: 56px; }
+.cs-section h2 { font-size: 1.6rem; letter-spacing: -0.01em; margin-bottom: 14px; }
+.cs-section p { color: var(--muted); }
+.cs-section p + p { margin-top: 14px; }
+.cs-sub { margin-top: 24px; }
+.cs-sub h3 { font-size: 1.12rem; margin-bottom: 6px; }
+
+.cs-bullets { margin-top: 14px; display: grid; gap: 8px; color: var(--muted); }
+.cs-bullets li { position: relative; padding-left: 20px; }
+.cs-bullets li::before { content: ''; position: absolute; left: 2px; top: 0.7em; width: 8px; height: 1px; background: var(--muted); }
+
+.cs-next { margin-top: 80px; border-top: 1px solid var(--rule); }
+.cs-next a { display: block; padding: 24px 0; text-decoration: none; }
+.cs-next-title { display: block; font-family: var(--serif); font-size: 1.4rem; font-weight: 600; margin-top: 4px; transition: color 0.15s ease; }
+.cs-next a:hover .cs-next-title { color: var(--accent); }
+
+.cs-contact {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 24px;
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--muted);
+}
+
+/* ─── Diagram ────────────────────────────────────────────────── */
+.diagram { margin: 28px 0 8px; }
+.diagram figcaption { margin-top: 12px; font-size: 0.88rem; color: var(--muted); }
+.dg { height: auto; margin: 0 auto; }
+.dg-v { display: none; }
+.dg-box { fill: var(--surface); stroke: var(--rule); stroke-width: 1; }
+.dg-label { fill: var(--text); font-family: var(--sans); font-size: 14px; font-weight: 600; }
+.dg-sub { fill: var(--muted); font-family: var(--sans); font-size: 12px; }
+.dg-edge { stroke: var(--muted); stroke-width: 1.25; }
+.dg-arrow { fill: var(--muted); }
+
+@media (min-width: 900px) {
+  .diagram { margin-inline: -64px; }
+  .diagram figcaption { padding-inline: 64px; }
+}
+@media (max-width: 760px) {
+  .dg-h { display: none; }
+  .dg-v { display: block; }
+}
+
 /* ─── Small screens ──────────────────────────────────────────── */
 @media (max-width: 600px) {
   body { font-size: 16px; }
@@ -385,7 +464,7 @@ img, video, svg { display: block; max-width: 100%; }
   .narrow { padding: 48px 16px; }
   .cards { margin: 0; gap: 28px; }
   .sidebar { position: relative; }
-  .theme-toggle { position: absolute; top: 52px; right: 0; }
+  .sidebar .theme-toggle { position: absolute; top: 52px; right: 0; }
   .button { padding: 0 13px; }
   .actions { gap: 6px; }
   .card { grid-template-columns: 1fr; gap: 14px; padding: 0; }

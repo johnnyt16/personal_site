@@ -1,9 +1,13 @@
+import { caseStudies } from './data/case-studies';
+
 /**
  * Every page on the site. The prerender script writes one HTML file per
  * route, and main.jsx / entry-server.jsx pick the page from the path.
  */
 
 export const SITE_URL = 'https://johnnymcconkie.com';
+
+const strip = (s) => s.replace(/\[\[TODO:[^\]]*\]\]/g, '').replace(/\s+/g, ' ').trim();
 
 export const routes = [
   {
@@ -13,6 +17,13 @@ export const routes = [
     description:
       'Johnny McConkie builds software products and sells them. Full-stack and AI product engineer in Provo, Utah. BYU Information Systems, December 2026.',
   },
+  ...caseStudies.map((cs) => ({
+    path: cs.path,
+    page: 'case-study',
+    slug: cs.slug,
+    title: `${cs.title} · Johnny McConkie`,
+    description: strip(cs.summary),
+  })),
 ];
 
 /** Strip trailing slashes and index.html so /work/voley/ and /work/voley match. */
