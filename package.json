@@ -8,7 +8,7 @@
 		"build": "vite build && vite build --ssr src/entry-server.jsx --outDir .ssr --logLevel error && node scripts/prerender.js",
 		"lint": "eslint .",
 		"preview": "vite preview",
-		"todos": "grep -rn --color=always '\\[\\[TODO' src || echo 'No TODOs left.'",
+		"todos": "grep -rn '\\[\\[TODO' src/data | grep -v 'TODO: note' || echo 'No TODOs left.'",
 		"og": "sh scripts/og/render.sh"
 	},
 	"dependencies": {
