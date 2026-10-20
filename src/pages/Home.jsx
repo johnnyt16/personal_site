@@ -1,5 +1,7 @@
-import { profile, work, experience, education, other, tools, sections } from '../data/resume';
+import { profile, experience, experienceIntro, education, other, tools, sections } from '../data/resume';
+import { projects } from '../data/work';
 import Sidebar from '../components/Sidebar';
+import WorkCard from '../components/WorkCard';
 import { useActiveSection } from '../lib/useActiveSection';
 
 function Section({ id, title, children }) {
@@ -10,20 +12,6 @@ function Section({ id, title, children }) {
       </h2>
       {children}
     </section>
-  );
-}
-
-function Entry({ e }) {
-  return (
-    <li className="entry">
-      <p className="entry-period">{e.period}</p>
-      <div>
-        <h3 className="entry-title">{e.title}</h3>
-        <p className="entry-role">{e.role}</p>
-        <p className="entry-body">{e.body}</p>
-        {e.stack && <p className="entry-stack">{e.stack}</p>}
-      </div>
-    </li>
   );
 }
 
@@ -38,31 +26,47 @@ export default function Home() {
       <main id="main" className="content">
         <Section id="about" title="About">
           <div className="prose">
-            {profile.intro.map((p) => (
+            {profile.about.map((p) => (
               <p key={p}>{p}</p>
             ))}
           </div>
         </Section>
 
-        <Section id="work" title="Work">
-          <ul className="entries">
-            {work.map((e) => (
-              <Entry key={e.title} e={e} />
+        <Section id="work" title="Selected work">
+          <ul className="cards">
+            {projects.map((p) => (
+              <WorkCard key={p.slug} p={p} />
             ))}
           </ul>
         </Section>
 
         <Section id="experience" title="Experience">
+          <p className="section-lede">{experienceIntro}</p>
           <ul className="entries">
             {experience.map((e) => (
-              <Entry key={e.title} e={e} />
+              <li className="entry" key={e.org}>
+                <p className="entry-period">{e.period}</p>
+                <div>
+                  <h3 className="entry-title">
+                    {e.role} <span className="entry-org">· {e.org}</span>
+                  </h3>
+                  <p className="entry-body">{e.result}</p>
+                </div>
+              </li>
             ))}
           </ul>
         </Section>
 
         <Section id="education" title="Education">
           <ul className="entries">
-            <Entry e={education} />
+            <li className="entry">
+              <p className="entry-period">{education.period}</p>
+              <div>
+                <h3 className="entry-title">{education.school}</h3>
+                <p className="entry-body">{education.degree}</p>
+                <p className="entry-body">{education.detail}</p>
+              </div>
+            </li>
           </ul>
           <ul className="plain-list">
             {other.map((o) => (
@@ -73,9 +77,7 @@ export default function Home() {
         </Section>
 
         <footer className="footer">
-          <p>
-            Set in Source Serif and Inter. Built with React and Vite, hosted on Railway.
-          </p>
+          <p>Set in Source Serif and Inter. Built with React and Vite, hosted on Railway.</p>
         </footer>
       </main>
     </div>

@@ -1,76 +1,61 @@
 /**
- * Every piece of content on the site. Mirrors
- * public/Johnny-McConkie-Resume.pdf, so update both together.
+ * Home page content. Mirrors public/Johnny-McConkie-Resume.pdf, so update
+ * both together. Project cards live in ./work.js, case studies in
+ * ./case-studies/.
+ *
+ * Wrap anything unverified in [[TODO: note]]. It renders as a visible
+ * marker, and `npm run todos` lists every one.
  */
 
 export const profile = {
   name: 'Johnny McConkie',
-  intro: [
-    'I’m a founder and software engineer in Provo, Utah, finishing a B.S. in Information Systems at BYU in December 2026.',
-    'I build products end to end and handle the business around them: selling to customers, raising money, and running operations. Right now I build and operate BookKeeper AI and study how input data affects LLM classification accuracy.',
+  positioning: 'I build software products and sell them.',
+  proof: [
+    { value: '30', label: 'agencies sold' },
+    { value: '$42K', label: 'raised' },
+    { value: '$1.2M', label: 'closed in sales' },
+  ],
+  now: 'Finishing my B.S. at BYU in December 2026. Looking for full-stack AI product engineering, forward-deployed engineering, or product roles, available January 2027.',
+  about: [
+    'I’m a full-stack engineer who also does the selling. At Voley I was the technical lead: I built the platform and its official HawkSoft integration, then sold it to 30 insurance agencies through cold outreach and demos.',
+    'Today I build and operate BookKeeper AI, a platform I use to run bookkeeping and payroll for clients, and I’m running a directed study at BYU on how input data affects LLM classification accuracy.',
+    'Before software I sold residential solar and ran sales for a concrete contractor.',
   ],
   email: 'johntaylormcc@gmail.com',
   linkedin: 'https://www.linkedin.com/in/mcconkiejohn',
+  github: 'https://github.com/johnnyt16',
   resumeUrl: '/Johnny-McConkie-Resume.pdf',
 };
 
-export const work = [
-  {
-    title: 'BookKeeper AI',
-    // TODO(johnny): confirm the role wording for BookKeeper AI.
-    role: 'Builder & Operator',
-    period: '2025 – now',
-    body: 'A bookkeeping platform serving three clients. An LLM-backed engine categorizes incoming business transactions, and I run the clients’ bookkeeping and payroll on top of it.',
-    stack: 'Next.js, PostgreSQL, Railway',
-  },
-  {
-    title: 'Voley',
-    role: 'Co-founder & Technical Lead',
-    period: '2025 – 2026',
-    body: 'Built a two-way SMS platform for independent insurance agencies, with an official API integration into HawkSoft. I owned the architecture, roadmap, A2P 10DLC compliance, and a team of five contract developers. Sold 30 agencies through cold outreach and demos, raised $42K from industry investors and BYU Miller Grants, and gave the keynote at Insurtech Utah 2025.',
-    stack: 'Next.js, Node.js, PostgreSQL, Twilio',
-  },
-  {
-    title: 'AttendEase',
-    role: 'Technical Co-founder',
-    period: '2025 – 2026',
-    body: 'A facial-recognition attendance system for schools. I built the mobile app, web frontend, and school admin architecture, and contributed to the database design.',
-    stack: 'Vite, Node.js, PostgreSQL, AWS',
-  },
-  {
-    title: 'LLM evaluation research',
-    role: 'Directed study with Prof. Mark Keith, BYU',
-    period: 'Ongoing',
-    body: 'A framework for measuring how the type and volume of input data affect LLM classification accuracy, benchmarked on business transactions against the IRS Schedule C taxonomy.',
-  },
-];
+export const experienceIntro =
+  'Three years of selling and running operations, before and alongside the software.';
 
 export const experience = [
   {
-    title: 'Big Star Concrete & Premium Surface Solutions',
+    org: 'Big Star Concrete & Premium Surface Solutions',
     role: 'Sales & Project Manager',
     period: '2024 – now',
-    body: 'Designed an on-site estimating process that raised sales efficiency 25% and shortened the quote-to-close cycle. Built the CRM lead tracker and follow-up cadence.',
+    result: 'Built an on-site estimating process that raised sales efficiency 25% and shortened quote-to-close.',
   },
   {
-    title: 'Sunrun',
+    org: 'Sunrun',
     role: 'Residential Sales',
     period: '2023 – 2024',
-    body: 'Closed $1.2M across 36 accounts in 10 months. Top 5 of 197 reps for eight straight weeks.',
+    result: '$1.2M closed across 36 accounts in 10 months. Top 5 of 197 reps for eight straight weeks.',
   },
   {
-    title: 'BYU Continuing Education',
+    org: 'BYU Continuing Education',
     role: 'Database Operations',
     period: '2022 – 2023',
-    body: 'Built a SQL automation pipeline that cut a recurring two-week process to two days. It became standard practice.',
+    result: 'SQL automation that cut a two-week team process to two days; adopted as standard practice.',
   },
 ];
 
 export const education = {
-  title: 'Brigham Young University',
-  role: 'B.S. Information Systems, Marriott School of Business',
-  period: '2026',
-  body: 'Minor in Entrepreneurship. 3.7 major GPA. Crocker Innovation Fellow.',
+  school: 'Brigham Young University',
+  degree: 'B.S. Information Systems, Minor in Entrepreneurship',
+  period: 'Dec 2026',
+  detail: '3.7 major GPA · Crocker Innovation Fellow',
 };
 
 export const other = [
