@@ -3,7 +3,7 @@ import { projects } from '../data/work';
 import Sidebar from '../components/Sidebar';
 import WorkCard from '../components/WorkCard';
 import AccuracyChart from '../components/AccuracyChart';
-import { research } from '../data/research';
+import { research, accuracy } from '../data/research';
 import { useActiveSection } from '../lib/useActiveSection';
 
 function Section({ id, title, children }) {
@@ -44,15 +44,16 @@ export default function Home() {
 
         <Section id="research" title="Research">
           <p className="section-lede">{research.summary}</p>
-          <AccuracyChart compact />
-          <p className="research-links">
-            <a className="button" href={research.href}>Read about the study →</a>
-            {research.paperUrl ? (
-              <a className="button" href={research.paperUrl}>Paper</a>
-            ) : (
-              <span className="research-soon">Write-up coming soon</span>
-            )}
-          </p>
+          <ul className="cards">
+            <WorkCard p={research.card} />
+          </ul>
+          {/* The chart joins the home page once it shows real results. */}
+          {!accuracy.placeholder && <AccuracyChart compact />}
+          {research.paperUrl && (
+            <p className="research-links">
+              <a className="button" href={research.paperUrl}>Read the paper</a>
+            </p>
+          )}
         </Section>
 
         <Section id="experience" title="Experience">
@@ -62,9 +63,8 @@ export default function Home() {
               <li className="entry" key={e.org}>
                 <p className="entry-period">{e.period}</p>
                 <div>
-                  <h3 className="entry-title">
-                    {e.role} <span className="entry-org">· {e.org}</span>
-                  </h3>
+                  <h3 className="entry-title">{e.role}</h3>
+                  <p className="entry-role">{e.org}</p>
                   <p className="entry-body">{e.result}</p>
                 </div>
               </li>
@@ -72,7 +72,7 @@ export default function Home() {
           </ul>
         </Section>
 
-        <Section id="education" title="Education">
+        <Section id="education" title="Education & more">
           <ul className="entries">
             <li className="entry">
               <p className="entry-period">{education.period}</p>
@@ -87,8 +87,10 @@ export default function Home() {
             {other.map((o) => (
               <li key={o}>{o}</li>
             ))}
-            <li>Tools: {tools}</li>
           </ul>
+          <p className="tools">
+            <span className="tools-label">Tools</span> {tools}
+          </p>
         </Section>
 
         <footer className="footer">

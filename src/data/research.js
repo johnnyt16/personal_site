@@ -19,6 +19,17 @@ export const accuracy = {
 };
 
 export const research = {
+  card: {
+    slug: 'llm-classification',
+    href: '/research/llm-classification/',
+    title: 'What does an LLM need to classify a transaction?',
+    role: 'Directed study with Prof. Mark Keith, BYU',
+    period: 'In progress',
+    outcome:
+      'A benchmark on real, de-identified bookkeeping data: five input levels × three model tiers, scored against cold accountant labels.',
+    stack: ['Python', 'LLM evaluation', 'Experimental design'],
+    media: { ready: false },
+  },
   summary:
     'A directed study with Prof. Mark Keith at BYU. When an LLM miscategorizes a financial transaction, is the fix a bigger model or better information? I’m building a benchmark on real, de-identified bookkeeping data to find out.',
   href: '/research/llm-classification/',

@@ -235,13 +235,14 @@ img, video, svg { display: block; max-width: 100%; }
     -webkit-backdrop-filter: blur(8px);
   }
 }
-/* On desktop the sidebar nav does that job, so headings are screen-reader only. */
 @media (min-width: 1024px) {
-  .section { padding-top: 96px; }
-  .section-title { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); margin: 0; }
+  .section { padding-top: 104px; }
+  .section:first-child { padding-top: 0; }
+  #about .section-title { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); margin: 0; }
 }
 
-.prose { font-size: 1.04rem; color: var(--muted); }
+.prose { font-size: 1.06rem; color: var(--text); }
+.prose p:not(:first-child) { color: var(--muted); }
 .prose p + p { margin-top: 16px; }
 .prose strong { color: var(--text); font-weight: 600; }
 
@@ -261,11 +262,15 @@ img, video, svg { display: block; max-width: 100%; }
   font-variant-numeric: tabular-nums;
 }
 .entry-title { font-size: 1.12rem; }
-.entry-role { color: var(--muted); font-size: 0.95rem; margin-bottom: 6px; }
+.entry-role { color: var(--muted); font-size: 0.92rem; margin-bottom: 6px; }
 .entry-body { color: var(--muted); }
 .entry-stack { margin-top: 10px; font-size: 0.85rem; color: var(--muted); }
 
-.plain-list { display: grid; gap: 8px; margin-top: 32px; padding-left: 132px; color: var(--muted); }
+.plain-list { display: grid; gap: 6px; margin-top: 28px; padding-left: 132px; color: var(--muted); }
+.plain-list li { position: relative; }
+.plain-list li::before { content: ''; position: absolute; left: -16px; top: 0.75em; width: 6px; height: 1px; background: var(--faint); }
+.tools { margin-top: 20px; padding-left: 132px; font-size: 0.92rem; color: var(--muted); }
+.tools-label { display: block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text); margin-bottom: 2px; }
 
 .footer { padding-top: 96px; font-size: 0.85rem; color: var(--muted); }
 
@@ -276,9 +281,10 @@ img, video, svg { display: block; max-width: 100%; }
   line-height: 1.4;
   margin-top: 10px;
 }
-.proof { margin-top: 18px; color: var(--muted); font-size: 0.95rem; }
+.proof { display: flex; flex-wrap: wrap; gap: 2px 0; margin-top: 18px; color: var(--muted); font-size: 0.95rem; }
+.proof-item { white-space: nowrap; }
+.proof-item:not(:last-child)::after { content: '·'; margin: 0 8px; color: var(--faint); }
 .proof strong { color: var(--text); font-weight: 600; font-variant-numeric: tabular-nums; }
-.proof-sep { color: var(--faint); }
 
 .now { margin-top: 28px; max-width: 420px; font-size: 0.92rem; color: var(--muted); }
 .now-label {
@@ -320,15 +326,16 @@ img, video, svg { display: block; max-width: 100%; }
 /* Micro-interaction: card tints, arrow slides up-right. */
 .card:hover { background: var(--surface); border-color: var(--rule); }
 .card:hover .card-title a { color: var(--accent); }
-.card:hover .card-arrow { transform: translate(2px, -2px); }
+.card:hover .card-arrow { transform: translateX(3px); }
+.card-text { grid-template-columns: 1fr; }
 
 .card-media { border-radius: 6px; border: 1px solid var(--rule); margin-top: 4px; }
 .card-meta { font-size: 0.82rem; font-weight: 500; color: var(--muted); }
 .card-title { font-size: 1.18rem; margin: 2px 0 6px; }
-.card-title a { display: inline-flex; align-items: center; gap: 6px; text-decoration: none; transition: color 0.15s ease; }
+.card-title a { text-decoration: none; transition: color 0.15s ease; }
 /* Stretch the title link over the whole card. */
 .card-title a::after { content: ''; position: absolute; inset: 0; border-radius: 12px; }
-.card-arrow { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; transition: transform 0.25s var(--ease); }
+.card-arrow { display: inline-block; margin-left: 6px; vertical-align: -1px; width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; transition: transform 0.25s var(--ease); }
 .card-outcome { color: var(--muted); }
 
 .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
@@ -589,7 +596,8 @@ img, video, svg { display: block; max-width: 100%; }
   .section-title { margin: 0 -16px 20px; padding: 12px 16px; }
   .entry { grid-template-columns: 1fr; }
   .entry-period { padding: 0 0 2px; }
-  .plain-list { padding-left: 0; }
+  .plain-list { padding-left: 16px; }
+  .tools { padding-left: 0; }
   .narrow { padding: 48px 16px; }
   .cards { margin: 0; gap: 28px; }
   .sidebar { position: relative; }

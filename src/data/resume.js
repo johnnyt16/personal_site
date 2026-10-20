@@ -11,13 +11,13 @@ export const profile = {
   name: 'Johnny McConkie',
   positioning: 'I build software products and sell them.',
   proof: [
-    { value: '30', label: 'agencies sold' },
+    { value: '30', label: 'agencies signed' },
     { value: '$42K', label: 'raised' },
     { value: '$1.2M', label: 'closed in sales' },
   ],
   now: 'Finishing my B.S. at BYU in December 2026. Looking for full-stack AI product engineering, forward-deployed engineering, or product roles, available January 2027.',
   about: [
-    'I’m a full-stack engineer who also does the selling. At Voley I was the technical lead: I built the platform and its official HawkSoft integration, then sold it to 30 insurance agencies through cold outreach and demos.',
+    'I’m a full-stack engineer who also does the selling. At Voley I was the technical lead: I built the platform and its official HawkSoft integration, then signed 30 insurance agencies through cold outreach and demos.',
     'Today I build and operate LedgerLine, a private platform I run my bookkeeping clients on, and I’m running a directed study at BYU on what information an LLM actually needs to classify a financial transaction.',
     'Before software I sold residential solar and ran sales for a concrete contractor.',
   ],

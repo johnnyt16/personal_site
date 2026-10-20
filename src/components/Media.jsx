@@ -1,8 +1,10 @@
 import { useEffect, useRef } from 'react';
+import { showMedia } from '../lib/media';
 
 /**
  * Screenshot or short looping video for a project. Until the asset exists
- * (`ready: false`), renders a labeled placeholder naming the file it wants.
+ * (`ready: false`), dev builds show a labeled placeholder naming the file
+ * it wants, and production renders nothing.
  */
 export default function Media({ media, title, className = '' }) {
   const video = useRef(null);
@@ -13,6 +15,8 @@ export default function Media({ media, title, className = '' }) {
       video.current.pause();
     }
   }, []);
+
+  if (!showMedia(media)) return null;
 
   if (!media.ready) {
     return (

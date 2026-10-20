@@ -12,9 +12,8 @@ export default function Sidebar({ active }) {
         <p className="positioning">{profile.positioning}</p>
 
         <p className="proof">
-          {profile.proof.map((p, i) => (
-            <span key={p.label}>
-              {i > 0 && <span className="proof-sep" aria-hidden="true"> · </span>}
+          {profile.proof.map((p) => (
+            <span key={p.label} className="proof-item">
               <strong>{p.value}</strong> {p.label}
             </span>
           ))}

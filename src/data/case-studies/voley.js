@@ -10,7 +10,7 @@ export default {
     { label: 'Timeline', value: 'Feb 2025 – Apr 2026' },
     { label: 'Team', value: 'Me + 5 contract developers' },
     { label: 'Stack', value: 'Next.js, Node.js, PostgreSQL, Twilio' },
-    { label: 'Results', value: '30 agencies signed · 12 began migrating · $42K raised' },
+    { label: 'Results', value: '30 agencies signed · $42K raised · keynote, Insurtech Utah 2025' },
   ],
   sections: [
     {
@@ -73,7 +73,7 @@ export default {
         },
         {
           heading: 'Selling it',
-          body: 'I built the pipeline myself through cold outreach and technical demos. 54% of cold-call conversations turned into demos, and 45% of demos turned into signed letters of intent. We signed 30 agencies and 12 began migrating. I raised $25K from insurance-industry investors and $17K across three BYU Miller Grants, and gave the keynote at Insurtech Utah 2025. [[TODO: confirm how “30 signed / 12 migrating” lines up with “fewer than 10% of LOIs onboarded” below]]',
+          body: 'I built the pipeline myself through cold outreach and technical demos. 54% of cold-call conversations turned into demos, and 45% of demos turned into signed letters of intent. We signed 30 agencies, and 12 committed to onboarding. I raised $25K from insurance-industry investors and $17K across three BYU Miller Grants, and gave the keynote at Insurtech Utah 2025.',
         },
         {
           heading: 'A dependency we didn’t control',
@@ -92,7 +92,7 @@ export default {
       subsections: [
         {
           heading: 'A letter of intent is not demand',
-          body: 'People will sign something that costs them nothing. The real signal is someone paying or changing how they work. Our top of funnel looked great, but fewer than 10% of the agencies that signed letters of intent fully onboarded. A product that asks a team to change how it operates is a much harder sell than it looks, especially in an established industry like insurance.',
+          body: 'People will sign something that costs them nothing. The real signal is someone paying or changing how they work. Our top of funnel looked great, but fewer than 10% of the agencies that signed letters of intent ever actually used the product. A product that asks a team to change how it operates is a much harder sell than it looks, especially in an established industry like insurance.',
         },
         {
           heading: 'Know what you don’t control',

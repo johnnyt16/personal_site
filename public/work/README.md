@@ -1,7 +1,7 @@
 # Work media
 
-The home page cards and case studies show a labeled placeholder until each
-file below exists. After adding a file, set `ready: true` on that project's
+Until each file below exists, `npm run dev` shows a labeled placeholder in
+its place and production builds show the card without an image. After adding a file, set `ready: true` on that project's
 `media` in `src/data/work.js`.
 
 | File | What it should show | Size |
