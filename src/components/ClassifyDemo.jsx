@@ -1,7 +1,21 @@
 import { useRef, useState } from 'react';
-import { classifyTransaction, isMock, MAX_LENGTH } from '../lib/classify';
+import { classifyTransaction, isMock, MAX_LENGTH, AUTO_APPROVE } from '../lib/classify';
 
-const EXAMPLES = ['SQ *BLUE COPPER COFFEE PROVO UT', 'ADOBE *CREATIVE CLOUD', 'GOOGLE *ADS8443', 'HOME DEPOT #4407', 'UPWORK ESCROW INC', 'CHECKCARD 0412 XYZ LLC'];
+const EXAMPLES = ['HOME DEPOT #4407', 'SQ *BLUE COPPER COFFEE PROVO UT', 'DELTA AIR 0067', 'ADOBE *CREATIVE CLOUD', 'CHECK 1043', 'XYZ HOLDINGS LLC'];
+
+const STEPS = [
+  { id: 'ambiguous', label: 'Pre-filter' },
+  { id: 'history', label: 'History' },
+  { id: 'model', label: 'Model' },
+  { id: 'review', label: 'Review' },
+];
+
+/** Which pipeline steps a result passed through, for the step strip. */
+function path(r) {
+  if (r.method === 'ambiguous') return ['ambiguous', 'review'];
+  if (r.method === 'history') return ['ambiguous', 'history'];
+  return r.needsReview ? ['ambiguous', 'history', 'model', 'review'] : ['ambiguous', 'history', 'model'];
+}
 
 export default function ClassifyDemo() {
   const [text, setText] = useState('');
@@ -32,6 +46,8 @@ export default function ClassifyDemo() {
   }
 
   const r = state.result;
+  const visited = r ? path(r) : [];
+  const stopped = visited.at(-1);
 
   return (
     <div className="demo">
@@ -68,24 +84,42 @@ export default function ClassifyDemo() {
       <div className="demo-result" aria-live="polite">
         {state.status === 'done' && (
           <>
-            <p className="demo-line">Schedule C line {r.line}</p>
+            <ol className="demo-steps" aria-label="Pipeline path">
+              {STEPS.map((s) => (
+                <li
+                  key={s.id}
+                  className={visited.includes(s.id) ? (s.id === stopped ? 'is-stop' : 'is-passed') : undefined}
+                >
+                  {s.label}
+                </li>
+              ))}
+            </ol>
+            {r.line && <p className="demo-line">Schedule C line {r.line}</p>}
             <p className="demo-category">{r.category}</p>
-            <p className="demo-confidence">
-              Confidence {Math.round(r.confidence * 100)}%
-              <span className="demo-bar" aria-hidden="true">
-                <span style={{ width: `${Math.round(r.confidence * 100)}%` }} />
-              </span>
-            </p>
+            {r.method !== 'ambiguous' && (
+              <p className="demo-confidence">
+                Confidence {Math.round(r.confidence * 100)}%
+                <span className="demo-bar" aria-hidden="true">
+                  <span style={{ width: `${Math.round(r.confidence * 100)}%` }} />
+                  <i style={{ left: `${AUTO_APPROVE * 100}%` }} />
+                </span>
+                <span className={`demo-verdict${r.needsReview ? ' is-review' : ''}`}>
+                  {r.needsReview ? 'Sent to review' : 'Auto-approved'}
+                </span>
+              </p>
+            )}
             <p className="demo-rationale">{r.rationale}</p>
           </>
         )}
         {state.status === 'error' && <p className="demo-error">{state.message}</p>}
-        {state.status === 'idle' && <p className="demo-hint">Results appear here.</p>}
+        {state.status === 'idle' && <p className="demo-hint">Results appear here, with the path the transaction took.</p>}
+        {state.status === 'loading' && <p className="demo-hint">Categorizing…</p>}
       </div>
 
       {isMock && (
         <p className="demo-note">
-          Demo mode: answers come from simple keyword rules in your browser, not the production model.
+          Demo mode: a small pretend history and keyword rules in your browser stand in for the client database and the
+          model. Auto-approve threshold: {Math.round(AUTO_APPROVE * 100)}%.
         </p>
       )}
     </div>

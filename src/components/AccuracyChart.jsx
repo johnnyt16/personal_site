@@ -11,7 +11,7 @@ import { accuracy } from '../data/research';
 // them, since the legend already names every line.
 const WIDE = { W: 560, H: 300, M: { top: 16, right: 132, bottom: 44, left: 44 } };
 const NARROW = { W: 360, H: 260, M: { top: 16, right: 16, bottom: 44, left: 40 } };
-const Y_MIN = 0.5;
+const Y_MIN = 0.5; // placeholder range; revisit when real data lands
 const Y_MAX = 1;
 const SHAPES = ['circle', 'square', 'diamond'];
 
@@ -26,7 +26,7 @@ function Marker({ shape, x, y, className }) {
 export default function AccuracyChart({ compact = false }) {
   const [hover, setHover] = useState(null);
   const [narrow, setNarrow] = useState(false);
-  const { x, series, xLabel, placeholder } = accuracy;
+  const { x, xNames, series, xLabel, title, placeholder } = accuracy;
   const { W, H, M } = narrow ? NARROW : WIDE;
 
   useEffect(() => {
@@ -47,7 +47,7 @@ export default function AccuracyChart({ compact = false }) {
   return (
     <figure className={`chart${compact ? ' chart-compact' : ''}`}>
       <div className="chart-head">
-        <p className="chart-title">Classification accuracy by input type</p>
+        <p className="chart-title">{title}</p>
         {placeholder && <span className="chart-flag">Placeholder data</span>}
       </div>
 
@@ -117,7 +117,7 @@ export default function AccuracyChart({ compact = false }) {
             style={{ left: `${(sx(hover) / W) * 100}%`, transform: hover === x.length - 1 ? 'translateX(-105%)' : 'translateX(8px)' }}
           >
             <p className="chart-tip-head">
-              {x[hover]} examples
+              {x[hover]} · {xNames[hover]}
             </p>
             {series.map((s, i) => (
               <p key={s.id}>
@@ -131,15 +131,23 @@ export default function AccuracyChart({ compact = false }) {
         )}
       </div>
 
+      <p className="chart-key">
+        {x.map((v, i) => (
+          <span key={v}>
+            <strong>{v}</strong> {xNames[i].replace(/^\+ /, '+\u00a0')}
+          </span>
+        ))}
+      </p>
+
       <details className="chart-table">
         <summary>View as table</summary>
         <table>
-          <caption className="sr-only">Classification accuracy by input type and {xLabel.toLowerCase()}</caption>
+          <caption className="sr-only">{title}</caption>
           <thead>
             <tr>
-              <th scope="col">Input type</th>
-              {x.map((v) => (
-                <th scope="col" key={v}>
+              <th scope="col">Model</th>
+              {x.map((v, i) => (
+                <th scope="col" key={v} title={xNames[i]}>
                   {v}
                 </th>
               ))}

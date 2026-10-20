@@ -36,10 +36,12 @@ file, and a sitemap entry automatically.
 
 ## The classifier demo
 
-With no configuration the BookKeeper AI demo answers from keyword rules in
-the browser. To use a real model, deploy an endpoint (for example a second
-Railway service) that accepts `POST { "description": string }` and returns
-`{ "line", "category", "confidence", "rationale" }`, allow this site's origin
+With no configuration the LedgerLine demo answers from a small pretend
+history and keyword rules in the browser. To use the real pipeline, deploy an
+endpoint (for example a second Railway service) that accepts
+`POST { "description": string }` and returns
+`{ "method": "history" | "model" | "ambiguous", "line", "category", "confidence", "rationale" }`
+(full contract in `src/lib/classify.js`), allow this site's origin
 in its CORS headers, then set `VITE_CLASSIFY_ENDPOINT` on this service and
 redeploy. Keep the model API key on the endpoint; nothing secret belongs in
 this repo or bundle.

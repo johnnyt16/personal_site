@@ -7,7 +7,7 @@ file below exists. After adding a file, set `ready: true` on that project's
 | File | What it should show | Size |
 | --- | --- | --- |
 | `voley.webp` | Voley inbox: a two-way text thread with a client, ideally with the HawkSoft client record visible | 1600 × 1000 |
-| `bookkeeper-ai.webp` | BookKeeper AI transaction list with suggested categories | 1600 × 1000 |
+| `ledgerline.webp` | LedgerLine transaction list or review queue, showing categories and confidence scores (no real client data) | 1600 × 1000 |
 | `attendease.webp` | AttendEase admin dashboard or class roster | 1600 × 1000 |
 
 ## Format
