@@ -82,3 +82,11 @@ export const other = [
 
 export const tools =
   'TypeScript, Python, SQL, Next.js, Node.js, PostgreSQL, AWS, Twilio, Railway, LLM integration and evaluation';
+
+/** Home page sections, in order. Drives the sidebar nav. */
+export const sections = [
+  { id: 'about', label: 'About' },
+  { id: 'work', label: 'Work' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'education', label: 'Education' },
+];

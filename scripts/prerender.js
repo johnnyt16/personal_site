@@ -1,27 +1,41 @@
-import { readFileSync, writeFileSync, rmSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { readFileSync, writeFileSync, mkdirSync, rmSync } from 'node:fs';
+import { resolve, dirname } from 'node:path';
 
 /**
- * Bakes the rendered markup into dist/index.html after `vite build`.
- *
- * The site is a resume: the text needs to be in the HTML for crawlers, for
- * visitors with JavaScript off, and so the largest paint doesn't wait on a
- * bundle. React hydrates the same markup on top.
+ * Bakes every route into its own HTML file after `vite build`, so
+ * /work/voley is served as dist/work/voley/index.html: real markup for
+ * crawlers and a fast first paint. React hydrates the same markup on top.
  */
 const root = process.cwd();
-const distIndex = resolve(root, 'dist/index.html');
+const dist = resolve(root, 'dist');
 
-const { render } = await import(resolve(root, '.ssr/entry-server.js'));
-const appHtml = render();
+const { render, renderHead, routes } = await import(resolve(root, '.ssr/entry-server.js'));
+const template = readFileSync(resolve(dist, 'index.html'), 'utf8');
 
-const html = readFileSync(distIndex, 'utf8');
-const marker = '<div id="root"></div>';
+const ROOT_MARKER = '<div id="root"></div>';
+const HEAD_BLOCK = /<!--head-->[\s\S]*?<!--\/head-->/;
 
-if (!html.includes(marker)) {
-  throw new Error('prerender: could not find the #root mount point in dist/index.html');
+if (!template.includes(ROOT_MARKER) || !HEAD_BLOCK.test(template)) {
+  throw new Error('prerender: index.html is missing the #root mount point or the <!--head--> block');
 }
 
-writeFileSync(distIndex, html.replace(marker, `<div id="root">${appHtml}</div>`));
-rmSync(resolve(root, '.ssr'), { recursive: true, force: true });
+function page(path, head) {
+  return template
+    .replace(HEAD_BLOCK, head)
+    .replace(ROOT_MARKER, `<div id="root">${render(path)}</div>`);
+}
 
-console.log(`prerendered ${appHtml.length} bytes of markup into dist/index.html`);
+for (const route of routes) {
+  const file = route.path === '/' ? 'index.html' : `${route.path.slice(1)}/index.html`;
+  const out = resolve(dist, file);
+  mkdirSync(dirname(out), { recursive: true });
+  writeFileSync(out, page(route.path, renderHead(route)));
+}
+
+writeFileSync(
+  resolve(dist, '404.html'),
+  page('/404', renderHead({ path: '/404', title: 'Not found · Johnny McConkie', description: 'Page not found.' }))
+);
+
+rmSync(resolve(root, '.ssr'), { recursive: true, force: true });
+console.log(`prerendered ${routes.length} routes + 404`);
