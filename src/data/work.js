@@ -10,6 +10,7 @@ export const projects = [
   {
     slug: 'voley',
     href: '/work/voley/',
+    site: { label: 'letsvoley.com', href: 'https://www.letsvoley.com' },
     title: 'Voley',
     role: 'Co-founder & Technical Lead',
     period: '2025 – 2026',

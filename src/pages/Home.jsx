@@ -4,6 +4,8 @@ import Sidebar from '../components/Sidebar';
 import WorkCard from '../components/WorkCard';
 import AccuracyChart from '../components/AccuracyChart';
 import { research, accuracy } from '../data/research';
+import { moreProjects } from '../data/projects';
+import ExternalIcon from '../components/ExternalIcon';
 import { useActiveSection } from '../lib/useActiveSection';
 
 function Section({ id, title, children }) {
@@ -38,6 +40,43 @@ export default function Home() {
           <ul className="cards">
             {projects.map((p) => (
               <WorkCard key={p.slug} p={p} />
+            ))}
+          </ul>
+        </Section>
+
+        <Section id="projects" title="More projects">
+          <ul className="projects">
+            {moreProjects.map((p) => (
+              <li className="project" key={p.title}>
+                <p className="card-meta">{p.kind}</p>
+                <h3 className="project-title">
+                  {p.href ? (
+                    <a href={p.href} target="_blank" rel="noreferrer">
+                      {p.title}
+                      <ExternalIcon />
+                      <span className="sr-only"> (opens in a new tab)</span>
+                    </a>
+                  ) : (
+                    p.title
+                  )}
+                </h3>
+                <p className="project-body">{p.body}</p>
+                {p.links && (
+                  <p className="project-links">
+                    <span>Client sites:</span>
+                    {p.links.map((l) => (
+                      <a key={l.href} href={l.href} target="_blank" rel="noreferrer">
+                        {l.label}
+                      </a>
+                    ))}
+                  </p>
+                )}
+                <ul className="tags" aria-label="Stack">
+                  {p.stack.map((s) => (
+                    <li key={s}>{s}</li>
+                  ))}
+                </ul>
+              </li>
             ))}
           </ul>
         </Section>

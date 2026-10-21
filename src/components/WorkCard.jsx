@@ -1,6 +1,7 @@
 import Media from './Media';
 import { showMedia } from '../lib/media';
 import Rich from './Rich';
+import ExternalIcon from './ExternalIcon';
 
 /** Whole card is one link to the case study; the title carries the href. */
 export default function WorkCard({ p }) {
@@ -22,6 +23,13 @@ export default function WorkCard({ p }) {
         <p className="card-outcome">
           <Rich text={p.outcome} />
         </p>
+        {p.site && (
+          <a className="card-site" href={p.site.href} target="_blank" rel="noreferrer">
+            {p.site.label}
+            <ExternalIcon />
+            <span className="sr-only"> (opens in a new tab)</span>
+          </a>
+        )}
         {p.stack && (
           <ul className="tags" aria-label="Stack">
             {p.stack.map((s) => (

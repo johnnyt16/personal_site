@@ -3,6 +3,7 @@ export default {
   path: '/work/voley',
   eyebrow: 'Case study',
   title: 'Voley',
+  site: { label: 'letsvoley.com', href: 'https://www.letsvoley.com' },
   summary:
     'A communications platform for independent insurance agencies, built on an official HawkSoft integration. I was the technical lead and also the one selling it.',
   facts: [

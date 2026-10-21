@@ -6,6 +6,7 @@ import ThemeToggle from '../components/ThemeToggle';
 import Media from '../components/Media';
 import Diagram from '../components/Diagram';
 import Rich from '../components/Rich';
+import ExternalIcon from '../components/ExternalIcon';
 import ClassifyDemo from '../components/ClassifyDemo';
 import AccuracyChart from '../components/AccuracyChart';
 
@@ -66,6 +67,15 @@ export default function CaseStudy({ slug }) {
         <p className="eyebrow">{cs.eyebrow}</p>
         <h1 className="page-title">{cs.title}</h1>
         <p className="cs-summary">{cs.summary}</p>
+        {cs.site && (
+          <p className="cs-site">
+            <a className="button" href={cs.site.href} target="_blank" rel="noreferrer">
+              Visit {cs.site.label}
+              <ExternalIcon />
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
+          </p>
+        )}
 
         <dl className="facts">
           {cs.facts.map((f) => (

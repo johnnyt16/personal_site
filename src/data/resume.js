@@ -72,6 +72,7 @@ export const tools =
 export const sections = [
   { id: 'about', label: 'About' },
   { id: 'work', label: 'Work' },
+  { id: 'projects', label: 'Projects' },
   { id: 'research', label: 'Research' },
   { id: 'experience', label: 'Experience' },
   { id: 'education', label: 'Education' },

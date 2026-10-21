@@ -374,6 +374,45 @@ img, video, svg { display: block; max-width: 100%; }
   font-style: normal;
 }
 
+/* ─── External links + more projects ─────────────────────────── */
+.ext-icon { display: inline-block; width: 12px; height: 12px; margin-left: 4px; vertical-align: 0; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; transition: transform 0.2s var(--ease); }
+a:hover > .ext-icon { transform: translate(2px, -2px); }
+
+/* Sits above the card's stretched link so it stays separately clickable. */
+.card-site {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 3px;
+}
+.card-site:hover { color: var(--accent); text-decoration-color: currentColor; }
+
+.projects { display: grid; }
+.project { padding: 22px 0; border-top: 1px solid var(--rule); }
+.project:first-child { border-top: 0; padding-top: 0; }
+.project-title { font-size: 1.12rem; margin: 2px 0 6px; }
+.project-title a { text-decoration: none; transition: color 0.15s ease; }
+.project-title a:hover { color: var(--accent); }
+.project-body { color: var(--muted); }
+.project-links { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 10px; font-size: 0.85rem; }
+.project-links span { color: var(--muted); }
+.project-links a {
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 3px;
+}
+.project-links a:hover { color: var(--accent); text-decoration-color: currentColor; }
+
+.cs-site { margin: 20px 0 4px; }
+.cs-site .button { min-height: 36px; font-size: 0.88rem; }
+
 /* ─── Narrow pages (404, case studies) ───────────────────────── */
 .narrow { max-width: 720px; margin: 0 auto; padding: 72px 24px; }
 .eyebrow { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
