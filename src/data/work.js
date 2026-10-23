@@ -49,7 +49,7 @@ export const projects = [
     featured: true,
     title: 'AttendEase',
     role: 'Technical Co-founder',
-    period: '2025–26',
+    period: '2024–25',
     metric: '~99% match with manual roll',
     detail: 'Facial-recognition attendance for schools, started through BYU’s Crocker Innovation Fellowship.',
     highlights: [
@@ -65,10 +65,10 @@ export const projects = [
     slug: 'forge',
     title: 'Forge Development',
     role: 'Freelance',
-    period: 'Ongoing',
+    period: '2024–now',
     metric: '6 client sites live',
     detail: 'My freelance studio: websites and internal systems for local businesses.',
-    highlights: ['Six live client sites, from a roofing company to insurance agencies', 'Systems work too, like the contractor CRM below'],
+    highlights: ['Six live client sites, from a roofing company to insurance agencies', 'Systems work too, like Groundwork below'],
     stack: 'Next.js · TypeScript · Prisma · PostgreSQL',
     clients: [
       { label: 'Yura’s Roofing', href: 'https://www.yurasroofing.com' },

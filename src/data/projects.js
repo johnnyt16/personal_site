@@ -31,12 +31,12 @@ export const sideProjects = [
     stack: 'Python · Open-Meteo · Kalshi API · Railway',
   },
   {
-    slug: 'contractor-crm',
-    title: 'Contractor CRM',
-    role: 'Forge client build',
+    slug: 'groundwork',
+    title: 'Groundwork',
+    role: 'CRM for a concrete contractor',
     period: '2026',
     metric: 'built for a phone in a truck',
-    detail: 'Leads, bids, follow-ups, and won jobs for a one-person concrete contractor.',
+    detail: 'A Forge client build: leads, bids, follow-ups, and won jobs for a one-person concrete contractor.',
     highlights: [
       'Follow-ups are tap-to-text links, not an SMS provider: a lesson from Voley’s carrier fight',
       'Unit, integration, and Playwright end-to-end tests',

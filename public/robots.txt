@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://johnnymcconkie.com/sitemap.xml
+Sitemap: https://www.johnnymcconkie.com/sitemap.xml

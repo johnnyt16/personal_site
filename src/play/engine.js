@@ -12,7 +12,7 @@ const { Engine, Bodies, Body, Composite, Mouse, MouseConstraint, Query, Sleeping
  */
 
 // Elements that fall as one piece instead of word by word.
-const CHUNKS = '.button, .theme-toggle, .tags li, .demo-chip, .badge, .now-label, .toc-line, .chart-flag, svg.dg, .chart-plot > svg';
+const CHUNKS = '.button, .icon-button, .theme-toggle, .footer-term, kbd, .tags li, .demo-chip, .badge, .toc-line, .chart-flag, svg.dg, .chart-plot > svg';
 const SKIP = '.sr-only, .skip, script, style, noscript, [aria-hidden="true"]:not(.toc-line)';
 const MAX_BODIES = 420;
 
@@ -30,6 +30,10 @@ function copyStyles(from, to, props) {
   for (const p of props) to.style[p] = cs[p];
 }
 
+// What a click on a fallen piece should activate: the link or button it came from.
+const ACTIONABLE = 'a[href], button';
+const targetFor = (el) => (el.matches(ACTIONABLE) ? el : el.closest(ACTIONABLE));
+
 function makeChunk(el, rect) {
   const copy = el.cloneNode(true);
   copyStyles(el, copy, BOX_PROPS);
@@ -39,7 +43,7 @@ function makeChunk(el, rect) {
   copy.style.listStyle = 'none';
   copy.removeAttribute('id');
   copy.querySelectorAll('[id]').forEach((n) => n.removeAttribute('id'));
-  return { node: copy, rect };
+  return { node: copy, rect, target: targetFor(el) };
 }
 
 function collectWords(root, chunkEls) {
@@ -73,7 +77,7 @@ function collectWords(root, chunkEls) {
       span.style.color = cs.color;
       span.style.lineHeight = `${rect.height}px`;
       span.style.whiteSpace = 'pre';
-      items.push({ node: span, rect, word: true });
+      items.push({ node: span, rect, word: true, target: targetFor(n.parentElement) });
     }
   }
   return items;
@@ -104,6 +108,7 @@ export function capture(root, layer) {
     n.style.height = `${it.rect.height}px`;
     n.style.boxSizing = 'border-box';
     n.style.transform = `translate(${it.rect.left}px, ${it.rect.top}px)`;
+    if (it.target) n.classList.add('g-clickable');
     it.origin = { x: it.rect.left + it.rect.width / 2, y: it.rect.top + it.rect.height / 2 };
     layer.appendChild(n);
   }
@@ -148,6 +153,22 @@ export function createWorld(items, layer) {
   Composite.add(engine.world, grab);
 
   const pieces = items.map((i) => i.body);
+
+  // Fallen links and buttons still work: a quick tap without a drag
+  // activates the real element the piece was copied from.
+  let downAt = null;
+  const onDown = (e) => (downAt = { x: e.clientX, y: e.clientY, t: performance.now() });
+  const onUp = (e) => {
+    if (!downAt) return;
+    const moved = Math.hypot(e.clientX - downAt.x, e.clientY - downAt.y);
+    const quick = performance.now() - downAt.t < 400;
+    downAt = null;
+    if (moved > 6 || !quick) return;
+    const [hit] = Query.point(pieces, { x: e.clientX, y: e.clientY });
+    items.find((i) => i.body === hit)?.target?.click();
+  };
+  layer.addEventListener('pointerdown', onDown);
+  layer.addEventListener('pointerup', onUp);
   const onMove = () => {
     if (grab.body) {
       Body.setPosition(hand, { x: -200, y: -200 });
@@ -229,6 +250,8 @@ export function createWorld(items, layer) {
       cancelAnimationFrame(raf);
       timers.forEach(clearTimeout);
       Events.off(grab, 'mousemove', onMove);
+      layer.removeEventListener('pointerdown', onDown);
+      layer.removeEventListener('pointerup', onUp);
       Mouse.clearSourceEvents?.(mouse);
       Composite.clear(engine.world, false);
       Engine.clear(engine);

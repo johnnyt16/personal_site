@@ -7,7 +7,7 @@ export default {
     'A facial-recognition attendance system for schools, started through BYU’s Crocker Innovation Fellowship. I built the mobile app, the web frontend, and the school admin architecture.',
   facts: [
     { label: 'Role', value: 'Technical Co-founder' },
-    { label: 'Timeline', value: 'Jan 2025 – Mar 2026' },
+    { label: 'Timeline', value: '2024 – 2025' },
     { label: 'Stack', value: 'Python, Vite, Node.js, PostgreSQL, AWS EC2' },
     { label: 'Results', value: '~99% agreement with manual attendance in a school pilot' },
   ],

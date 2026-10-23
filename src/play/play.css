@@ -5,6 +5,8 @@
 .g-layer:active { cursor: grabbing; }
 .g-layer.is-idle { pointer-events: none; }
 .g-piece { will-change: transform; user-select: none; }
+.g-piece.g-clickable { cursor: pointer; }
+.g-piece.g-clickable:hover { text-decoration: underline; text-underline-offset: 3px; }
 
 .g-bar {
   position: fixed;

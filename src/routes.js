@@ -5,7 +5,7 @@ import { caseStudies } from './data/case-studies';
  * route, and main.jsx / entry-server.jsx pick the page from the path.
  */
 
-export const SITE_URL = 'https://johnnymcconkie.com';
+export const SITE_URL = 'https://www.johnnymcconkie.com';
 
 const strip = (s) => s.replace(/\[\[TODO:[^\]]*\]\]/g, '').replace(/\s+/g, ' ').trim();
 

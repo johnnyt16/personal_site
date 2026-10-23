@@ -76,8 +76,7 @@ export const education = {
 export const life = [
   { text: 'Guitarist in ruca83', link: { label: 'linktr.ee/ruca83', href: 'https://linktr.ee/ruca83' } },
   { text: 'Two-year mission in Quito, Ecuador, where I led and trained 150+ missionaries. Conversational Spanish.' },
-  { text: 'Keynote speaker, Insurtech Utah 2025' },
-  { text: 'Eagle Scout' },
+  { text: 'Eagle Scout and avid outdoorsman' },
 ];
 
 /** Terminal-only: `fun-facts`. Kept off the page on purpose. */
@@ -85,9 +84,8 @@ export const funFacts = [
   'Guitarist in ruca83: linktr.ee/ruca83',
   'Two-year service mission in Quito, Ecuador; led and trained 150+ missionaries',
   'Conversational Spanish',
-  'Eagle Scout',
+  'Eagle Scout and avid outdoorsman',
   'BYU Sloan Speech Showcase finalist',
-  'Keynote speaker, Insurtech Utah 2025',
 ];
 
 export const tools =
