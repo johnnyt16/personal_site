@@ -8,7 +8,7 @@ build time, served by Railway. No router or animation libraries.
 | What | File |
 | --- | --- |
 | Home page copy, experience, education | `src/data/resume.js` |
-| Selected Work cards | `src/data/work.js` |
+| Work rows | `src/data/work.js` |
 | Case studies | `src/data/case-studies/*.js` |
 | Research chart data (placeholder) | `src/data/research.js` |
 | Classifier demo + API seam | `src/lib/classify.js` |
@@ -51,7 +51,11 @@ this repo or bundle.
 The theme toggle cycles light → dark → play. Play mode recolors the page and
 drops everything visible into a physics pile (Matter.js, in `src/play/`). The
 backtick key opens a terminal from any page; commands live in
-`src/play/commands.js`. Both load only when used, and play mode is never
+`src/play/commands.js`. ⌘K / Ctrl+K opens a command menu
+(`src/play/Palette.jsx`). The pixel-guy button in the footer (or `run` in
+the terminal, or ⌘K) starts a small platformer on the page itself
+(`src/play/platformer.js`): every block is a platform, ↓ on a row opens
+it, and each bold metric has a coin. Both load only when used, and play mode is never
 saved, so a reload is always the normal site. With reduced motion on, play
 mode recolors but nothing falls.
 

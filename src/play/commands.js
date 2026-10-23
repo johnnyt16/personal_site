@@ -4,7 +4,7 @@ import { moreProjects } from '../data/projects';
 import { caseStudies } from '../data/case-studies';
 import { classifyTransaction, AUTO_APPROVE } from '../lib/classify';
 import { urlFor } from '../routes';
-import { enterPlay, exitPlay, isPlay, setTheme } from '../lib/mode';
+import { enterPlay, exitPlay, isPlay, setTheme, startWalk } from '../lib/mode';
 
 /**
  * Terminal commands. Each one prints lines through `io`:
@@ -44,6 +44,7 @@ const HELP = [
   ['fun-facts', 'the stuff that didn’t fit on the page'],
   ['contact', 'ways to reach me'],
   ['gravity', 'knock the page over'],
+  ['run', 'drop a little guy onto the page'],
   ['theme <light|dark|play>', 'change the look'],
   ['clear · history · exit', ''],
 ];
@@ -177,6 +178,13 @@ export const COMMANDS = {
     else enterPlay();
   },
 
+  async run(_, io) {
+    io.print([seg('› ', 'pink'), seg('spawning player 1…')]);
+    await io.sleep(400);
+    io.close();
+    startWalk();
+  },
+
   theme(args, io) {
     const t = args[0];
     if (t === 'play') {
@@ -246,7 +254,7 @@ export const COMMANDS = {
   },
 };
 
-export const ALIASES = { neofetch: 'whoami', '?': 'help', man: 'help', cd: 'open', projects: 'ls', work: 'ls', funfacts: 'fun-facts', facts: 'fun-facts' };
+export const ALIASES = { neofetch: 'whoami', '?': 'help', man: 'help', cd: 'open', projects: 'ls', work: 'ls', funfacts: 'fun-facts', facts: 'fun-facts', walk: 'run', game: 'run', play: 'run' };
 
 // Full blocks only, so it lines up in any monospace font.
 export const NEOFETCH_ART = [

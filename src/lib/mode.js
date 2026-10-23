@@ -41,3 +41,4 @@ export function cycleMode() {
 }
 
 export const openTerminal = () => window.dispatchEvent(new Event(TERMINAL_EVENT));
+export const startWalk = () => window.dispatchEvent(new Event('site:walk'));

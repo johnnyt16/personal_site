@@ -236,6 +236,7 @@
   transition: color 0.15s ease, border-color 0.15s ease;
 }
 .footer-term:hover { color: var(--text); border-color: var(--rule); }
+.footer-eggs { display: flex; gap: 2px; }
 
 /* ─── Phones ─────────────────────────────────────────────────── */
 @media (max-width: 640px) {

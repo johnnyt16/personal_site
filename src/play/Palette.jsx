@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { profile, sections } from '../data/resume';
 import { caseStudies } from '../data/case-studies';
 import { urlFor } from '../routes';
-import { effectiveTheme, enterPlay, exitPlay, isPlay, openTerminal, setTheme } from '../lib/mode';
+import { effectiveTheme, enterPlay, exitPlay, isPlay, openTerminal, setTheme, startWalk } from '../lib/mode';
 import './palette.css';
 
 const onHome = () => window.location.pathname === '/';
@@ -47,6 +47,7 @@ function buildItems(flash) {
       run: () => (isPlay() ? exitPlay(effectiveTheme()) : setTheme(effectiveTheme() === 'dark' ? 'light' : 'dark')),
     },
     { group: 'Fun', label: 'Play mode', keywords: 'gravity neon', run: () => !isPlay() && enterPlay() },
+    { group: 'Fun', label: 'Run around the page', keywords: 'game play walk jump mario', run: startWalk },
     { group: 'Fun', label: 'Open terminal', keywords: 'console shell', run: openTerminal },
   ];
 }

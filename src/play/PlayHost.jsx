@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { MODE_EVENT, TERMINAL_EVENT, isPlay } from '../lib/mode';
 
@@ -6,6 +6,7 @@ import { MODE_EVENT, TERMINAL_EVENT, isPlay } from '../lib/mode';
 const Gravity = lazy(() => import('./Gravity'));
 const Terminal = lazy(() => import('./Terminal'));
 const Palette = lazy(() => import('./Palette'));
+const Walker = lazy(() => import('./Walker'));
 
 const typingInField = (el) => el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.isContentEditable);
 
@@ -14,6 +15,8 @@ export default function PlayHost() {
   const [play, setPlay] = useState(false);
   const [terminal, setTerminal] = useState(false);
   const [palette, setPalette] = useState(false);
+  const [walk, setWalk] = useState(false);
+  const closeWalk = useCallback(() => setWalk(false), []);
 
   useEffect(() => {
     const onMode = () => setPlay(isPlay());
@@ -22,6 +25,8 @@ export default function PlayHost() {
       setTerminal(true);
     };
     const onPalette = () => setPalette(true);
+    // The game needs the real page under it, so not while it's in pieces.
+    const onWalk = () => !document.documentElement.classList.contains('play-fallen') && setWalk((w) => !w);
     // Easter egg: backtick opens the terminal from anywhere.
     const onKey = (e) => {
       // ⌘K / Ctrl+K: the command menu, from anywhere.
@@ -38,22 +43,25 @@ export default function PlayHost() {
     window.addEventListener(MODE_EVENT, onMode);
     window.addEventListener(TERMINAL_EVENT, onTerminal);
     window.addEventListener('site:palette', onPalette);
+    window.addEventListener('site:walk', onWalk);
     window.addEventListener('keydown', onKey);
     return () => {
       window.removeEventListener(MODE_EVENT, onMode);
       window.removeEventListener(TERMINAL_EVENT, onTerminal);
       window.removeEventListener('site:palette', onPalette);
+      window.removeEventListener('site:walk', onWalk);
       window.removeEventListener('keydown', onKey);
     };
   }, []);
 
-  if (!play && !terminal && !palette) return null;
+  if (!play && !terminal && !palette && !walk) return null;
 
   return createPortal(
     <Suspense fallback={null}>
       {play && <Gravity />}
       {terminal && <Terminal onClose={() => setTerminal(false)} />}
       {palette && <Palette onClose={() => setPalette(false)} />}
+      {walk && <Walker onClose={closeWalk} />}
     </Suspense>,
     document.body
   );

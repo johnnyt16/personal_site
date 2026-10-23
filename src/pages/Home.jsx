@@ -4,7 +4,7 @@ import { projects } from '../data/work';
 import Sidebar from '../components/Sidebar';
 import Row from '../components/Row';
 import { useActiveSection } from '../lib/useActiveSection';
-import { openTerminal } from '../lib/mode';
+import { openTerminal, startWalk } from '../lib/mode';
 
 function Section({ id, title, children }) {
   return (
@@ -84,9 +84,16 @@ export default function Home() {
 
         <footer className="footer">
           <span>Source Serif &amp; Inter · React + Vite · Railway</span>
-          <button type="button" className="footer-term" onClick={openTerminal} aria-label="Open the terminal">
-            ›_
-          </button>
+          <span className="footer-eggs">
+            <button type="button" className="footer-term" onClick={startWalk} aria-label="Play a little platformer on this page" title="Run around">
+              <svg viewBox="0 0 10 14" width="12" height="17" aria-hidden="true" shapeRendering="crispEdges">
+                <path d="M3 0h4v1h1v1h2v1H2V1h1zM2 3h6v3H3V5H2zM3 6h4v1H3zM2 7h6v3H2zM3 10h4v1H3zM3 11h1v2H3zM6 11h1v2H6zM2 13h2v1H2zM6 13h2v1H6z" fill="currentColor" />
+              </svg>
+            </button>
+            <button type="button" className="footer-term" onClick={openTerminal} aria-label="Open the terminal" title="Terminal">
+              ›_
+            </button>
+          </span>
         </footer>
       </main>
     </div>
