@@ -48,6 +48,40 @@
   --todo-text: #f5d97a;
 }
 
+/* Play mode: neon on ink. Same specificity as the dark blocks, declared later, so it wins. */
+:root[data-mode='play'] {
+  color-scheme: dark;
+  --bg: #0d0820;
+  --surface: #1a1236;
+  --text: #f6f3ff;
+  --muted: #c4bbe6;
+  --faint: #7d72a8;
+  --rule: #33275e;
+  --accent: #c6ff3d;
+  --todo-bg: #3a3112;
+  --todo-text: #f5d97a;
+  --neon-pink: #ff3ea5;
+  --neon-lime: #c6ff3d;
+  --neon-cyan: #38e1ff;
+  --neon-violet: #9b7bff;
+}
+:root[data-mode='play'] body {
+  background:
+    radial-gradient(60vw 50vh at 85% 0%, rgba(255, 62, 165, 0.18), transparent 70%),
+    radial-gradient(50vw 40vh at 0% 100%, rgba(56, 225, 255, 0.14), transparent 70%),
+    var(--bg) fixed;
+}
+:root[data-mode='play'] .name,
+:root[data-mode='play'] .page-title { color: var(--neon-lime); }
+:root[data-mode='play'] .positioning { color: var(--neon-pink); }
+:root[data-mode='play'] .button-primary { background: var(--neon-lime); border-color: var(--neon-lime); color: #0d0820; }
+:root[data-mode='play'] .theme-toggle { color: var(--neon-lime); border-color: var(--neon-lime); }
+
+/* While the page is in pieces, the real content stays in the DOM (for
+   screen readers) but is invisible and inert; the physics layer draws it. */
+:root.play-fallen { overflow: hidden; user-select: none; -webkit-user-select: none; }
+:root.play-fallen #root { opacity: 0; pointer-events: none; }
+
 /* ─── Base ───────────────────────────────────────────────────── */
 html { scroll-behavior: smooth; }
 
@@ -130,13 +164,17 @@ img, video, svg { display: block; max-width: 100%; }
 }
 .theme-toggle:hover { color: var(--text); border-color: var(--muted); }
 .theme-toggle svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
-.icon-sun { display: none; }
-:root[data-theme='dark'] .icon-sun { display: block; }
+/* Each state shows the icon for the next step: light → moon, dark → spark, play → sun. */
+.icon-sun, .icon-spark { display: none; }
+:root[data-theme='dark'] .icon-spark { display: block; }
 :root[data-theme='dark'] .icon-moon { display: none; }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) .icon-sun { display: block; }
+  :root:not([data-theme='light']) .icon-spark { display: block; }
   :root:not([data-theme='light']) .icon-moon { display: none; }
 }
+:root[data-mode='play'] .theme-toggle svg { display: none; }
+:root[data-mode='play'] .theme-toggle .icon-sun { display: block; }
+.icon-spark path { fill: currentColor; stroke: none; }
 
 /* ─── Shell: sticky sidebar + scrolling content ──────────────── */
 .shell {
@@ -273,6 +311,18 @@ img, video, svg { display: block; max-width: 100%; }
 .tools-label { display: block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text); margin-bottom: 2px; }
 
 .footer { padding-top: 96px; font-size: 0.85rem; color: var(--muted); }
+.footer kbd {
+  padding: 1px 6px;
+  border: 1px solid var(--rule);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 0.8rem;
+  color: var(--text);
+}
+/* No backtick key on touch devices; they reach the terminal from play mode. */
+.footer-egg { display: none; }
+@media (hover: hover) and (pointer: fine) { .footer-egg { display: inline; } }
 
 /* ─── Sidebar copy ───────────────────────────────────────────── */
 .positioning {

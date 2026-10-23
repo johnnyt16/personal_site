@@ -133,7 +133,12 @@ export default function Home() {
         </Section>
 
         <footer className="footer">
-          <p>Set in Source Serif and Inter. Built with React and Vite, hosted on Railway.</p>
+          <p>
+            Set in Source Serif and Inter. Built with React and Vite, hosted on Railway.
+            <span className="footer-egg">
+              {' '}Press <kbd>`</kbd> for a terminal.
+            </span>
+          </p>
         </footer>
       </main>
     </div>

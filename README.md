@@ -46,6 +46,15 @@ in its CORS headers, then set `VITE_CLASSIFY_ENDPOINT` on this service and
 redeploy. Keep the model API key on the endpoint; nothing secret belongs in
 this repo or bundle.
 
+## Play mode and the terminal
+
+The theme toggle cycles light → dark → play. Play mode recolors the page and
+drops everything visible into a physics pile (Matter.js, in `src/play/`). The
+backtick key opens a terminal from any page; commands live in
+`src/play/commands.js`. Both load only when used, and play mode is never
+saved, so a reload is always the normal site. With reduced motion on, play
+mode recolors but nothing falls.
+
 ## Commands
 
 ```bash

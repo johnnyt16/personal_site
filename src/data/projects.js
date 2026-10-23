@@ -26,9 +26,9 @@ export const moreProjects = [
     stack: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Playwright'],
   },
   {
-    title: 'Autonomous AI trading bot',
-    kind: 'Side project',
-    body: 'A Python system that researches stocks overnight with GPT-4 and live web search, builds a watchlist, and trades through every US market session. A position manager checks every open trade every 10 seconds, scaling out at multiple profit targets with trailing stops, a daily loss kill switch, and hard caps on API spend.',
+    title: 'Catalyst',
+    kind: 'Autonomous LLM trading agent · side project',
+    body: 'A Python agent that researches stocks overnight with GPT-4 and live web search, builds a watchlist, and trades through every US market session. A position manager checks every open trade every 10 seconds, scaling out at multiple profit targets with trailing stops, a daily loss kill switch, and hard caps on API spend.',
     stack: ['Python', 'OpenAI', 'Tavily', 'Alpaca API', 'SQLAlchemy'],
   },
 ];
