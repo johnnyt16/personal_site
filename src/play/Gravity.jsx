@@ -7,9 +7,8 @@ const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)'
 const settle = () => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
 
 /**
- * Play mode overlay. The neon palette is pure CSS on :root[data-mode=play];
- * this component handles the physics: knock the page down, rebuild it, and
- * the controls bar.
+ * Play mode overlay: knock the page down, rebuild it, and the controls
+ * bar. The page keeps whatever light/dark theme it was in.
  */
 export default function Gravity() {
   const layer = useRef(null);
@@ -19,7 +18,7 @@ export default function Gravity() {
 
   async function drop() {
     if (still || !layer.current) return;
-    await settle(); // let the neon palette paint first so copies pick it up
+    await settle(); // let layout settle before measuring
     const items = capture(document.getElementById('root'), layer.current);
     document.documentElement.classList.add('play-fallen');
     world.current = createWorld(items, layer.current);

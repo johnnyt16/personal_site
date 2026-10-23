@@ -1,6 +1,6 @@
 import { profile, experience, education, funFacts, tools } from '../data/resume';
 import { projects } from '../data/work';
-import { moreProjects } from '../data/projects';
+import { sideProjects } from '../data/projects';
 import { caseStudies } from '../data/case-studies';
 import { classifyTransaction, AUTO_APPROVE } from '../lib/classify';
 import { urlFor } from '../routes';
@@ -20,15 +20,13 @@ const strip = (s) => s.replace(/\[\[TODO:[^\]]*\]\]/g, '').trim();
 // Everything `open` knows about, keyed by the name you type.
 const targets = {
   ...Object.fromEntries(caseStudies.map((cs) => [cs.slug === 'llm-classification' ? 'research' : cs.slug, { kind: 'case', cs }])),
-  ...Object.fromEntries(
-    moreProjects.map((p) => [p.title.toLowerCase().split(' ')[0].replace(/[^a-z]/g, ''), { kind: 'project', p }])
-  ),
+  ...Object.fromEntries([...projects.filter((p) => p.slug === 'forge'), ...sideProjects].map((p) => [p.slug, { kind: 'project', p }])),
   resume: { kind: 'resume' },
 };
 
 export const BOOT = [
   [seg('johnny-os 1.0.26', 'bold'), seg(' (tty1)', 'dim')],
-  [seg('[ ok ] ', 'ok'), seg(`mounting /work: ${caseStudies.length} case studies, ${moreProjects.length} side projects`)],
+  [seg('[ ok ] ', 'ok'), seg(`mounting /work: ${caseStudies.length} case studies, ${sideProjects.length} side projects`)],
   [seg('[ ok ] ', 'ok'), seg('loading ledgerline classifier (demo mode)')],
   [seg('[ ok ] ', 'ok'), seg('calibrating gravity')],
   '',
@@ -93,10 +91,11 @@ function openTarget(name, io) {
   }
   if (t.kind === 'project') {
     const { p } = t;
-    io.print([seg(p.title, 'bold'), seg(`  ${p.kind}`, 'dim')]);
-    io.print(p.body);
-    io.print([seg(p.stack.join(' · '), 'violet')]);
-    if (p.href) io.print([seg('→ ', 'pink'), seg(p.href.replace(/^https?:\/\//, ''), 'lime', p.href)]);
+    io.print([seg(p.title, 'bold'), seg(`  ${p.role}${p.period ? ` · ${p.period}` : ''}`, 'dim')]);
+    io.print(p.detail);
+    for (const h of p.highlights ?? []) io.print([seg('  ✦ ', 'pink'), seg(h)]);
+    if (p.stack) io.print([seg(p.stack, 'violet')]);
+    for (const l of p.links?.filter((x) => x.external) ?? []) io.print([seg('→ ', 'pink'), seg(l.label, 'lime', l.href)]);
     return;
   }
   const { cs } = t;
@@ -129,7 +128,7 @@ export const COMMANDS = {
       for (const p of projects) io.print([seg(`  ${pad(p.slug, 14)}`, 'lime'), seg(p.metric, 'bold'), seg(` · ${p.role}`, 'dim')]);
     } else if (what.startsWith('project')) {
       for (const [key, t] of Object.entries(targets)) {
-        if (t.kind === 'project') io.print([seg(`  ${pad(key, 14)}`, 'lime'), seg(t.p.kind, 'dim')]);
+        if (t.kind === 'project') io.print([seg(`  ${pad(key, 16)}`, 'lime'), seg(t.p.role, 'dim')]);
       }
     } else if (what.startsWith('research')) {
       io.print([seg('  research      ', 'lime'), seg('What does an LLM need to classify a transaction?', 'dim')]);

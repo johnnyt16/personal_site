@@ -9,6 +9,7 @@ build time, served by Railway. No router or animation libraries.
 | --- | --- |
 | Home page copy, experience, education | `src/data/resume.js` |
 | Work rows | `src/data/work.js` |
+| Side projects | `src/data/projects.js` |
 | Case studies | `src/data/case-studies/*.js` |
 | Research chart data (placeholder) | `src/data/research.js` |
 | Classifier demo + API seam | `src/lib/classify.js` |
@@ -54,8 +55,10 @@ backtick key opens a terminal from any page; commands live in
 `src/play/commands.js`. ⌘K / Ctrl+K opens a command menu
 (`src/play/Palette.jsx`). The pixel-guy button in the footer (or `run` in
 the terminal, or ⌘K) starts a small platformer on the page itself
-(`src/play/platformer.js`): every block is a platform, ↓ on a row opens
-it, and each bold metric has a coin. Both load only when used, and play mode is never
+(`src/play/platformer.js`): every line of text is a platform, ↓ on a row
+opens it, jumping again in mid-air fires a jetpack, coins sit on metrics
+and text lines, and a bug chases you. Collect every coin to win; three
+hits and it's over. Both load only when used, and play mode is never
 saved, so a reload is always the normal site. With reduced motion on, play
 mode recolors but nothing falls.
 

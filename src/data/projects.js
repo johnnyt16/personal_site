@@ -1,34 +1,64 @@
 /**
- * "More projects" on the home page: smaller builds, freelance work, and
- * side projects. Compact by design; the case studies carry the depth.
+ * Side projects on the home page, below Work. Same row format: one line
+ * collapsed, details on expand. The terminal reads this list too.
  */
 
-export const moreProjects = [
+export const sideProjects = [
   {
-    title: 'Forge Development',
-    href: 'https://theforgedev.com',
-    kind: 'Freelance web & systems development',
-    body: 'My freelance studio. I design, build, host, and maintain websites and internal systems for local businesses, with no upfront cost to the client.',
-    stack: ['Next.js', 'Web design', 'Hosting & upkeep'],
-    links: [
-      { label: 'Yura’s Roofing', href: 'https://www.yurasroofing.com' },
-      { label: 'Big Star Built', href: 'https://www.bigstarbuilt.com' },
-      { label: 'Aldana’s Construction', href: 'https://www.aldanasconstruction.com' },
-      { label: 'Kiley Harrison Insurance', href: 'https://www.kileyharrisoninsurance.com' },
-      { label: 'Urban Forest Landscape', href: 'https://www.urbanforestlandscape.com' },
-      { label: 'Blackout Med Kits', href: 'https://blackoutmedkits.com' },
-    ],
-  },
-  {
-    title: 'Contractor CRM',
-    kind: 'Forge system build',
-    body: 'A mobile-first CRM for a one-person concrete contractor who runs the business from a truck: leads, bids, follow-ups, and won jobs. Follow-ups are tap-to-text links instead of an SMS provider, a deliberate choice after Voley’s run-in with carrier compliance.',
-    stack: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Playwright'],
-  },
-  {
+    slug: 'catalyst',
     title: 'Catalyst',
-    kind: 'Autonomous LLM trading agent · side project',
-    body: 'A Python agent that researches stocks overnight with GPT-4 and live web search, builds a watchlist, and trades through every US market session. A position manager checks every open trade every 10 seconds, scaling out at multiple profit targets with trailing stops, a daily loss kill switch, and hard caps on API spend.',
-    stack: ['Python', 'OpenAI', 'Tavily', 'Alpaca API', 'SQLAlchemy'],
+    role: 'Autonomous LLM trading agent',
+    period: '2025–26',
+    metric: '24/7 research → trade loop',
+    detail: 'A Python agent that researches stocks overnight with GPT-4 and live web search, then trades through every US market session.',
+    highlights: [
+      'A position manager checks every open trade every 10 seconds and scales out at three profit targets',
+      'Trailing stops, a daily loss kill switch, and hard caps on API spend',
+    ],
+    stack: 'Python · OpenAI · Tavily · Alpaca API · SQLAlchemy',
+  },
+  {
+    slug: 'weather',
+    title: 'Weather market bot',
+    role: 'Kalshi markets',
+    period: '2026',
+    metric: '~190-member forecast ensemble',
+    detail: 'Prices Kalshi daily-high-temperature markets with a calibrated multi-model weather ensemble, and posts maker-only orders only when the edge clears fees.',
+    highlights: [
+      'Five forecast models, each bias-corrected at the station that settles the market',
+      'Paper-trades until it beats the market’s own odds on Brier score',
+    ],
+    stack: 'Python · Open-Meteo · Kalshi API · Railway',
+  },
+  {
+    slug: 'contractor-crm',
+    title: 'Contractor CRM',
+    role: 'Forge client build',
+    period: '2026',
+    metric: 'built for a phone in a truck',
+    detail: 'Leads, bids, follow-ups, and won jobs for a one-person concrete contractor.',
+    highlights: [
+      'Follow-ups are tap-to-text links, not an SMS provider: a lesson from Voley’s carrier fight',
+      'Unit, integration, and Playwright end-to-end tests',
+    ],
+    stack: 'Next.js · TypeScript · Prisma · PostgreSQL · Railway',
+  },
+  {
+    slug: 'deals',
+    title: 'Dirt bike deal finder',
+    role: 'Side project',
+    period: '',
+    metric: 'checks every 10 minutes',
+    detail: 'Scrapes KSL Classifieds and Craigslist for powersports listings, prices each against a market-value table, and sends me the good ones on Telegram.',
+    highlights: ['Fuzzy-matches listing titles to make and model, then scores the discount', 'Backs off on its own when a site rate-limits it'],
+    stack: 'Python · rapidfuzz · SQLite · Telegram · Railway',
+  },
+  {
+    slug: 'junzi',
+    title: 'Junzi',
+    role: 'Side project',
+    period: '',
+    metric: '',
+    detail: 'A public discourse platform built to surface truth through structured debate, not popularity.',
   },
 ];

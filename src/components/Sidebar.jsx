@@ -33,6 +33,7 @@ export default function Sidebar({ active }) {
           {profile.name}
         </h1>
         <p className="line">{profile.line}</p>
+        <p className="intro">{profile.intro}</p>
         <p className="status">
           <span className="status-dot" aria-hidden="true" />
           {profile.status}

@@ -9,6 +9,7 @@
 export const projects = [
   {
     slug: 'voley',
+    featured: true,
     title: 'Voley',
     role: 'Co-founder & Technical Lead',
     period: '2025–26',
@@ -28,6 +29,7 @@ export const projects = [
   },
   {
     slug: 'ledgerline',
+    featured: true,
     title: 'LedgerLine',
     role: 'Builder & Operator',
     period: '2025–now',
@@ -44,6 +46,7 @@ export const projects = [
   },
   {
     slug: 'attendease',
+    featured: true,
     title: 'AttendEase',
     role: 'Technical Co-founder',
     period: '2025–26',
@@ -65,7 +68,7 @@ export const projects = [
     period: 'Ongoing',
     metric: '6 client sites live',
     detail: 'My freelance studio: websites and internal systems for local businesses.',
-    highlights: ['Includes a mobile-first CRM for a concrete contractor, built to run from a phone in a truck'],
+    highlights: ['Six live client sites, from a roofing company to insurance agencies', 'Systems work too, like the contractor CRM below'],
     stack: 'Next.js · TypeScript · Prisma · PostgreSQL',
     clients: [
       { label: 'Yura’s Roofing', href: 'https://www.yurasroofing.com' },

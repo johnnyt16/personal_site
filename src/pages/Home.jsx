@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
-import { experience, education, research, sections } from '../data/resume';
+import { experience, education, research, life, sections } from '../data/resume';
 import { projects } from '../data/work';
+import { sideProjects } from '../data/projects';
+import ExternalIcon from '../components/ExternalIcon';
 import Sidebar from '../components/Sidebar';
 import Row from '../components/Row';
 import { useActiveSection } from '../lib/useActiveSection';
@@ -60,6 +62,14 @@ export default function Home() {
           </ul>
         </Section>
 
+        <Section id="projects" title="Projects">
+          <ul className="rows">
+            {sideProjects.map((p) => (
+              <Row key={p.slug} item={p} />
+            ))}
+          </ul>
+        </Section>
+
         <Section id="research" title="Research">
           <ul className="rows">
             <Row item={research} />
@@ -75,11 +85,44 @@ export default function Home() {
         </Section>
 
         <Section id="education" title="Education">
-          {education.map((line) => (
-            <p className="edu" key={line}>
-              {line}
-            </p>
-          ))}
+          <div className="edu">
+            <h3 className="edu-school">
+              {education.school}
+              <span className="row-period">{education.period}</span>
+            </h3>
+            <p className="edu-degree">{education.college}</p>
+            <p className="edu-degree">{education.degree}</p>
+            <dl className="edu-list">
+              <div>
+                <dt>Honors</dt>
+                <dd>{education.honors.join(' · ')}</dd>
+              </div>
+              <div>
+                <dt>Coursework</dt>
+                <dd>{education.coursework.join(' · ')}</dd>
+              </div>
+            </dl>
+          </div>
+        </Section>
+
+        <Section id="life" title="Off the clock">
+          <ul className="life">
+            {life.map((l) => (
+              <li key={l.text}>
+                {l.text}
+                {l.link && (
+                  <>
+                    {' '}
+                    <a href={l.link.href} target="_blank" rel="noreferrer">
+                      {l.link.label}
+                      <ExternalIcon />
+                      <span className="sr-only"> (opens in a new tab)</span>
+                    </a>
+                  </>
+                )}
+              </li>
+            ))}
+          </ul>
         </Section>
 
         <footer className="footer">

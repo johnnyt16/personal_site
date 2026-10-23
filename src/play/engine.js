@@ -15,7 +15,6 @@ const { Engine, Bodies, Body, Composite, Mouse, MouseConstraint, Query, Sleeping
 const CHUNKS = '.button, .theme-toggle, .tags li, .demo-chip, .badge, .now-label, .toc-line, .chart-flag, svg.dg, .chart-plot > svg';
 const SKIP = '.sr-only, .skip, script, style, noscript, [aria-hidden="true"]:not(.toc-line)';
 const MAX_BODIES = 420;
-const PALETTE = ['#ff3ea5', '#c6ff3d', '#38e1ff', '#9b7bff', '#ffb547'];
 
 // Computed styles a detached copy needs to look like the original.
 const BOX_PROPS = [
@@ -192,7 +191,6 @@ export function createWorld(items, layer) {
             Body.setStatic(it.body, false);
             Body.setAngularVelocity(it.body, (Math.random() - 0.5) * 0.08);
             Body.setVelocity(it.body, { x: (Math.random() - 0.5) * 2, y: Math.random() * 1.5 });
-            if (it.word && Math.random() < 0.4) it.node.style.color = PALETTE[(Math.random() * PALETTE.length) | 0];
           }, Math.random() * 650)
         );
       });

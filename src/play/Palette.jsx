@@ -46,7 +46,7 @@ function buildItems(flash) {
       keywords: 'theme light',
       run: () => (isPlay() ? exitPlay(effectiveTheme()) : setTheme(effectiveTheme() === 'dark' ? 'light' : 'dark')),
     },
-    { group: 'Fun', label: 'Play mode', keywords: 'gravity neon', run: () => !isPlay() && enterPlay() },
+    { group: 'Fun', label: 'Play mode', keywords: 'gravity physics', run: () => !isPlay() && enterPlay() },
     { group: 'Fun', label: 'Run around the page', keywords: 'game play walk jump mario', run: startWalk },
     { group: 'Fun', label: 'Open terminal', keywords: 'console shell', run: openTerminal },
   ];
