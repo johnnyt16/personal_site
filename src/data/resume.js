@@ -11,7 +11,7 @@ export const profile = {
   name: 'Johnny McConkie',
   line: 'Full-stack engineer in Provo. I usually end up selling what I build, too.',
   status: 'Graduating BYU Dec 2026 · open to engineering roles starting Jan 2027',
-  positioning: 'Full-stack engineer who also sells what he builds.',
+  positioning: 'Full-stack engineer in Provo. I usually end up selling what I build, too.',
   email: 'johntaylormcc@gmail.com',
   linkedin: 'https://www.linkedin.com/in/mcconkiejohn',
   github: 'https://github.com/johnnyt16',
@@ -24,8 +24,11 @@ export const research = {
   role: 'Directed study, BYU',
   period: '2026',
   metric: '60-condition benchmark',
-  detail:
-    'When an LLM miscategorizes a financial transaction, is the fix a bigger model or better information? A benchmark on real, de-identified bookkeeping data: five input levels × three model tiers, scored against cold accountant labels.',
+  detail: 'When an LLM miscategorizes a financial transaction, is the fix a bigger model or better information?',
+  highlights: [
+    'Five input levels × three model tiers × two label granularities',
+    'Real, de-identified bookkeeping data, scored against cold accountant labels',
+  ],
   stack: 'Python · LLM evaluation · Experimental design',
   links: [{ label: 'Read about the study', href: '/research/llm-classification/' }],
 };

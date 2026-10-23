@@ -29,6 +29,13 @@ export default function Row({ item }) {
       <div className="row-panel" id={panelId} role="region" aria-label={item.title}>
         <div className="row-panel-inner">
           <p className="row-detail">{item.detail}</p>
+          {item.highlights && (
+            <ul className="row-highlights">
+              {item.highlights.map((h) => (
+                <li key={h}>{h}</li>
+              ))}
+            </ul>
+          )}
           {item.clients && (
             <p className="row-clients">
               Client sites:{' '}

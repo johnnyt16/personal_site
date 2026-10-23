@@ -15,7 +15,7 @@ export const routes = [
     page: 'home',
     title: 'Johnny McConkie',
     description:
-      'Johnny McConkie builds software products and sells them. Full-stack and AI product engineer in Provo, Utah. BYU Information Systems, December 2026.',
+      'Johnny McConkie: full-stack engineer in Provo who usually ends up selling what he builds, too. Voley, LedgerLine, AttendEase. BYU Information Systems, December 2026.',
   },
   ...caseStudies.map((cs) => ({
     path: cs.path,

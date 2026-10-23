@@ -11,7 +11,7 @@ export default {
     { label: 'Timeline', value: 'Feb 2025 – Apr 2026' },
     { label: 'Team', value: 'Me + 5 contract developers' },
     { label: 'Stack', value: 'Next.js, Node.js, PostgreSQL, Twilio' },
-    { label: 'Results', value: '30 agencies signed · $42K raised · keynote, Insurtech Utah 2025' },
+    { label: 'Results', value: '30 agencies signed · $42K in grants · keynote, Insurtech Utah 2025' },
   ],
   sections: [
     {
@@ -74,7 +74,7 @@ export default {
         },
         {
           heading: 'Selling it',
-          body: 'I built the pipeline myself through cold outreach and technical demos. 54% of cold-call conversations turned into demos, and 45% of demos turned into signed letters of intent. We signed 30 agencies, and 12 committed to onboarding. I raised $25K from insurance-industry investors and $17K across three BYU Miller Grants, and gave the keynote at Insurtech Utah 2025.',
+          body: 'I built the pipeline myself through cold outreach and technical demos. 54% of cold-call conversations turned into demos, and 45% of demos turned into signed letters of intent. We signed 30 agencies, and 12 committed to onboarding. We won $42K in grants, including $17K across three BYU Miller Grants, and I gave the keynote at Insurtech Utah 2025.',
         },
         {
           heading: 'A dependency we didn’t control',

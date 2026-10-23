@@ -12,9 +12,13 @@ export const projects = [
     title: 'Voley',
     role: 'Co-founder & Technical Lead',
     period: '2025–26',
-    metric: '30 agencies signed',
-    detail:
-      'A shared texting inbox for independent insurance agencies, built on an official two-way HawkSoft integration. I led five contract developers and signed 30 agencies through cold outreach and demos.',
+    metric: '30 agencies signed · $42K in grants',
+    detail: 'A shared texting inbox for independent insurance agencies, built on an official two-way HawkSoft integration.',
+    highlights: [
+      'Led five contract developers while running sales myself',
+      'Signed 30 agencies through cold outreach; 54% of calls turned into demos',
+      'Won $42K in grants and gave the keynote at Insurtech Utah 2025',
+    ],
     stack: 'Next.js · Node.js · PostgreSQL · Twilio',
     links: [
       { label: 'Case study', href: '/work/voley/' },
@@ -28,8 +32,12 @@ export const projects = [
     role: 'Builder & Operator',
     period: '2025–now',
     metric: '50%+ less bookkeeping time',
-    detail:
-      'The private platform I run three clients’ books on. Rules and each client’s own history categorize most transactions; Claude handles the rest with a confidence score, and anything uncertain goes to a review queue.',
+    detail: 'The private platform I run three clients’ books on.',
+    highlights: [
+      'History first, Claude second, and a human for anything under 85% confidence',
+      'Cut monthly bookkeeping time by more than half',
+      'Try the classifier in the case study’s live demo',
+    ],
     stack: 'Next.js · PostgreSQL · Prisma · Claude API · Railway',
     links: [{ label: 'Case study + live demo', href: '/work/ledgerline/' }],
     media: { type: 'image', src: '/work/ledgerline.webp', alt: 'LedgerLine transaction list with suggested categories and confidence scores', ready: false },
@@ -40,8 +48,12 @@ export const projects = [
     role: 'Technical Co-founder',
     period: '2025–26',
     metric: '~99% match with manual roll',
-    detail:
-      'Facial-recognition attendance for schools, from BYU’s Crocker Innovation Fellowship. I built the mobile app, web frontend, and school admin system; a pilot matched manual attendance about 99% of the time.',
+    detail: 'Facial-recognition attendance for schools, started through BYU’s Crocker Innovation Fellowship.',
+    highlights: [
+      'Built the mobile app, web frontend, and multi-school admin system',
+      'Matched manual attendance about 99% of the time in a school pilot',
+      'Families who opted out were tracked by anonymous ID, with no personal data stored',
+    ],
     stack: 'Python · Node.js · PostgreSQL · AWS EC2',
     links: [{ label: 'Case study', href: '/work/attendease/' }],
     media: { type: 'image', src: '/work/attendease.webp', alt: 'AttendEase admin dashboard showing a class attendance roster', ready: false },
@@ -52,8 +64,8 @@ export const projects = [
     role: 'Freelance',
     period: 'Ongoing',
     metric: '6 client sites live',
-    detail:
-      'My freelance studio: websites and internal systems for local businesses, including a mobile-first CRM for a concrete contractor.',
+    detail: 'My freelance studio: websites and internal systems for local businesses.',
+    highlights: ['Includes a mobile-first CRM for a concrete contractor, built to run from a phone in a truck'],
     stack: 'Next.js · TypeScript · Prisma · PostgreSQL',
     clients: [
       { label: 'Yura’s Roofing', href: 'https://www.yurasroofing.com' },

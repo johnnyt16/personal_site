@@ -194,6 +194,9 @@
 .row-panel-inner > :first-child { margin-top: 0; }
 .row-panel-inner > :last-child { margin-bottom: 18px; }
 .row-detail { max-width: 600px; font-size: 0.95rem; color: var(--muted); }
+.row-highlights { display: grid; gap: 4px; margin-top: 8px; font-size: 0.92rem; color: var(--muted); }
+.row-highlights li { position: relative; padding-left: 16px; }
+.row-highlights li::before { content: ''; position: absolute; left: 2px; top: 0.72em; width: 6px; height: 1px; background: var(--faint); }
 .row-clients { margin-top: 8px; font-size: 0.88rem; color: var(--muted); }
 .row-stack { margin-top: 8px; font-size: 0.8rem; color: var(--muted); letter-spacing: 0.01em; }
 .row-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 10px; font-size: 0.9rem; font-weight: 500; }
