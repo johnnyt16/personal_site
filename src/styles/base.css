@@ -1,0 +1,199 @@
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ─── Tokens ─────────────────────────────────────────────────── */
+:root {
+  color-scheme: light;
+  --bg: #fbfaf7;
+  --surface: #f3f1ec;
+  --text: #1b1a18;
+  --muted: #57554f;      /* 7:1 on --bg */
+  --faint: #8a877f;      /* decorative only, never body text */
+  --rule: #e2dfd8;
+  --accent: #9a3412;     /* hover, active nav, focus */
+  --todo-bg: #fff3c4;
+  --todo-text: #6b4e00;
+
+  --serif: 'Source Serif 4 Variable', Georgia, serif;
+  --sans: 'Inter Variable', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --bg: #121211;
+    --surface: #1c1b19;
+    --text: #ebe9e4;
+    --muted: #a9a69f;
+    --faint: #6e6b65;
+    --rule: #2b2a27;
+    --accent: #fb923c;
+    --todo-bg: #3a3112;
+    --todo-text: #f5d97a;
+  }
+}
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #121211;
+  --surface: #1c1b19;
+  --text: #ebe9e4;
+  --muted: #a9a69f;
+  --faint: #6e6b65;
+  --rule: #2b2a27;
+  --accent: #fb923c;
+  --todo-bg: #3a3112;
+  --todo-text: #f5d97a;
+}
+
+/* Play mode: neon on ink. Same specificity as the dark blocks, declared later, so it wins. */
+:root[data-mode='play'] {
+  color-scheme: dark;
+  --bg: #0d0820;
+  --surface: #1a1236;
+  --text: #f6f3ff;
+  --muted: #c4bbe6;
+  --faint: #7d72a8;
+  --rule: #33275e;
+  --accent: #c6ff3d;
+  --todo-bg: #3a3112;
+  --todo-text: #f5d97a;
+  --neon-pink: #ff3ea5;
+  --neon-lime: #c6ff3d;
+  --neon-cyan: #38e1ff;
+  --neon-violet: #9b7bff;
+}
+:root[data-mode='play'] body {
+  background:
+    radial-gradient(60vw 50vh at 85% 0%, rgba(255, 62, 165, 0.18), transparent 70%),
+    radial-gradient(50vw 40vh at 0% 100%, rgba(56, 225, 255, 0.14), transparent 70%),
+    var(--bg) fixed;
+}
+:root[data-mode='play'] .name,
+:root[data-mode='play'] .page-title { color: var(--neon-lime); }
+:root[data-mode='play'] .line { color: var(--neon-pink); }
+:root[data-mode='play'] .button-primary { background: var(--neon-lime); border-color: var(--neon-lime); color: #0d0820; }
+:root[data-mode='play'] .theme-toggle { color: var(--neon-lime); border-color: var(--neon-lime); }
+
+/* While the page is in pieces, the real content stays in the DOM (for
+   screen readers) but is invisible and inert; the physics layer draws it. */
+:root.play-fallen { overflow: hidden; user-select: none; -webkit-user-select: none; }
+:root.play-fallen #root { opacity: 0; pointer-events: none; }
+
+/* ─── Base ───────────────────────────────────────────────────── */
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.25; }
+
+a { color: inherit; }
+.prose a, .entry-body a {
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.15s ease, color 0.15s ease;
+}
+.prose a:hover, .entry-body a:hover { color: var(--accent); text-decoration-color: currentColor; }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+ul { list-style: none; }
+img, video, svg { display: block; max-width: 100%; }
+
+.skip {
+  position: absolute;
+  left: 16px;
+  top: -80px;
+  z-index: 10;
+  padding: 8px 14px;
+  background: var(--text);
+  color: var(--bg);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+.skip:focus { top: 16px; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+/* ─── Buttons ────────────────────────────────────────────────── */
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 40px;
+  padding: 0 16px;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.92rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.button:hover { border-color: var(--muted); background: var(--surface); }
+.button-primary { background: var(--text); color: var(--bg); border-color: var(--text); }
+.button-primary:hover { background: var(--text); border-color: var(--text); opacity: 0.88; }
+
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.theme-toggle:hover { color: var(--text); border-color: var(--muted); }
+.theme-toggle svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
+/* Each state shows the icon for the next step: light → moon, dark → spark, play → sun. */
+.icon-sun, .icon-spark { display: none; }
+:root[data-theme='dark'] .icon-spark { display: block; }
+:root[data-theme='dark'] .icon-moon { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .icon-spark { display: block; }
+  :root:not([data-theme='light']) .icon-moon { display: none; }
+}
+:root[data-mode='play'] .theme-toggle svg { display: none; }
+:root[data-mode='play'] .theme-toggle .icon-sun { display: block; }
+.icon-spark path { fill: currentColor; stroke: none; }
+
+
+.ext-icon { display: inline-block; width: 12px; height: 12px; margin-left: 4px; vertical-align: 0; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; transition: transform 0.2s var(--ease); }
+a:hover > .ext-icon { transform: translate(2px, -2px); }
+
+kbd {
+  display: inline-block;
+  min-width: 1.6em;
+  padding: 0 5px;
+  border: 1px solid var(--rule);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--text);
+}
+
+.num { font-variant-numeric: tabular-nums; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}

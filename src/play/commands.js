@@ -1,4 +1,4 @@
-import { profile, experience, education } from '../data/resume';
+import { profile, experience, education, funFacts, tools } from '../data/resume';
 import { projects } from '../data/work';
 import { moreProjects } from '../data/projects';
 import { caseStudies } from '../data/case-studies';
@@ -41,6 +41,7 @@ const HELP = [
   ['open <name>', 'read about a project, e.g. open voley'],
   ['classify "<text>"', 'run a bank transaction through LedgerLine'],
   ['experience', 'where I’ve worked'],
+  ['fun-facts', 'the stuff that didn’t fit on the page'],
   ['contact', 'ways to reach me'],
   ['gravity', 'knock the page over'],
   ['theme <light|dark|play>', 'change the look'],
@@ -124,7 +125,7 @@ export const COMMANDS = {
       return;
     }
     if (what.startsWith('work')) {
-      for (const p of projects) io.print([seg(`  ${pad(p.slug, 14)}`, 'lime'), seg(strip(p.outcome), 'dim')]);
+      for (const p of projects) io.print([seg(`  ${pad(p.slug, 14)}`, 'lime'), seg(p.metric, 'bold'), seg(` · ${p.role}`, 'dim')]);
     } else if (what.startsWith('project')) {
       for (const [key, t] of Object.entries(targets)) {
         if (t.kind === 'project') io.print([seg(`  ${pad(key, 14)}`, 'lime'), seg(t.p.kind, 'dim')]);
@@ -148,10 +149,11 @@ export const COMMANDS = {
 
   experience(_, io) {
     for (const e of experience) {
-      io.print([seg(`  ${pad(e.period, 13)}`, 'dim'), seg(e.role, 'bold'), seg(` · ${e.org}`, 'dim')]);
-      io.print([seg(`  ${' '.repeat(13)}${e.result}`)]);
+      io.print([seg(`  ${pad(e.period, 10)}`, 'dim'), seg(e.role, 'bold'), seg(` · ${e.title}`, 'dim')]);
+      io.print([seg(`  ${' '.repeat(10)}`), seg(e.metric, 'lime')]);
     }
-    io.print([seg(`  ${pad(education.period, 13)}`, 'dim'), seg(education.school, 'bold'), seg(` · ${education.degree}`, 'dim')]);
+    io.print('');
+    for (const line of education) io.print([seg(`  ${line}`, 'dim')]);
   },
 
   contact(_, io) {
@@ -187,6 +189,12 @@ export const COMMANDS = {
       return;
     }
     io.print([seg('[ ok ] ', 'ok'), seg(`theme set to ${t}`)]);
+  },
+
+  'fun-facts'(_, io) {
+    for (const f of funFacts) io.print([seg('  ✦ ', 'pink'), seg(f)]);
+    io.print('');
+    io.print([seg('  tools  ', 'cyan'), seg(tools, 'dim')]);
   },
 
   history(_, io) {
@@ -238,7 +246,7 @@ export const COMMANDS = {
   },
 };
 
-export const ALIASES = { neofetch: 'whoami', '?': 'help', man: 'help', cd: 'open', projects: 'ls', work: 'ls' };
+export const ALIASES = { neofetch: 'whoami', '?': 'help', man: 'help', cd: 'open', projects: 'ls', work: 'ls', funfacts: 'fun-facts', facts: 'fun-facts' };
 
 // Full blocks only, so it lines up in any monospace font.
 export const NEOFETCH_ART = [
@@ -252,8 +260,8 @@ export const NEOFETCH_ART = [
 
 export const NEOFETCH_INFO = [
   ['Name', profile.name],
-  ['Pitch', profile.positioning],
-  ['Proof', profile.proof.map((p) => `${p.value} ${p.label}`).join(' · ')],
+  ['Pitch', profile.line],
+  ['Proof', `${projects[0].metric} · ${experience.find((e) => e.slug === 'sunrun').metric}`],
   ['Building', 'LedgerLine + LLM evaluation research'],
   ['School', 'BYU Information Systems, Dec 2026'],
   ['Based', 'Provo, Utah'],

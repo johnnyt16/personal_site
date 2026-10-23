@@ -1,7 +1,7 @@
 /**
  * Home page content. Mirrors public/Johnny-McConkie-Resume.pdf, so update
- * both together. Project cards live in ./work.js, case studies in
- * ./case-studies/.
+ * both together. Work rows live in ./work.js, case studies in
+ * ./case-studies/, terminal-only extras in ../play/commands.js.
  *
  * Wrap anything unverified in [[TODO: note]]. It renders as a visible
  * marker, and `npm run todos` lists every one.
@@ -9,60 +9,67 @@
 
 export const profile = {
   name: 'Johnny McConkie',
-  positioning: 'I build software products and sell them.',
-  proof: [
-    { value: '30', label: 'agencies signed' },
-    { value: '$42K', label: 'raised' },
-    { value: '$1.2M', label: 'closed in sales' },
-  ],
-  now: 'Finishing my B.S. at BYU in December 2026. Looking for full-stack AI product engineering, forward-deployed engineering, or product roles, available January 2027.',
-  about: [
-    'I’m a full-stack engineer who also does the selling. At Voley I was the technical lead: I built the platform and its official HawkSoft integration, then signed 30 insurance agencies through cold outreach and demos.',
-    'Today I build and operate LedgerLine, a private platform I run my bookkeeping clients on, and I’m running a directed study at BYU on what information an LLM actually needs to classify a financial transaction.',
-    'Before software I sold residential solar and ran sales for a concrete contractor.',
-  ],
+  line: 'Full-stack engineer in Provo. I usually end up selling what I build, too.',
+  status: 'Graduating BYU Dec 2026 · open to engineering roles starting Jan 2027',
+  positioning: 'Full-stack engineer who also sells what he builds.',
   email: 'johntaylormcc@gmail.com',
   linkedin: 'https://www.linkedin.com/in/mcconkiejohn',
   github: 'https://github.com/johnnyt16',
   resumeUrl: '/Johnny-McConkie-Resume.pdf',
 };
 
-export const experienceIntro =
-  'Three years of selling and running operations, before and alongside the software.';
+export const research = {
+  slug: 'llm-classification',
+  title: 'LLM classification study',
+  role: 'Directed study, BYU',
+  period: '2026',
+  metric: '60-condition benchmark',
+  detail:
+    'When an LLM miscategorizes a financial transaction, is the fix a bigger model or better information? A benchmark on real, de-identified bookkeeping data: five input levels × three model tiers, scored against cold accountant labels.',
+  stack: 'Python · LLM evaluation · Experimental design',
+  links: [{ label: 'Read about the study', href: '/research/llm-classification/' }],
+};
 
 export const experience = [
   {
-    org: 'Big Star Concrete & Premium Surface Solutions',
+    slug: 'big-star',
+    title: 'Big Star Concrete',
     role: 'Sales & Project Manager',
-    period: '2024 – now',
-    result: 'Built an on-site estimating process that raised sales efficiency 25% and shortened quote-to-close.',
+    period: '2024–now',
+    metric: '+25% sales efficiency',
+    detail:
+      'Sales and project management for Big Star Concrete & Premium Surface Solutions. Designed an on-site estimating process that shortened quote-to-close, and built the CRM lead tracker and follow-up cadence.',
   },
   {
-    org: 'Sunrun',
+    slug: 'sunrun',
+    title: 'Sunrun',
     role: 'Residential Sales',
-    period: '2023 – 2024',
-    result: '$1.2M closed across 36 accounts in 10 months. Top 5 of 197 reps for eight straight weeks.',
+    period: '2023–24',
+    metric: '$1.2M closed · top 5 of 197 reps',
+    detail: '36 accounts in 10 months, and top 5 of 197 reps for eight straight weeks.',
   },
   {
-    org: 'BYU Continuing Education',
+    slug: 'byu-ce',
+    title: 'BYU Continuing Education',
     role: 'Database Operations',
-    period: '2022 – 2023',
-    result: 'SQL automation that cut a two-week team process to two days; adopted as standard practice.',
+    period: '2022–23',
+    metric: '2 weeks → 2 days',
+    detail: 'A SQL automation pipeline that cut a recurring team process from two weeks to two days. It became standard practice.',
   },
 ];
 
-export const education = {
-  school: 'Brigham Young University',
-  degree: 'B.S. Information Systems, Minor in Entrepreneurship',
-  period: 'Dec 2026',
-  detail: '3.7 major GPA · Crocker Innovation Fellow',
-};
+export const education = [
+  'BYU · B.S. Information Systems, Minor in Entrepreneurship · Dec 2026',
+  '3.7 major GPA · Crocker Innovation Fellow',
+];
 
-export const other = [
+/** Terminal-only: `fun-facts`. Kept off the page on purpose. */
+export const funFacts = [
   'Two-year service mission in Quito, Ecuador; led and trained 150+ missionaries',
   'Conversational Spanish',
-  'BYU Sloan Speech Showcase finalist',
   'Eagle Scout',
+  'BYU Sloan Speech Showcase finalist',
+  'Keynote speaker, Insurtech Utah 2025',
 ];
 
 export const tools =
@@ -70,10 +77,7 @@ export const tools =
 
 /** Home page sections, in order. Drives the sidebar nav. */
 export const sections = [
-  { id: 'about', label: 'About' },
   { id: 'work', label: 'Work' },
-  { id: 'projects', label: 'Projects' },
   { id: 'research', label: 'Research' },
   { id: 'experience', label: 'Experience' },
-  { id: 'education', label: 'Education' },
 ];

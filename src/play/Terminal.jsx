@@ -4,6 +4,8 @@ import './play.css';
 
 const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const PROMPT = 'guest@mcconkie:~$';
+// Tap-to-run shortcuts for phones, where typing commands is a chore.
+const CHIPS = ['whoami', 'ls work', 'open voley', 'classify "HOME DEPOT #4407"', 'fun-facts', 'gravity', 'help'];
 
 /** Split "classify \"HOME DEPOT #44\"" into ['classify', 'HOME DEPOT #44']. */
 function parse(input) {
@@ -227,6 +229,16 @@ export default function Terminal({ onClose }) {
               <Line key={l.id} line={l} />
             ))}
           </div>
+
+          {!busy && (
+            <div className="term-chips" aria-label="Quick commands">
+              {CHIPS.map((c) => (
+                <button key={c} type="button" className="term-chip" onClick={() => run(c)}>
+                  {c}
+                </button>
+              ))}
+            </div>
+          )}
 
           <label className="term-input-row">
             <span className="t-lime">{PROMPT}</span>

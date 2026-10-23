@@ -185,8 +185,25 @@
 .sw-violet { background: var(--t-violet); }
 .sw-amber { background: var(--t-amber); }
 
+.term-chips { display: none; flex-wrap: wrap; gap: 6px; margin: 10px 0 8px; }
+.term-chip {
+  padding: 6px 10px;
+  border: 1px solid #3b2d6e;
+  border-radius: 999px;
+  background: #160e30;
+  color: var(--t-lime);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+/* Touch devices: tap chips instead of typing, and a 16px input so iOS doesn't zoom. */
+@media (pointer: coarse) {
+  .term-chips { display: flex; }
+  .term-input { font-size: 16px; }
+}
+
 @media (max-width: 600px) {
-  .term { font-size: 12.5px; height: calc(100vh - 24px); }
+  .term { font-size: 12.5px; height: calc(100dvh - 24px); }
   .term-backdrop { padding: 12px; }
 }
 

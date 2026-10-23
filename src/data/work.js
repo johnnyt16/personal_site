@@ -1,41 +1,68 @@
 /**
- * Selected Work cards on the home page. Each links to a case study.
+ * Work rows on the home page. One line each by default (title, role,
+ * years, one bolded metric); click to expand detail, stack, and links.
  *
- * Media: drop the file at the `src` path under public/ (see
- * public/work/README.md for sizes), then set `ready: true`. Until then the
- * card shows a labeled placeholder.
+ * Media is used by the case-study pages: drop the file at `src` under
+ * public/ (see public/work/README.md), then set `ready: true`.
  */
 
 export const projects = [
   {
     slug: 'voley',
-    href: '/work/voley/',
-    site: { label: 'letsvoley.com', href: 'https://www.letsvoley.com' },
     title: 'Voley',
     role: 'Co-founder & Technical Lead',
-    period: '2025 – 2026',
-    outcome: 'Shared inbox for insurance agencies on an official HawkSoft integration. 30 agencies signed, $42K raised.',
-    stack: ['Next.js', 'Node.js', 'PostgreSQL', 'Twilio'],
+    period: '2025–26',
+    metric: '30 agencies signed',
+    detail:
+      'A shared texting inbox for independent insurance agencies, built on an official two-way HawkSoft integration. I led five contract developers and signed 30 agencies through cold outreach and demos.',
+    stack: 'Next.js · Node.js · PostgreSQL · Twilio',
+    links: [
+      { label: 'Case study', href: '/work/voley/' },
+      { label: 'letsvoley.com', href: 'https://www.letsvoley.com', external: true },
+    ],
     media: { type: 'image', src: '/work/voley.webp', alt: 'Voley inbox showing a two-way text conversation with an insurance client', ready: false },
   },
   {
     slug: 'ledgerline',
-    href: '/work/ledgerline/',
     title: 'LedgerLine',
     role: 'Builder & Operator',
-    period: '2025 – now',
-    outcome: 'Private bookkeeping platform with history-first, LLM-backed categorization. Cut bookkeeping effort for 3 clients by more than half.',
-    stack: ['Next.js', 'PostgreSQL', 'Claude API', 'Railway'],
+    period: '2025–now',
+    metric: '50%+ less bookkeeping time',
+    detail:
+      'The private platform I run three clients’ books on. Rules and each client’s own history categorize most transactions; Claude handles the rest with a confidence score, and anything uncertain goes to a review queue.',
+    stack: 'Next.js · PostgreSQL · Prisma · Claude API · Railway',
+    links: [{ label: 'Case study + live demo', href: '/work/ledgerline/' }],
     media: { type: 'image', src: '/work/ledgerline.webp', alt: 'LedgerLine transaction list with suggested categories and confidence scores', ready: false },
   },
   {
     slug: 'attendease',
-    href: '/work/attendease/',
     title: 'AttendEase',
     role: 'Technical Co-founder',
-    period: '2025 – 2026',
-    outcome: 'Facial-recognition attendance for schools. ~99% agreement with manual roll in a school pilot.',
-    stack: ['Python', 'Node.js', 'PostgreSQL', 'AWS'],
+    period: '2025–26',
+    metric: '~99% match with manual roll',
+    detail:
+      'Facial-recognition attendance for schools, from BYU’s Crocker Innovation Fellowship. I built the mobile app, web frontend, and school admin system; a pilot matched manual attendance about 99% of the time.',
+    stack: 'Python · Node.js · PostgreSQL · AWS EC2',
+    links: [{ label: 'Case study', href: '/work/attendease/' }],
     media: { type: 'image', src: '/work/attendease.webp', alt: 'AttendEase admin dashboard showing a class attendance roster', ready: false },
+  },
+  {
+    slug: 'forge',
+    title: 'Forge Development',
+    role: 'Freelance',
+    period: 'Ongoing',
+    metric: '6 client sites live',
+    detail:
+      'My freelance studio: websites and internal systems for local businesses, including a mobile-first CRM for a concrete contractor.',
+    stack: 'Next.js · TypeScript · Prisma · PostgreSQL',
+    clients: [
+      { label: 'Yura’s Roofing', href: 'https://www.yurasroofing.com' },
+      { label: 'Big Star Built', href: 'https://www.bigstarbuilt.com' },
+      { label: 'Aldana’s Construction', href: 'https://www.aldanasconstruction.com' },
+      { label: 'Kiley Harrison Insurance', href: 'https://www.kileyharrisoninsurance.com' },
+      { label: 'Urban Forest Landscape', href: 'https://www.urbanforestlandscape.com' },
+      { label: 'Blackout Med Kits', href: 'https://blackoutmedkits.com' },
+    ],
+    links: [{ label: 'theforgedev.com', href: 'https://theforgedev.com', external: true }],
   },
 ];
